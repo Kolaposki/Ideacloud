@@ -1,0 +1,78 @@
+{% extends "blog/base.html" %}
+{% load humanize %}
+{% load crispy_forms_tags %}
+{% load my_extras %}
+
+{% block content %}
+    <article class="card media content-section">
+        <img src="{{ post.author.profile.image.url }}" class="rounded-circle article-img">
+        <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-2"
+                   href="{% url 'user_posts' post.author.username %}">{{ post.author | default:"My User" }}</a>
+                <small class="text-muted">{{ post.date_posted | date:"M d, Y" }}
+                    - {{ post.date_posted | naturaltime }}</small>
+                <small class="text-muted"> | {{ post.content |safe |calculate_time_read }} min read </small>
+                <small class="text-muted">| Category: {{ post.category }}</small>
+                <div style="display:flex">
+                    {% for tag in post.tags.all %}
+                        <a href="{% url 'post_tags' tag %}" class="mt-1 mb-1 mr-1 badge badge-primary">#{{ tag }}</a>
+                    {% endfor %}
+                </div>
+                {% if post.author == user %}
+                    <div>
+                        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post_update' post.id %}">Update</a>
+                        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post_delete' post.id %}">Delete</a>
+                    </div>
+                {% endif %}
+            </div>
+
+            <br>
+            <h2 class="card-title article-title">{{ post.title }}</h2>
+            <br>
+            <hr>
+
+            {% if post.cover.url == "/media/cover_pics/default.jpg" %}
+                <span></span>
+            {% elif post.cover.url != "/media/cover_pics/default.jpg" %}
+                <img class="img-fluid float-center" src="{{ post.cover.url }}">
+            {% endif %}
+
+            <p class="card-text article-content">{{ post.content|safe }}</p>
+        </div>
+
+        <div class="container mt-3 mb-2">
+            <h2>{{ comments.count }} comments</h2>
+            <hr>
+            {% for comment in comments %}
+                <div class="container" style="padding: 10px;">
+                    <p class="font-weight-bold">
+                        {{ comment.name }}
+                        <span class=" text-muted font-weight-normal">
+                              {{ comment.created_on }}
+                            </span>
+                    </p>
+                    {{ comment.body | linebreaks }}
+                </div>
+            {% endfor %}
+            <hr>
+        </div>
+
+
+        <div class="container card-body">
+            {% if new_comment %}
+                <div class="alert alert-success" role="alert">
+                    Your comment is awaiting moderation
+                </div>
+            {% else %}
+                <h3>Leave a Reply</h3>
+                <span>Your email address will not be published. Required fields are marked *</span>
+                <form method="post" style="margin-top: 1.3em;">
+                    {{ comment_form | crispy }}
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+                </form>
+            {% endif %}
+        </div>
+    </article>
+{% endblock content %}
