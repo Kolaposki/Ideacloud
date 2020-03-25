@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -153,11 +154,4 @@ SUMMERNOTE_CONFIG = {
 
 TAGGIT_CASE_INSENSITIVE = True  # make sure all the tags are not case sensitive
 
-'''
-# Enabling user to login with either username or password
-AUTHENTICATION_BACKENDS = (
-    # 'ideacloud.accounts.backends.EmailOrUsernameModelBackend',
-    'ideacloud.users.forms.EmailOrUsernameModelBackend'
-    'django.contrib.auth.backends.ModelBackend',
-    # 'ideacloud.authentication.EmailOrUsernameModelBackend',
-)'''
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'  # forever-cacheable files and compression support
