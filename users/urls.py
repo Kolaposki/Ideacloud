@@ -1,6 +1,6 @@
 """
     name='urls',
-    project='ideabank'
+    project='ideacloud'
     date='2/28/2020',
     author='Oshodi Kolapo',
 """
@@ -10,7 +10,7 @@ from blog import views as blog_views
 from django.contrib.auth import views as auth_views  # Use django inbuilt authentication to handle login and logout
 
 urlpatterns = [
-    path('', blog_views.home),
+    path('', blog_views.home_page),
     path('register', views.register, name='register'),
     path('profile', views.profile, name='profile'),
     path('login', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),

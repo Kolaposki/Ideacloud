@@ -1,6 +1,6 @@
 """
     name='urls',
-    project='ideabank'
+    project='ideacloud'
     date='2/28/2020',
     author='Oshodi Kolapo',
 """
@@ -8,7 +8,10 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.PostListView.as_view(), name='blog-home'),
+    path('category/', views.all_category, name='all_category'),
+    # path('samplehome/', views.samplehome, name='sample-home'),
+
+    path('', views.home_page, name='blog-home'),
     path('user/<str:username>/', views.UserPostListView.as_view(), name='user_posts'),
 
     # re-route to a single post with the post's pk : 'post/3'

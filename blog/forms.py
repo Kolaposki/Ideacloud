@@ -1,6 +1,6 @@
 """
     name='forms',
-    project='ideabank'
+    project='ideacloud'
     date='3/13/2020',
     author='Oshodi Kolapo',
 """
@@ -11,9 +11,6 @@ from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
 
 
 class PostForm(forms.ModelForm):
-    # CATEGORY_CHOICES = [(1, "news"), (2, "tech"), (3, "fashion"), (4, "politics"), (5, "health"), (6, "entertainment"),
-    #                   (7, "sport")]
-
     CATEGORY_CHOICES = [("news", "news"), ("tech", "tech"), ("fashion", "fashion"), ("politics", "politics"),
                         ("health", "health"), ("entertainment", "entertainment"),
                         ("sport", "sport")]
@@ -21,12 +18,12 @@ class PostForm(forms.ModelForm):
     content = forms.CharField(widget=SummernoteWidget())  # instead of forms.Textarea
     title = forms.CharField(max_length=120, required=True, strip=True)
     cover = forms.ImageField(required=False)
-
-    #s category = forms.ChoiceField(choices=CATEGORY_CHOICES, required=True, label="Category")
+    short_description = forms.CharField(max_length=170, required=False, strip=True,
+                                        help_text='Provide an optional short description')
 
     class Meta:
         model = Post
-        fields = ('title', 'category', 'content', 'cover', 'tags')
+        fields = ('title', 'category', 'short_description', 'content', 'cover', 'tags')
 
 
 class CommentForm(forms.ModelForm):

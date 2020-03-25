@@ -16,7 +16,6 @@ class Profile(models.Model):
     # url_width = models.PositiveIntegerField()
 
     image = models.ImageField(default='avatar.png', upload_to='profile_pics')
-
     # default image name for every new user {avatar}
     # upload the image to a folder called {profile_pics}
     # resize the image to height and width of 125px

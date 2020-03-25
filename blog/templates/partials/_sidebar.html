@@ -1,0 +1,38 @@
+{% load humanize %}
+{% load my_extras %}
+<div class="col-lg-4 col-md-12">
+
+    <div class="single-post info-area ">
+
+        <div class="sidebar-area about-area">
+            <h4 class="title"><b>ABOUT IDEACLOUD</b></h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
+                Ut enim ad minim veniam</p>
+        </div>
+
+        <div class="sidebar-area about-area">
+            <h4 class="title"><b>Latest Posts</b></h4>
+            <ul class="list-group p-0">
+                {% for post in recent_posts %}
+                    <a href="{% url 'post_detail' post.id %}"
+                       class="mb-1 list-group-item list-group-item-action list-group-item-secondary">{{ post.title }}
+                        | {{ post.date_posted | naturaltime }} in {{ post.category }}</a>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="tag-area">
+
+            <h4 class="title"><b>TAG CLOUD</b></h4>
+            <ul>
+                {% for tag in common_tags %}
+                    <li><a href="{% url 'post_tags' tag %}">{{ tag }}</a></li>
+                {% endfor %}
+            </ul>
+
+        </div><!-- subscribe-area -->
+
+    </div><!-- info-area -->
+
+</div><!-- col-lg-4 col-md-12 -->

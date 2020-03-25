@@ -1,5 +1,7 @@
 {% load static %}
 {% load humanize %}
+{% load my_extras %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -92,8 +94,9 @@
                     <p class='text-muted'></p>
                     <ul class="list-group">
                         {% for post in recent_posts %}
-                            <li class="list-group-item list-group-item-dark">{{ post.title }}
-                                | {{ post.date_posted | naturaltime }} in {{ post.category }}</li>
+                            <a href="{% url 'post_detail' post.id %}"
+                               class="mb-1 list-group-item list-group-item-action list-group-item-secondary">{{ post.title }}
+                                | {{ post.date_posted | naturaltime }} in {{ post.category }}</a>
                         {% endfor %}
                     </ul>
                 </div>
@@ -101,9 +104,12 @@
                 <div class="content-section">
                     <h3>Tag clouds</h3>
                     <p class='text-muted'></p>
-                    <div class="card card-body">
+                    <div class="list-group-sm card card-body">
                         {% for tag in common_tags %}
-                            <a href="{% url 'post_tags' tag %}" class="mt-1 mb-1 mr-1 badge badge-primary">#{{ tag }}</a>
+                            <li class="list-group-item">
+                                <a href="{% url 'post_tags' tag %}"
+                                   class="mt-1 mb-1 mr-1 text-white badge badge-{{ tag | rand_css }}">#{{ tag }}</a>
+                            </li>
                         {% endfor %}
                     </div>
                 </div>

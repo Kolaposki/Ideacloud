@@ -1,0 +1,138 @@
+{% extends "sample/base.html" %}
+{% load static %}
+{% block content %}
+
+    <div class="main-slider">
+        <div class="swiper-container position-static" data-slide-effect="slide" data-autoheight="false"
+             data-swiper-speed="500" data-swiper-autoplay="10000" data-swiper-margin="0" data-swiper-slides-per-view="4"
+             data-swiper-breakpoints="true" data-swiper-loop="true">
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                    <a class="slider-category" href="{% url 'category' 'news'%}">
+                        <div class="blog-image"><img src="{% static 'images/category-1-400x250.jpg' %}"
+                                                     alt="Blog Image"></div>
+
+                        <div class="category">
+                            <div class="display-table center-text">
+                                <div class="display-table-cell">
+                                    <h3><b>NEWS</b></h3>
+                                </div>
+                            </div>
+                        </div>
+
+                    </a>
+                </div><!-- swiper-slide -->
+
+                <div class="swiper-slide">
+                    <a class="slider-category" href="{% url 'category' 'tech'%}">
+                        <div class="blog-image"><img src="{% static 'images/category-2-400x250.jpg' %}"
+                                                     alt="Blog Image"></div>
+
+                        <div class="category">
+                            <div class="display-table center-text">
+                                <div class="display-table-cell">
+                                    <h3><b>TECH</b></h3>
+                                </div>
+                            </div>
+                        </div>
+
+                    </a>
+                </div> <!-- swiper-slide -->
+
+                <div class="swiper-slide">
+                    <a class="slider-category" href="{% url 'category' 'health'%}">
+                        <div class="blog-image"><img src="{% static 'images/category-3-400x250.jpg' %}"
+                                                     alt="Blog Image"></div>
+
+                        <div class="category">
+                            <div class="display-table center-text">
+                                <div class="display-table-cell">
+                                    <h3><b>HEALTH</b></h3>
+                                </div>
+                            </div>
+                        </div>
+
+                    </a>
+                </div><!-- swiper-slide -->
+
+                <div class="swiper-slide">
+                    <a class="slider-category" href="{% url 'category' 'fashion'%}">
+                        <div class="blog-image"><img src="{% static 'images/category-4-400x250.jpg' %}"
+                                                     alt="Blog Image"></div>
+
+                        <div class="category">
+                            <div class="display-table center-text">
+                                <div class="display-table-cell">
+                                    <h3><b>FASHION</b></h3>
+                                </div>
+                            </div>
+                        </div>
+
+                    </a>
+                </div><!-- swiper-slide -->
+
+                <div class="swiper-slide">
+                    <a class="slider-category" href="{% url 'category' 'sport'%}">
+                        <div class="blog-image"><img src="{% static 'images/category-5-400x250.jpg' %}"
+                                                     alt="Blog Image"></div>
+
+                        <div class="category">
+                            <div class="display-table center-text">
+                                <div class="display-table-cell">
+                                    <h3><b>SPORT</b></h3>
+                                </div>
+                            </div>
+                        </div>
+
+                    </a>
+                </div><!-- swiper-slide -->
+
+                <div class="swiper-slide">
+                    <a class="slider-category" href="{% url 'category' 'politics' %}">
+                        <div class="blog-image"><img src="{% static 'images/category-6-400x250.jpg' %}"
+                                                     alt="Blog Image"></div>
+
+                        <div class="category">
+                            <div class="display-table center-text">
+                                <div class="display-table-cell">
+                                    <h3><b>POLITICS</b></h3>
+                                </div>
+                            </div>
+                        </div>
+
+                    </a>
+                </div><!-- swiper-slide -->
+
+                <div class="swiper-slide">
+                    <a class="slider-category" href="{% url 'category' 'entertainment' %}">
+                        <div class="blog-image"><img src="{% static 'images/category-3-400x250.jpg' %}"
+                                                     alt="Blog Image"></div>
+
+                        <div class="category">
+                            <div class="display-table center-text">
+                                <div class="display-table-cell">
+                                    <h3><b>ENTERTAINMENT</b></h3>
+                                </div>
+                            </div>
+                        </div>
+
+                    </a>
+                </div><!-- swiper-slide -->
+
+            </div><!-- swiper-wrapper -->
+
+        </div><!-- swiper-container -->
+
+    </div><!-- slider -->
+
+    <section class="blog-area section">
+        <div class="container">
+            <div class="row">
+                {% include 'partials/_blog-cards.html' %}
+            </div><!-- row -->
+            <!--    Pagination Section  -->
+            {% include 'partials/_pagination.html' %}
+        </div><!-- container -->
+    </section><!-- section -->
+{% endblock %}

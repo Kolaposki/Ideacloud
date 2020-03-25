@@ -6,6 +6,7 @@
 """
 import re
 from django import template
+import random
 
 register = template.Library()
 
@@ -21,3 +22,9 @@ def calculate_time_read(content):
         return 1
     else:
         return minutes
+
+
+@register.filter(name='rand_css')
+def rand_css(content):
+    class_list = ['secondary', 'success', 'danger', 'warning', 'info', 'dark', 'primary']
+    return random.choice(class_list)

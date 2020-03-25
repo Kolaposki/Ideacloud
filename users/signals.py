@@ -1,6 +1,6 @@
 """
     name='signals.py',
-    project='ideabank'
+    project='ideacloud'
     date='3/1/2020',
     author='Oshodi Kolapo',
 """

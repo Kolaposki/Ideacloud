@@ -1,0 +1,19 @@
+{% extends "sample/base.html" %}
+{% load static %}
+{% block content %}
+
+    <div class="slider display-table center-text">
+        <h1 class="title mb-3"><b>{{ view.kwargs.categories | title }}</b><br></h1>
+        <h3 class="title">Total posts : {{ posts.count }}</h3>
+    </div><!-- slider -->
+
+    <section class="blog-area section">
+        <div class="container">
+            <div class="row">
+                {% include 'partials/_blog-cards.html' %}
+            </div><!-- row -->
+            <!--    Pagination Section  -->
+            {% include 'partials/_pagination.html' %}
+        </div><!-- container -->
+    </section><!-- section -->
+{% endblock %}

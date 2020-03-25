@@ -1,12 +1,15 @@
-{% extends "blog/base.html" %}
+{% extends "sample/base.html" %}
 {% block content %}
-
-    <div class="alert alert-info">
-        Successfully logged out
-    </div>
-    <div class="border-top pt-3">
-        <small class="text-muted">
-            Mistake?<a class="ml-2" href="{% url 'login' %}">Log back in</a>
-        </small>
-    </div>
+    <section class="blog-area section">
+        <div class="container">
+            <div class="alert alert-info">
+                Successfully logged out
+            </div>
+            <div class="border-top pt-3">
+                <small class="text-muted">
+                    Mistake?<a class="ml-2" href="{% url 'login' %}">Log back in</a>
+                </small>
+            </div>
+        </div>
+    </section>
 {% endblock content %}

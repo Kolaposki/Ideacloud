@@ -1,0 +1,82 @@
+
+{% for post in posts %}
+    {% if post.cover %}
+        <div class="{{ boot_class }}">
+            <div class="card h-100">
+                <div class="single-post post-style-1">
+
+                    <div class="blog-image"><img src="{{ post.cover.url }}"
+                                                 alt="{{ post.title|lower }}"
+                                                 style="height: 219px">
+                    </div>
+
+                    <a class="avatar" href="{% url 'user_posts' post.author.username %}"><img
+                            src="{{ post.author.profile.image.url }}"
+                            alt="{{ post.author.profile }} Profile"></a>
+
+                    <h4 class="title">
+                        <a href="{% url 'post_detail' post.id %}"><b>{{ post.title|title }}</b></a>
+                    </h4>
+
+                    <ul class="post-footer">
+                        <li><a href="#"><i class="ion-heart"></i>57</a></li>
+                        <li><a href="#"><i class="ion-chatbubble"></i>{{ post.comments.count }}
+                        </a></li>
+                        <li><a href="#"><i class="ion-eye"></i>138</a></li>
+                    </ul>
+
+                </div><!-- single-post -->
+            </div><!-- card -->
+        </div><!-- col-md-6 col-sm-12 -->
+
+    {% else %}
+        <div class="{{ boot_class }}">
+            <div class="card h-100">
+
+                <div class="single-post post-style-2 post-style-3">
+
+                    <div class="blog-info">
+
+                        <h6 class="pre-title"><a href="#"><b>{{ post.category }}</b></a></h6>
+
+                        <h4 class="title"><a
+                                href="{% url 'post_detail' post.id %}"><b>{{ post.title|title }}</b></a>
+                        </h4>
+
+                        {% if post.short_description %}
+                            <p>{{ post.short_description }} </p>
+                        {% else %}
+
+                            <p>{{ post.content|safe|capfirst|truncatewords:150 }}</p>
+                        {% endif %}
+
+                        <div class="avatar-area">
+                            <a class="avatar"
+                               href="{% url 'user_posts' post.author.username %}"><img
+                                    src="{{ post.author.profile.image.url }}"
+                                    alt="{{ post.author.profile }}'s pic"></a>
+                            <div class="right-area">
+                                <a class="name"
+                                   href="{% url 'user_posts' post.author.username %}">
+                                    <b>{{ post.author }}</b></a>
+                                <h6 class="date" href="#">
+                                    on {{ post.date_posted | date:"M d, Y" }}</h6>
+                            </div>
+                        </div>
+
+                        <ul class="post-footer">
+                            <li><a href="#"><i class="ion-heart"></i>57</a></li>
+                            <li><a href="#"><i
+                                    class="ion-chatbubble"></i>{{ post.comments.count }}</a>
+                            </li>
+                            <li><a href="#"><i class="ion-eye"></i>138</a></li>
+                        </ul>
+
+                    </div><!-- blog-right -->
+
+                </div><!-- single-post extra-blog -->
+
+            </div><!-- card -->
+        </div><!-- col-md-6 col-sm-12 -->
+    {% endif %}
+{% endfor %}

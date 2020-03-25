@@ -9,9 +9,10 @@ from django.contrib.auth.decorators import login_required
 
 def register(request):
     if request.method == 'POST':  # if some data is sumbitted through the form
+        # request.POST['username'] = str(request.POST['username']).lower()
         form = UserRegisterForm(request.POST)  # create an instance of the data submitted through the form
 
-        if form.is_valid():  # if the data submitted through the form is valid
+        if form.is_valid():  # if the data submitted through the form is valid]
             form.save()  # save the data to the DB
             username = form.cleaned_data.get('username')  # get the username of the user
             messages.success(request, f'Account for {username} created successfully!')  # display a success message

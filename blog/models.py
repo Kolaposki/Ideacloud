@@ -35,9 +35,10 @@ class Post(models.Model):
     content = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    cover = models.ImageField(upload_to=user_directory_path, default='cover_pics/default.jpg')
+    cover = models.ImageField(upload_to=user_directory_path, blank=True, null=True)  # default='cover_pics/default.jpg'
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='category', null=False)
     tags = TaggableManager()
+    short_description = models.CharField(max_length=170, null=True, blank=True)
 
     def __str__(self):
         return self.title

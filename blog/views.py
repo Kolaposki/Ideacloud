@@ -9,11 +9,16 @@ from .forms import CommentForm, PostForm
 
 
 # Create your views here.
+def all_category(request):
+    posts = Post.objects.order_by('?')  # order objects randomly
+    boot_class = 'col-lg-4 col-md-6'
+    return render(request, 'sample/all_category.html', context={'posts': posts, 'boot_class': boot_class})
 
 
-def home(request):
-    posts = Post.objects.all()
-    return render(request, 'blog/home.html', context={'posts': posts})
+def home_page(request):
+    posts = Post.objects.order_by('?')  # order objects randomly
+    boot_class = 'col-md-6 col-sm-12'
+    return render(request, 'sample/home.html', context={'posts': posts, 'boot_class': boot_class})
 
 
 # Using Class based view
@@ -23,7 +28,7 @@ def home(request):
 #     UpdateView — to update a particular object
 #     DeleteView — to delete a particular object
 
-
+'''
 # View list of all posts
 class PostListView(ListView):
     model = Post  # The model to query
@@ -31,12 +36,13 @@ class PostListView(ListView):
     context_object_name = 'posts'  # name of object query
     ordering = ['-date_posted']  # order by the date posted but in reverse order cuz of '-'
     paginate_by = 5
+'''
 
 
 # View list of all posts from a specific author/user
 class UserPostListView(ListView):
     model = Post
-    template_name = 'blog/user_posts.html'
+    template_name = 'sample/user_posts.html'
     context_object_name = 'posts'
     # ordering is done by the filter below
     paginate_by = 5
@@ -47,6 +53,11 @@ class UserPostListView(ListView):
         # grab the objects from User model
         user = get_object_or_404(User, username=self.kwargs.get('username'))  # get the username from the url
         return Post.objects.filter(author=user).order_by('-date_posted')  # filter all posts if the author == user
+
+    def get_context_data(self, **kwargs):
+        context = super(UserPostListView, self).get_context_data(**kwargs)
+        context['boot_class'] = 'col-md-6 col-sm-12'
+        return context
 
 
 '''
@@ -78,11 +89,11 @@ def post_detail(request, pk):
     else:
         comment_form = CommentForm()
 
-    return render(request, 'blog/post_detail.html', {'post': post,
-                                                     'comments': comments,
-                                                     'new_comment': new_comment,
-                                                     'comment_form': comment_form,
-                                                     })
+    return render(request, 'sample/post_detail.html', {'post': post,
+                                                       'comments': comments,
+                                                       'new_comment': new_comment,
+                                                       'comment_form': comment_form,
+                                                       })
 
 
 # a view to create a single post. Form included
@@ -154,22 +165,27 @@ def tag_posts(request, tags):
     # url_tag = str(request.GET('tags')).lower
     # tag = get_object_or_404(Tag, tags)  # get the tags from the url
     posts = Post.objects.filter(tags__name__in=[tags]).distinct()
+    boot_class = 'col-md-6 col-sm-12'
     context = {
         'posts': posts,
         'post_tag': tags,
+        'boot_class': boot_class,
     }
-    return render(request, 'blog/tag_posts.html', context)
+    return render(request, 'sample/tag_posts.html', context)
 
 
 # filters all posts with the specific category
 class PostCategoryListView(ListView):
     model = Post
-    template_name = 'blog/category.html'
+    template_name = 'sample/category.html'
     context_object_name = 'posts'
     paginate_by = 5
 
     def get_queryset(self):
         categories = get_object_or_404(Category, name=self.kwargs.get('categories'))  # get the category from the url
-        return Post.objects.filter(category=categories).order_by(
-            '-date_posted')
+        return Post.objects.filter(category=categories).order_by('-date_posted')
 
+    def get_context_data(self, **kwargs):
+        context = super(PostCategoryListView, self).get_context_data(**kwargs)
+        context['boot_class'] = 'col-lg-4 col-md-6'
+        return context

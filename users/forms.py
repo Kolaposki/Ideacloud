@@ -1,6 +1,6 @@
 """
     name='forms',
-    project='ideabank'
+    project='ideacloud'
     date='3/1/2020',
     author='Oshodi Kolapo',
 """
@@ -13,6 +13,7 @@ from django.conf import settings
 
 
 class UserRegisterForm(UserCreationForm):
+    username = forms.CharField(max_length=30, required=True, help_text='Username is Case Sensitive')
     email = forms.EmailField(max_length=254, help_text='Required. Provide a valid email address.')
     first_name = forms.CharField(max_length=30, required=True)
     last_name = forms.CharField(max_length=30, required=True)
