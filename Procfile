@@ -1,1 +1,1 @@
-web: gunicorn discoco.wsgi
+web: gunicorn ideacloud.wsgi
