@@ -154,4 +154,4 @@ SUMMERNOTE_CONFIG = {
 
 TAGGIT_CASE_INSENSITIVE = True  # make sure all the tags are not case sensitive
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'  # forever-cacheable files and compression support
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'  # forever-cacheable files and compression support
