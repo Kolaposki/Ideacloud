@@ -3,6 +3,7 @@
 {% load humanize %}
 {% load my_extras %}
 {% load crispy_forms_tags %}
+{% block title %}{{ post.title }} {% endblock %}
 {% block content %}
 
     <section class="post-area section">
@@ -26,14 +27,15 @@
 
                                 <div class="middle-area">
                                     <a class="name"
-                                       href="{% url 'user_posts' post.author.username %}"><b>{{ post.author | default:"My User" }}</b>
+                                       href="{% url 'user_posts' post.author.username %}"><b>{{ post.author.first_name }} {{ post.author.last_name }}</b>
                                     </a>
 
                                     <h6 class="date">on {{ post.date_posted | date:"M d, Y" }}
                                         - {{ post.date_posted | naturaltime }}</h6>
 
                                     <a href="{% url 'category' post.category|lower %}" class="date">| Category: {{ post.category }}</a>
-                                    <h6 class="date"> | {{ post.content | safe | calculate_time_read }} min read </h6>
+                                    <h6 class="date"> | {{ post.content | striptags | calculate_time_read }} min
+                                        read </h6>
                                 </div>
 
                                 <div class="middle-area mt-1">

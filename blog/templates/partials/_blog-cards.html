@@ -21,7 +21,9 @@
                     <ul class="post-footer">
                         <li><i class="ion-heart"></i>57</li>
                         <li><i class="ion-eye"></i>138</li>
-                        <li><i class="ion-ios-book-outline"></i>{{ post.content |safe | calculate_time_read }} min read</li>
+                        <li><i class="ion-ios-book-outline"></i>{{ post.content |striptags | calculate_time_read }} min
+                            read
+                        </li>
                     </ul>
 
                 </div><!-- single-post -->
@@ -36,17 +38,17 @@
 
                     <div class="blog-info">
 
-                        <h6 class="pre-title"><a href="#"><b>{{ post.category }}</b></a></h6>
+                        <h6 class="pre-title"><a
+                                href="{% url 'category' post.category|lower %}"><b>{{ post.category }}</b></a></h6>
 
-                        <h4 class="title"><a
-                                href="{% url 'post_detail' post.id %}"><b>{{ post.title|title }}</b></a>
+                        <h4 class="title">
+                            <a href="{% url 'post_detail' post.id %}"><strong>{{ post.title|title }}</strong></a>
                         </h4>
 
                         {% if post.short_description %}
-                            <p>{{ post.short_description }} </p>
+                            <p class="post_description">{{ post.short_description }} </p>
                         {% else %}
-
-                            <p>{{ post.content|safe|capfirst|truncatewords:150 }}</p>
+                            <p class="post_description">{{ post.content|striptags|capfirst|truncatewords:25 }}</p>
                         {% endif %}
 
                         <div class="avatar-area">
@@ -57,8 +59,8 @@
                             <div class="right-area">
                                 <a class="name"
                                    href="{% url 'user_posts' post.author.username %}">
-                                    <b>{{ post.author }}</b></a>
-                                <h6 class="date" href="#">
+                                    <b>{{ post.author.first_name }} {{ post.author.last_name }}</b></a>
+                                <h6 class="date">
                                     on {{ post.date_posted | date:"M d, Y" }}</h6>
                             </div>
                         </div>
@@ -67,7 +69,9 @@
                         <ul class="post-footer">
                             <li><i class="ion-heart"></i>57</li>
                             <li><i class="ion-eye"></i>138</li>
-                            <li><i class="ion-ios-book-outline"></i>{{ post.content |safe | calculate_time_read }} min read</li>
+                            <li><i class="ion-ios-book-outline"></i>{{ post.content | striptags | calculate_time_read }}
+                                min read
+                            </li>
                         </ul>
 
                     </div><!-- blog-right -->
