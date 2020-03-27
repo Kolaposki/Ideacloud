@@ -27,7 +27,7 @@ class PostForm(forms.ModelForm):
 
 
 class CommentForm(forms.ModelForm):
-    email = forms.EmailField()
+    email = forms.EmailField(required=True)
     website = forms.URLField(initial='http://', required=False)
 
     class Meta:
