@@ -57,16 +57,20 @@
 
     </div><!-- conatiner -->
 </header>
-
-<div class="col-md-8">
-    {% if messages %}
-        {% for message in messages %}
-            <div class="alert alert-{{ message.tags }}">
-                {{ message }}
-            </div>
-        {% endfor %}
-    {% endif %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mt-3 mb-0 text-center">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
 </div>
+
 {% block content %}
     <!-- content -->
 {% endblock %}
