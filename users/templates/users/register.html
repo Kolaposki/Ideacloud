@@ -1,25 +1,46 @@
 {% extends "sample/base.html" %}
 {% load crispy_forms_tags %}
+{% load static %}
 {% block content %}
-    <section class="blog-area section">
-        <div class="container">
+    <div class="limiter mb-3">
+        <div class="container-login100">
+            <div class="wrap-login100">
 
-            <form method="POST">
-                {% csrf_token %}
-                <fieldset class='form-group'>
-                    <legend class="border-button mb-4">Register</legend>
-                    {{ form | crispy }}
-                </fieldset>
-                <div class="form-group">
-                    <button class="btn btn-outline-info" type="submit">Sign Up</button>
+                <form method="POST" class="">
+                    {% csrf_token %}
+
+                    <div class="mr-4">
+                        <span class="login100-form-title p-b-26">
+                            Register
+                        </span>
+                            <span class="login100-form-title p-b-48">
+                            <img src="{% static 'images/logo.png' %}" style="height:60px; width:80px;">
+                        </span>
+                    </div>
+
+                    <fieldset class='form-group text-center'>
+                        {{ form | crispy }}
+                    </fieldset>
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button class="login100-form-btn" type="submit" style="color: #fff !important;">
+                                Sign Up
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="text-center p-t-115">
+						<span class="txt1">
+							 Already Have an Account?
+						</span>
+
+                    <a class="txt2" href="{% url 'login' %}">
+                        Sign In
+                    </a>
                 </div>
-            </form>
-            <div class="border-top pt-3">
-                <small class="text-muted">
-                    Already Have an Account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
-                </small>
             </div>
-
         </div>
-    </section>
+    </div>
 {% endblock content %}

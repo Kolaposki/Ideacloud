@@ -3,7 +3,21 @@
   <component name="ChangeListManager">
     <list default="true" id="387293ac-6c61-4aa3-92dc-f0d068650f15" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/templates/partials/_blog-cards.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/partials/_blog-cards.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/templates/partials/_sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/partials/_sidebar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/templates/sample/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/sample/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/templates/sample/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/sample/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/templates/sample/post_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/sample/post_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/templates/sample/tag_posts.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/sample/tag_posts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ideacloud/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ideacloud/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/common-css/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/common-css/theme.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/templates/users/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/templates/users/logout.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/logout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/templates/users/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/register.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,7 +68,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML4 File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/static/common-js" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
@@ -65,11 +79,11 @@
       <recent name="C:\Users\KOLAPO\Desktop\ideabank\blog\templates\blog" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\KOLAPO\Desktop\ideacloud\static\common-js" />
+      <recent name="C:\Users\KOLAPO\Desktop\ideacloud\static\common-css" />
+      <recent name="C:\Users\KOLAPO\Desktop\ideacloud\users\templates\users" />
       <recent name="C:\Users\KOLAPO\Desktop\ideacloud" />
       <recent name="C:\Users\KOLAPO\Desktop\ideabank\blog\templates\sample" />
-      <recent name="C:\Users\KOLAPO\Desktop\ideabank\static\common-js" />
-      <recent name="C:\Users\KOLAPO\Desktop\ideabank\blog\templates\blog" />
-      <recent name="C:\Users\KOLAPO\Desktop\ideabank\static\css" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -150,7 +164,7 @@
       <workItem from="1584782093667" duration="1166000" />
       <workItem from="1584881815375" duration="102256000" />
       <workItem from="1585179276405" duration="1804000" />
-      <workItem from="1585181377927" duration="2391000" />
+      <workItem from="1585181377927" duration="17504000" />
     </task>
     <servers />
   </component>

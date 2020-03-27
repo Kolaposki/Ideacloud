@@ -1,24 +1,58 @@
 {% extends "sample/base.html" %}
-{% load crispy_forms_tags %}
+{% load static %}
 {% block content %}
-    <section class="blog-area section text-center">
-        <div class="container">
-            <form method="POST">
-                {% csrf_token %}
-                <fieldset class='form-group'>
-                    <legend class="border-button mb-4">Login</legend>
-                    {{ form | crispy }}
-                </fieldset>
-                <div class="form-group ml-2">
-                    <button class="btn btn-outline-info" type="submit">Login</button>
-                    <small class="text-muted"><a href="{% url 'password-reset' %}">Forgot password?</a></small>
-                </div>
-            </form>
-            <div class="border-top pt-3">
-                <small class="text-muted">
-                    Don't Have an Account? <a class="ml-2" href="{% url 'register' %}">Sign Up</a>
-                </small>
+
+    <div class="limiter mb-3">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form method="POST" class="login100-form validate-form">
+                    {% csrf_token %}
+                    <div class="mr-4">
+                        <span class="login100-form-title p-b-26">
+                            Login
+                        </span>
+                            <span class="login100-form-title p-b-48">
+                            <img src="{% static 'images/logo.png' %}" style="height:60px; width:80px;">
+                        </span>
+                    </div>
+
+                    <div class="text-center">
+                        <span class="txt1"> {{ form.non_field_errors }}</span>
+                        <span class="txt1"> {{ form.username.errors }}</span>
+                        <span class="txt1"> {{ form.password.errors }}</span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter username">
+                        <input class="input100" type="text" name="username">
+                        <span class="focus-input100" data-placeholder="Username"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <input class="input100" type="password" name="password">
+                        <span class="focus-input100" data-placeholder="Password"></span>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button class="login100-form-btn" type="submit" style="color: #fff !important;">
+                                Login
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="text-center p-t-115">
+						<span class="txt1">
+							Don’t have an account?
+						</span>
+
+                        <a class="txt2" href="{% url 'register' %}">
+                            Sign Up
+                        </a>
+                    </div>
+                </form>
             </div>
         </div>
-    </section>
+    </div>
+
 {% endblock content %}

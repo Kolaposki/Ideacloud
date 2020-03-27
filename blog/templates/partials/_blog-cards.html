@@ -1,4 +1,4 @@
-
+{% load my_extras %}
 {% for post in posts %}
     {% if post.cover %}
         <div class="{{ boot_class }}">
@@ -19,10 +19,9 @@
                     </h4>
 
                     <ul class="post-footer">
-                        <li><a href="#"><i class="ion-heart"></i>57</a></li>
-                        <li><a href="#"><i class="ion-chatbubble"></i>{{ post.comments.count }}
-                        </a></li>
-                        <li><a href="#"><i class="ion-eye"></i>138</a></li>
+                        <li><i class="ion-heart"></i>57</li>
+                        <li><i class="ion-eye"></i>138</li>
+                        <li><i class="ion-ios-book-outline"></i>{{ post.content |safe | calculate_time_read }} min read</li>
                     </ul>
 
                 </div><!-- single-post -->
@@ -64,12 +63,11 @@
                             </div>
                         </div>
 
+
                         <ul class="post-footer">
-                            <li><a href="#"><i class="ion-heart"></i>57</a></li>
-                            <li><a href="#"><i
-                                    class="ion-chatbubble"></i>{{ post.comments.count }}</a>
-                            </li>
-                            <li><a href="#"><i class="ion-eye"></i>138</a></li>
+                            <li><i class="ion-heart"></i>57</li>
+                            <li><i class="ion-eye"></i>138</li>
+                            <li><i class="ion-ios-book-outline"></i>{{ post.content |safe | calculate_time_read }} min read</li>
                         </ul>
 
                     </div><!-- blog-right -->

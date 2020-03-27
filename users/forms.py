@@ -25,6 +25,11 @@ class UserRegisterForm(UserCreationForm):
         fields = ['username', 'first_name', 'last_name', 'gender', 'email', 'password1',
                   'password2']  # fields to be shown on form in order
 
+    def __init__(self, *args, **kwargs):
+        super(UserRegisterForm, self).__init__(*args, **kwargs)
+        self.fields['agree'].widget.attrs.update({'class': 'ml-2'})
+        self.fields['username'].widget.attrs.update({'autofocus': 'False'})
+
 
 # Adding models to update fields
 class UserUpdateForm(forms.ModelForm):

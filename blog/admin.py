@@ -1,14 +1,17 @@
 from django.contrib import admin
 from .models import *
+from django.contrib.auth.models import Group
 from django_summernote.admin import SummernoteModelAdmin
+from import_export.admin import ImportExportModelAdmin
 
 
 # Register your models here.
 
 
-class PostAdmin(SummernoteModelAdmin, admin.ModelAdmin):
+class PostAdmin(ImportExportModelAdmin, SummernoteModelAdmin):
     list_display = ('title', 'author', 'category', 'date_posted')
     summernote_fields = ('content',)
+    search_fields = ('title', 'author',)
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -32,3 +35,4 @@ class CommentAdmin(admin.ModelAdmin):
 admin.site.register(Post, PostAdmin)
 admin.site.register(Comment, CommentAdmin)
 admin.site.register(Category, CategoryAdmin)
+admin.site.unregister(Group)

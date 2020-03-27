@@ -56,7 +56,7 @@
 
                             <ul class="tags">
                                 {% for tag in post.tags.all %}
-                                    <li><a href="{% url 'post_tags' tag %}">{{ tag }}</a></li>
+                                    <li><a href="{% url 'post_tags' tag %}">{{ tag| title }}</a></li>
                                 {% endfor %}
                             </ul>
                         </div><!-- blog-post-inner -->
