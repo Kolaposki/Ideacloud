@@ -15,7 +15,7 @@
                             alt="{{ post.author.profile }} Profile"></a>
 
                     <h4 class="title">
-                        <a href="{% url 'post_detail' post.id %}"><b>{{ post.title|title }}</b></a>
+                        <a href="{% url 'post_detail' post.slug post.id %}"><b>{{ post.title|title }}</b></a>
                     </h4>
 
                     <ul class="post-footer">
@@ -42,7 +42,7 @@
                                 href="{% url 'category' post.category|lower %}"><b>{{ post.category }}</b></a></h6>
 
                         <h4 class="title">
-                            <a href="{% url 'post_detail' post.id %}"><strong>{{ post.title|title }}</strong></a>
+                            <a href="{% url 'post_detail' post.slug post.id %}"><strong>{{ post.title|title }}</strong></a>
                         </h4>
 
                         {% if post.short_description %}

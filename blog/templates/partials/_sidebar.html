@@ -20,7 +20,7 @@
             <h4 class="title"><b>Latest Posts</b></h4>
             <ul class="list-group p-0">
                 {% for post in recent_posts %}
-                    <a href="{% url 'post_detail' post.id %}"
+                    <a href="{% url 'post_detail' post.slug post.id %}"
                        class="mb-1 list-group-item list-group-item-action list-group-item-secondary">{{ post.title }}
                         | {{ post.date_posted | naturaltime }} in {{ post.category }}</a>
                 {% endfor %}

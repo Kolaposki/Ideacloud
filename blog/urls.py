@@ -14,7 +14,7 @@ urlpatterns = [
     path('user/<str:username>/', views.UserPostListView.as_view(), name='user_posts'),
 
     # re-route to a single post with the post's pk : 'post/3'
-    path('post/<int:pk>/', views.post_detail, name='post_detail'),
+    path('post/<slug:slug>-<int:pk>/', views.post_detail, name='post_detail'),
     path('post/new/', views.PostCreateView.as_view(), name='post_create'),
 
     path('post/<int:pk>/update/', views.PostUpdateView.as_view(), name='post_update'),

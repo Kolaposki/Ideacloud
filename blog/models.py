@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
 from taggit.managers import TaggableManager
+from django.template.defaultfilters import slugify
 
 
 # Create your models here.
@@ -39,19 +40,20 @@ class Post(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='category', null=False)
     tags = TaggableManager()
     short_description = models.CharField(max_length=170, null=True, blank=True)
+    slug = models.SlugField(unique=True, null=False, max_length=200)
 
     def __str__(self):
         return self.title
 
     # method to get the url of a specific post
     def get_absolute_url(self):
-        return reverse('post_detail', kwargs={'pk': self.pk})
+        return reverse('post_detail', kwargs={'pk': self.pk, 'slug': self.slug})
         # url to redirect to is the name='post_detail'
 
         # Should've used redirect function but:
         # reverse returns a full url route as a string while redirect actually redirects you to a specific route
 
-        # The View calling this method will get the url and handle he redirect
+        # The View calling this method will get the url and handle the redirect
 
 
 class Comment(models.Model):
