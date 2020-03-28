@@ -4,6 +4,8 @@
 {% load my_extras %}
 {% load crispy_forms_tags %}
 {% block title %}{{ post.title }} {% endblock title %}
+{% block head_desc %}{{ post.title }}{% endblock head_desc %}
+{% block head_title %}{{ post.title }}{% endblock head_title %}
 {% block content %}
 
     <section class="post-area section">
@@ -73,9 +75,25 @@
 
                             <ul class="icons">
                                 <li>SHARE :</li>
-                                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                <li><a href="#"><i class="ion-social-whatsapp"></i></a></li>
+                                <li><a href="https://twitter.com/intent/tweet?" target="_blank" title="Tweet"
+                                       onclick="window.open('https://twitter.com/intent/tweet?text=%20' +
+                                       encodeURIComponent(document.title) + ':%20 ' +
+                                       encodeURIComponent(document.URL)); return false;">
+                                    <i class="ion-social-twitter"></i></a>
+                                </li>
+
+                                <li><a href="https://www.facebook.com/sharer/sharer.php?u=&t=" title="Share on Facebook"
+                                       target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='
+                                       + encodeURIComponent(document.URL) + '&t='
+                                       + encodeURIComponent(document.URL)); return false;">
+                                    <i class="ion-social-facebook"></i>
+                                </a></li>
+
+                                <li><a href="https://www.whatsapp://send?text=" title="Share On Whatsapp"
+                                       onclick="window.open('whatsapp://send?text=%20*{{ post.title }}* %2D '
+                                               + encodeURIComponent(document.URL)); return false;">
+                                    <i class="ion-social-whatsapp"></i>
+                                </a></li>
                             </ul>
                         </div>
 

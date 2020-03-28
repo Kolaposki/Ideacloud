@@ -1,6 +1,7 @@
 {% extends "sample/base.html" %}
 {% load static %}
 {% block title %} {{ view.kwargs.categories }} | Ideacloud {% endblock title %}
+{% block head_title %}{{ view.kwargs.categories }}{% endblock head_title %}
 {% block content %}
 
     <div class="slider display-table center-text">

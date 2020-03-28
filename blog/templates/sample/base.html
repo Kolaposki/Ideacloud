@@ -8,6 +8,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
+    <meta property="og:image" content="{% static 'images/logo.png' %}"/>
+    <meta property="og:title" content="{% block head_title %}Ideacloud{% endblock head_title %}"/>
+    <meta property="og:description" content="{% block head_desc %}Insights in the cloud{% endblock head_desc %}"/>
+    <meta property="og:image:width" content="265">
+    <meta property="og:image:height" content="265">
+    <meta property="og:site_name" content="ideacloud">
+
 
     <title>
         {% block title %}Ideacloud{% endblock title %}
