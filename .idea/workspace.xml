@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="387293ac-6c61-4aa3-92dc-f0d068650f15" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/myutils/context_processors.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/myutils/context_processors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/templates/sample/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/sample/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/templates/sample/post_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/sample/post_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
@@ -151,7 +153,7 @@
       <workItem from="1584782093667" duration="1166000" />
       <workItem from="1584881815375" duration="102256000" />
       <workItem from="1585179276405" duration="1804000" />
-      <workItem from="1585181377927" duration="39056000" />
+      <workItem from="1585181377927" duration="39881000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed post description text overflow and added favicon">
       <created>1585347277162</created>
@@ -167,7 +169,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585351397137</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Redesigned comment section and add recommended posts">
+      <created>1585354514939</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1585354514939</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,7 +198,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Fixed post description text overflow and added favicon" />
     <MESSAGE value="Tested and integrated comment section for each posts" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tested and integrated comment section for each posts" />
+    <MESSAGE value="Redesigned comment section and add recommended posts" />
+    <option name="LAST_COMMIT_MESSAGE" value="Redesigned comment section and add recommended posts" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

@@ -9,5 +9,5 @@ def recent_posts_context(request):
 
 
 def common_tags_context(request):
-    common_tags = Post.tags.most_common()[0:6]
+    common_tags = Post.tags.most_common()[0:8]
     return {'common_tags': common_tags}

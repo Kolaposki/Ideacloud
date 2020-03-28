@@ -231,53 +231,56 @@
         </section>
 
 
-        <section class="comment-section" style="background: #EDF3F3 !important;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-md-12">
 
-                        <h4><b>{{ comments.count }} COMMENTS</b></h4>
+        {% if comments %}
+            <section class="comment-section" style="background: #EDF3F3 !important;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-12">
 
-                        <div class="commnets-area ">
+                            <h4><b>{{ comments.count }} COMMENTS</b></h4>
 
-                            {% for comment in comments %}
+                            <div class="commnets-area ">
 
-                                <div class="comment">
+                                {% for comment in comments %}
 
-                                    <div class="post-info">
+                                    <div class="comment">
 
-                                        <div class="left-area">
-                                            <a class="avatar" href="#"><img
-                                                    src="{% static 'images/avatar-1-120x120.jpg' %}"
-                                                    alt="Profile Image"></a>
-                                        </div>
+                                        <div class="post-info">
 
-                                        <div class="middle-area">
-                                            <a class="name" href="#"><b>{{ comment.name }}</b></a>
-                                            <h6 class="date">on {{ comment.created_on }}</h6>
-                                        </div>
+                                            <div class="left-area">
+                                                <a class="avatar" href="#"><img
+                                                        src="{% static 'images/avatar-1-120x120.jpg' %}"
+                                                        alt="Profile Image"></a>
+                                            </div>
 
-                                        <div class="right-area">
-                                            <h5 class="reply-btn"><a href="#"><b>REPLY</b></a></h5>
-                                        </div>
+                                            <div class="middle-area">
+                                                <a class="name" href="#"><b>{{ comment.name }}</b></a>
+                                                <h6 class="date">on {{ comment.created_on }}</h6>
+                                            </div>
 
-                                    </div><!-- post-info -->
+                                            <div class="right-area">
+                                                <h5 class="reply-btn"><a href="#"><b>REPLY</b></a></h5>
+                                            </div>
 
-                                    <p>{{ comment.body | linebreaks }}</p>
+                                        </div><!-- post-info -->
 
-                                </div>
+                                        <p>{{ comment.body | linebreaks }}</p>
 
-                            {% endfor %}
-                        </div><!-- commnets-area -->
+                                    </div>
 
-                        {% if comments.count > 10 %}
-                            <a class="more-comment-btn" href="#"><b>VIEW MORE COMMENTS</b></a>
-                        {% endif %}
+                                {% endfor %}
+                            </div><!-- commnets-area -->
 
+                            {% if comments.count > 10 %}
+                                <a class="more-comment-btn" href="#"><b>VIEW MORE COMMENTS</b></a>
+                            {% endif %}
+
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        {% endif %}
     </section>
 
 {% endblock %}
