@@ -71,6 +71,9 @@ class PostDetailView(DetailView):
 
 def post_detail(request, slug, pk):
     post = get_object_or_404(Post, pk=pk, slug=slug)
+    total_post_view = int(post.view_count)
+    total_post_view += 1
+    Post.objects.all().filter(pk=pk).update(view_count=total_post_view)
 
     # queryset to retrieve all the approved comments from the database.
     comments = post.comments.filter(active=True).order_by("-created_on")[0:5]

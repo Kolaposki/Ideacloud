@@ -41,6 +41,7 @@ class Post(models.Model):
     tags = TaggableManager()
     short_description = models.CharField(max_length=170, null=True, blank=True)
     slug = models.SlugField(unique=True, null=False, max_length=200)
+    view_count = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title
