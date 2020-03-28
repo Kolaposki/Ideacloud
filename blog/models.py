@@ -55,6 +55,11 @@ class Post(models.Model):
 
         # The View calling this method will get the url and handle the redirect
 
+    def save(self, *args, **kwargs):  # Generate slug url from the title with slugify and saafe
+        if not self.slug:
+            self.slug = slugify(self.title)
+        return super().save(*args, **kwargs)
+
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')

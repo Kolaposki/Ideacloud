@@ -92,7 +92,7 @@
                     <p class='text-muted'></p>
                     <ul class="list-group">
                         {% for post in recent_posts %}
-                            <a href="{% url 'post_detail' post.id %}"
+                            <a href="{% url 'post_detail' post.slug post.id %}"
                                class="mb-1 list-group-item list-group-item-action list-group-item-secondary">{{ post.title }}
                                 | {{ post.date_posted | naturaltime }} in {{ post.category }}</a>
                         {% endfor %}

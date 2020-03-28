@@ -9,12 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
 
-    {% if title %}
-        <title>{% block title %} {% endblock %}</title>
-    {% else %}
-        <title> Idea Cloud </title>
-    {% endif %}
-
+    <title>
+        {% block title %}Ideacloud{% endblock title %}
+    </title>
     <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
 
     <!-- Stylesheets -->

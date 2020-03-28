@@ -1,5 +1,7 @@
 {% extends "sample/base.html" %}
 {% load static %}
+{% block title %}{{ view.kwargs.username }} | Ideacloud {% endblock title %}
+
 {% block content %}
 
     <div class="slider display-table center-text">
