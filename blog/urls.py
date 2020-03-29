@@ -9,6 +9,7 @@ from . import views
 
 urlpatterns = [
     path('category/', views.all_category, name='all_category'),
+    path('search/', views.search, name='search'),
 
     path('', views.home_page, name='blog-home'),
     path('user/<str:username>/', views.UserPostListView.as_view(), name='user_posts'),

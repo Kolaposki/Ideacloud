@@ -53,9 +53,10 @@
         </ul><!-- main-menu -->
 
         <div class="src-area">
-            <form>
+            <form action="{% url 'search' %}">
                 <button class="src-btn" type="submit"><i class="ion-ios-search-strong"></i></button>
-                <input class="src-input" type="text" placeholder="Search Ideacloud">
+                <input class="src-input" type="text" placeholder="Search Ideacloud" name="search_term"
+                       value="{{ search_term }}">
             </form>
         </div>
 

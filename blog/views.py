@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 from .models import Post, Category
 from django.contrib.auth.models import User
@@ -198,3 +199,17 @@ class PostCategoryListView(ListView):
         context = super(PostCategoryListView, self).get_context_data(**kwargs)
         context['boot_class'] = 'col-lg-4 col-md-6'
         return context
+
+
+def search(request):
+    boot_class = 'col-lg-4 col-md-6'
+    if request.GET:
+        search_term = request.GET['search_term']  # get value that was passed in url
+        search_result = Post.objects.filter(
+            Q(title__icontains=search_term)
+        )
+
+        context = {"search_term": search_term, "posts": search_result, "boot_class": boot_class}
+        return render(request, 'search_page.html', context=context)
+    else:
+        return redirect('home')  # redirect to home page if there's no data in d url

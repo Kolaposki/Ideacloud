@@ -1,0 +1,27 @@
+{% extends "sample/base.html" %}
+{% load static %}
+{% block title %} Search results for {{ search_term|safe }} | Ideacloud {% endblock title %}
+{% block head_title %}Search results{% endblock head_title %}
+{% block content %}
+
+    <div class="slider display-table center-text">
+        <h1 class="title mb-3"><b>Search results for '{{ search_term|safe }}'</b><br></h1>
+        <h3 class="title">
+            {% if not posts %}
+                No search results
+            {% else %}
+                Total posts found : {{ posts.count }}
+            {% endif %}
+        </h3>
+    </div><!-- slider -->
+
+    <section class="blog-area section">
+        <div class="container">
+            <div class="row">
+                {% include 'partials/_blog-cards.html' %}
+            </div><!-- row -->
+            <!--    Pagination Section  -->
+            {% include 'partials/_pagination.html' %}
+        </div><!-- container -->
+    </section><!-- section -->
+{% endblock %}
