@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="387293ac-6c61-4aa3-92dc-f0d068650f15" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/templates/sample/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/sample/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/templates/partials/_footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/partials/_footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/common-css/responsive.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/common-css/responsive.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,6 +44,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="F" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1YRoDnN3Ww64lHBdWOrYYeqbbDm" />
@@ -154,7 +157,7 @@
       <workItem from="1584782093667" duration="1166000" />
       <workItem from="1584881815375" duration="102256000" />
       <workItem from="1585179276405" duration="1804000" />
-      <workItem from="1585181377927" duration="68369000" />
+      <workItem from="1585181377927" duration="69163000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed post description text overflow and added favicon">
       <created>1585347277162</created>
@@ -219,7 +222,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585478227643</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Integrated search function to search for posts">
+      <created>1585504409815</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1585504409815</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -247,7 +257,8 @@
     <MESSAGE value="Configured social media sharing links and added meta tags" />
     <MESSAGE value="Created and tested function to calculate number of post views" />
     <MESSAGE value="Created recommended posts section for each article" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created recommended posts section for each article" />
+    <MESSAGE value="Integrated search function to search for posts" />
+    <option name="LAST_COMMIT_MESSAGE" value="Integrated search function to search for posts" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

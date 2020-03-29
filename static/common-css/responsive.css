@@ -123,6 +123,10 @@
 
 	footer{ padding: 40px 0 0px; margin-top: 0px; }
 
+	.footer-section .logo {
+		margin-top: 15px;
+	}
+
 	
 }
 
