@@ -57,7 +57,7 @@ class UserPostListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(UserPostListView, self).get_context_data(**kwargs)
-        context['boot_class'] = 'col-md-6 col-sm-12'
+        context['boot_class'] = 'col-lg-4 col-md-6'
         return context
 
 

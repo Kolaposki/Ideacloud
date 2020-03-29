@@ -13,14 +13,11 @@
     <section class="blog-area section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-md-12">
-                    <div class="row">
-                        {% include 'partials/_blog-cards.html' %}
-                    </div>
-                    {% include 'partials/_pagination.html' %}
-                </div>
-                {% include 'partials/_sidebar.html' %}
-            </div>
-        </div>
-    </section>
+                {% include 'partials/_blog-cards.html' %}
+            </div><!-- row -->
+            <!--    Pagination Section  -->
+            {% include 'partials/_pagination.html' %}
+        </div><!-- container -->
+    </section><!-- section -->
+    
 {% endblock %}
