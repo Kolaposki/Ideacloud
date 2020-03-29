@@ -3,9 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="387293ac-6c61-4aa3-92dc-f0d068650f15" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/templates/sample/post_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/sample/post_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/templates/sample/user_posts.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/sample/user_posts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/category-1-400x250.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/category-1-400x250.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/category-1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/category-1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/category-2-400x250.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/category-2-400x250.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/category-3-400x250.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/category-3-400x250.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/category-5-400x250.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/category-5-400x250.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/slider-1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/slider-1.jpg" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -158,7 +164,7 @@
       <workItem from="1584782093667" duration="1166000" />
       <workItem from="1584881815375" duration="102256000" />
       <workItem from="1585179276405" duration="1804000" />
-      <workItem from="1585181377927" duration="74836000" />
+      <workItem from="1585181377927" duration="75360000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed post description text overflow and added favicon">
       <created>1585347277162</created>
