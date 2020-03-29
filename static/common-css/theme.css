@@ -482,5 +482,17 @@ footer .input-area .submit-btn{ position: absolute; top: 0; bottom: 0; right: 0;
 .more-comment-btn{ display: block; margin-bottom: 30px; padding: 10px; text-align: center; 
 	box-shadow: 0px 0px 5px rgba(0,0,0,.1); border: 1px solid #fff; background: #fff; color: #555; }
 
-.more-comment-btn:hover{ border-color: #ccc; }	
+.more-comment-btn:hover{ border-color: #ccc; }
 
+
+.form-content {
+	background: #fff;
+	border-radius: 10px;
+	padding: 77px 55px 33px 55px;
+
+	box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+	-o-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+	-ms-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+}

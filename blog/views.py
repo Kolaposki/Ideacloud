@@ -111,7 +111,7 @@ def post_detail(request, slug, pk):
 class PostCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Post
     # fields = ['title', 'content', 'cover']  # form fields to be added in order
-    template_name = 'blog/post_form.html'  # convention name
+    template_name = 'sample/post_form.html'  # convention name
     success_message = "Post was successfully created"
 
     form_class = PostForm  # where to get the form to render in page
@@ -133,7 +133,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     # fields = ['title', 'content', 'cover']
     form_class = PostForm
-    template_name = 'blog/post_update.html'
+    template_name = 'sample/post_update.html'
 
     # no need of a template_name since the post being viewed is d one to b updated
 
@@ -206,8 +206,8 @@ def search(request):
     if request.GET:
         search_term = request.GET['search_term']  # get value that was passed in url
         search_result = Post.objects.filter(
-            Q(title__icontains=search_term)
-        )
+            Q(title__icontains=search_term) | Q(content__icontains=search_term) | Q(tags__name__in=search_term)
+        ).distinct()
 
         context = {"search_term": search_term, "posts": search_result, "boot_class": boot_class}
         return render(request, 'search_page.html', context=context)
