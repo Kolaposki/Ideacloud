@@ -71,13 +71,18 @@ class PostDetailView(DetailView):
 
 def post_detail(request, slug, pk):
     post = get_object_or_404(Post, pk=pk, slug=slug)
-    total_post_view = int(post.view_count)
-    total_post_view += 1
+    total_post_view = int(post.view_count)  # get the initial value of view_count from the db for this post
+    total_post_view += 1  # increment the view_count by 1
+
+    # get this exact post from the db through filtering and then update view_count field with the new total_post_view
     Post.objects.all().filter(pk=pk).update(view_count=total_post_view)
 
     # queryset to retrieve all the approved comments from the database.
     comments = post.comments.filter(active=True).order_by("-created_on")[0:5]
     new_comment = None
+
+    # get posts that have the same category with this post. Exclude this particular post from the queryset objects
+    recommended_post = Post.objects.all().filter(category=post.category.pk).exclude(pk=pk).order_by("-date_posted")[0:3]
 
     # Comment posted
     if request.method == 'POST':
@@ -96,6 +101,7 @@ def post_detail(request, slug, pk):
                                                        'comments': comments,
                                                        'new_comment': new_comment,
                                                        'comment_form': comment_form,
+                                                       'recommended_post': recommended_post,
                                                        })
 
 

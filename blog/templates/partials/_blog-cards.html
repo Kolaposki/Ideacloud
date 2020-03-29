@@ -14,18 +14,20 @@
                             src="{{ post.author.profile.image.url }}"
                             alt="{{ post.author.profile }} Profile"></a>
 
-                    <h4 class="title">
-                        <a href="{% url 'post_detail' post.slug post.id %}"><b>{{ post.title|title }}</b></a>
-                    </h4>
+                    <div class="blog-info">
+                        <h4 class="title">
+                            <a href="{% url 'post_detail' post.slug post.id %}"><b>{{ post.title|title }}</b></a>
+                        </h4>
 
-                    <ul class="post-footer">
-                        <li><i class="ion-heart"></i>57</li>
-                        <li><i class="ion-eye"></i>{{ post.view_count }}</li>
-                        <li><i class="ion-ios-book-outline"></i>{{ post.content |striptags | calculate_time_read }} min
-                            read
-                        </li>
-                    </ul>
-
+                        <ul class="post-footer">
+                            <li><i class="ion-heart"></i>57</li>
+                            <li><i class="ion-eye"></i>{{ post.view_count }}</li>
+                            <li><i class="ion-ios-book-outline"></i>{{ post.content |striptags | calculate_time_read }}
+                                min
+                                read
+                            </li>
+                        </ul>
+                    </div>
                 </div><!-- single-post -->
             </div><!-- card -->
         </div><!-- col-md-6 col-sm-12 -->

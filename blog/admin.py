@@ -9,11 +9,14 @@ from import_export.admin import ImportExportModelAdmin
 
 
 class PostAdmin(ImportExportModelAdmin, SummernoteModelAdmin):
-    list_display = ('id', 'title', 'author', 'category', 'date_posted', 'slug')
+    list_display = ('id', 'title', 'author', 'category', 'date_posted')
     summernote_fields = ('content',)
-    search_fields = ('title', 'author',)
+
+    # author__username because author is a foreignkey and so searching for the username instead
+    search_fields = ('title', 'author__username',)
     prepopulated_fields = {'slug': ('title',)}  # auto add the title to the slug field
     list_display_links = ('id', 'title',)
+
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'slug')

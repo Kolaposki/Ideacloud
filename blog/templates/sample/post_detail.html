@@ -33,12 +33,14 @@
                                     </a>
 
                                     <h6 class="date">on {{ post.date_posted | date:"M d, Y" }}
-                                        - {{ post.date_posted | naturaltime }}</h6>
+                                        - {{ post.date_posted | naturaltime }} | Category: </h6>
 
-                                    <a href="{% url 'category' post.category|lower %}" class="date">|
-                                        Category: {{ post.category }}</a>
+                                    <a href="{% url 'category' post.category|lower %}" class="date">
+                                        {{ post.category }}
+                                    </a>
+
                                     <h6 class="date"> | {{ post.content | striptags | calculate_time_read }} min
-                                        read </h6>
+                                        read</h6>
                                 </div>
 
                                 <div class="middle-area mt-1">
@@ -69,8 +71,8 @@
                         <div class="post-icons-area">
                             <ul class="post-icons">
                                 <li><a href="#"><i class="ion-heart"></i>57</a></li>
-                                <li><a href="#"><i class="ion-chatbubble"></i>{{ comments.count }}</a></li>
-                                <li><a href="#"><i class="ion-eye"></i>138</a></li>
+                                <li><a><i class="ion-chatbubble"></i>{{ comments.count }}</a></li>
+                                <li><a><i class="ion-eye"></i>{{ post.view_count }}</a></li>
                             </ul>
 
                             <ul class="icons">
@@ -106,94 +108,42 @@
 
         <section class="recomended-area section">
             <div class="container">
+                <h4 class="mb-2"><b>Recommended Posts</b></h4>
+                <hr>
                 <div class="row">
+                    {% for post in recommended_post %}
+                        <div class="col-lg-4 col-md-6">
+                            <div class="card h-100">
+                                <div class="single-post post-style-1">
 
-                    <div class="col-lg-4 col-md-6">
-                        <div class="card h-100">
-                            <div class="single-post post-style-1">
+                                    <div class="blog-image"><img src="{{ post.cover.url }}"
+                                                                 alt="{{ post.title|lower }}"
+                                                                 style="height: 219px">
+                                    </div>
 
-                                <div class="blog-image"><img src="{% static 'images/caroline-veronez-165944.jpg' %}"
-                                                             alt="Blog Image">
-                                </div>
+                                    <a class="avatar" href="{% url 'user_posts' post.author.username %}"><img
+                                            src="{{ post.author.profile.image.url }}"
+                                            alt="{{ post.author.profile }} Profile"></a>
 
-                                <a class="avatar" href="#"><img src="{% static 'images/icons8-team-355979.jpg' %}"
-                                                                alt="Profile Image"></a>
+                                    <div class="blog-info">
+                                        <h4 class="title">
+                                            <a href="{% url 'post_detail' post.slug post.id %}"><b>{{ post.title|title }}</b></a>
+                                        </h4>
 
-                                <div class="blog-info">
-
-                                    <h4 class="title"><a href="#"><b>How Did Van Gogh's Turbulent Mind Depict One of the
-                                        Most Complex
-                                        Concepts in Physics?</b></a></h4>
-
-                                    <ul class="post-footer">
-                                        <li><a href="#"><i class="ion-heart"></i>57</a></li>
-                                        <li><a href="#"><i class="ion-chatbubble"></i>6</a></li>
-                                        <li><a href="#"><i class="ion-eye"></i>138</a></li>
-                                    </ul>
-
-                                </div><!-- blog-info -->
-                            </div><!-- single-post -->
-                        </div><!-- card -->
-                    </div><!-- col-md-6 col-sm-12 -->
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="card h-100">
-                            <div class="single-post post-style-1">
-
-                                <div class="blog-image"><img src="{% static 'images/caroline-veronez-165944.jpg' %}"
-                                                             alt="Blog Image">
-                                </div>
-
-                                <a class="avatar" href="#"><img src="{% static 'images/icons8-team-355979.jpg' %}"
-                                                                alt="Profile Image"></a>
-
-                                <div class="blog-info">
-                                    <h4 class="title"><a href="#"><b>How Did Van Gogh's Turbulent Mind Depict One of the
-                                        Most Complex
-                                        Concepts in Physics?</b></a></h4>
-
-                                    <ul class="post-footer">
-                                        <li><a href="#"><i class="ion-heart"></i>57</a></li>
-                                        <li><a href="#"><i class="ion-chatbubble"></i>6</a></li>
-                                        <li><a href="#"><i class="ion-eye"></i>138</a></li>
-                                    </ul>
-                                </div><!-- blog-info -->
-
-                            </div><!-- single-post -->
-
-                        </div><!-- card -->
-                    </div><!-- col-md-6 col-sm-12 -->
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="card h-100">
-                            <div class="single-post post-style-1">
-
-                                <div class="blog-image"><img src="{% static 'images/caroline-veronez-165944.jpg' %}"
-                                                             alt="Blog Image">
-                                </div>
-
-                                <a class="avatar" href="#"><img src="{% static 'images/icons8-team-355979.jpg' %}"
-                                                                alt="Profile Image"></a>
-
-                                <div class="blog-info">
-                                    <h4 class="title"><a href="#"><b>How Did Van Gogh's Turbulent Mind Depict One of the
-                                        Most Complex
-                                        Concepts in Physics?</b></a></h4>
-
-                                    <ul class="post-footer">
-                                        <li><a href="#"><i class="ion-heart"></i>57</a></li>
-                                        <li><a href="#"><i class="ion-chatbubble"></i>6</a></li>
-                                        <li><a href="#"><i class="ion-eye"></i>138</a></li>
-                                    </ul>
-                                </div><!-- blog-info -->
-
-                            </div><!-- single-post -->
-
-                        </div><!-- card -->
-                    </div><!-- col-md-6 col-sm-12 -->
-
+                                        <ul class="post-footer">
+                                            <li><i class="ion-heart"></i>57</li>
+                                            <li><i class="ion-eye"></i>{{ post.view_count }}</li>
+                                            <li>
+                                                <i class="ion-ios-book-outline"></i>
+                                                {{ post.content |striptags | calculate_time_read }} min read
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div><!-- single-post -->
+                            </div><!-- card -->
+                        </div><!-- col-md-6 col-sm-12 -->
+                    {% endfor %}
                 </div><!-- row -->
-
             </div><!-- container -->
         </section>
 

@@ -3,8 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="387293ac-6c61-4aa3-92dc-f0d068650f15" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/templates/partials/_blog-cards.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/partials/_blog-cards.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/templates/sample/category.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/sample/category.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/templates/sample/post_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/sample/post_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
@@ -153,7 +156,7 @@
       <workItem from="1584782093667" duration="1166000" />
       <workItem from="1584881815375" duration="102256000" />
       <workItem from="1585179276405" duration="1804000" />
-      <workItem from="1585181377927" duration="54768000" />
+      <workItem from="1585181377927" duration="64035000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed post description text overflow and added favicon">
       <created>1585347277162</created>
@@ -204,7 +207,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585433603369</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Created and tested function to calculate number of post views">
+      <created>1585437328004</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1585437328004</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,7 +240,8 @@
     <MESSAGE value="Added slug field to generate readable url" />
     <MESSAGE value="Created default for title tag on all pages" />
     <MESSAGE value="Configured social media sharing links and added meta tags" />
-    <option name="LAST_COMMIT_MESSAGE" value="Configured social media sharing links and added meta tags" />
+    <MESSAGE value="Created and tested function to calculate number of post views" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created and tested function to calculate number of post views" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

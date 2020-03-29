@@ -30,6 +30,10 @@ class Category(models.Model):
     def __str__(self):
         return str(self.name).title()
 
+    # a method to return the id of a category
+    def category_id(self):
+        return self.pk
+
 
 class Post(models.Model):
     title = models.CharField(max_length=120)
@@ -42,6 +46,9 @@ class Post(models.Model):
     short_description = models.CharField(max_length=170, null=True, blank=True)
     slug = models.SlugField(unique=True, null=False, max_length=200)
     view_count = models.IntegerField(default=0)
+
+    class Meta:
+        ordering = ('-id',)
 
     def __str__(self):
         return self.title
