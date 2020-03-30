@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="387293ac-6c61-4aa3-92dc-f0d068650f15" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/blog/templates/sample/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/sample/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/common-js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/common-js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/templates/users/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/profile.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -157,7 +157,7 @@
       <workItem from="1584881815375" duration="102256000" />
       <workItem from="1585179276405" duration="1804000" />
       <workItem from="1585181377927" duration="75891000" />
-      <workItem from="1585516214433" duration="6339000" />
+      <workItem from="1585516214433" duration="6678000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed post description text overflow and added favicon">
       <created>1585347277162</created>
@@ -257,7 +257,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585605821577</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Move javascript script tag to main.js file">
+      <created>1585608798801</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1585608798801</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -290,7 +297,8 @@
     <MESSAGE value="Redesigned create post and update post pages" />
     <MESSAGE value="Compressed large images for faster page rendering" />
     <MESSAGE value="Fixed no cover found error and added scrollbar css" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed no cover found error and added scrollbar css" />
+    <MESSAGE value="Move javascript script tag to main.js file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Move javascript script tag to main.js file" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

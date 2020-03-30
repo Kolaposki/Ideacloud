@@ -3,7 +3,7 @@
 {% block content %}
     <section class="blog-area section">
         <div class="container">
-            <div class="media">
+            <div class="left-area">
                 <div class="left-area">
                     <a class="avatar" href="#"><img
                             src="{{ user.profile.image.url }}"
@@ -15,18 +15,24 @@
                 </div>
             </div>
             <hr>
-            <!-- Form to update profile-->
-            <form method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <fieldset class='form-group'>
-                    <legend class="border-button mb-4">Edit profile</legend>
-                    {{ u_form | crispy }}
-                    {{ u_profile | crispy }}
-                </fieldset>
-                <div class="form-group">
-                    <button class="btn btn-outline-info" type="submit">Update</button>
+
+
+            <div class="container m-3 mb-3">
+                <div class="form-content pt-5">
+                    <!-- Form to update profile-->
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <fieldset class='form-group'>
+                            <legend class="border-button mb-4">Edit profile</legend>
+                            {{ u_form | crispy }}
+                            {{ u_profile | crispy }}
+                        </fieldset>
+                        <div class="form-group">
+                            <button class="btn btn-outline-info" type="submit">Update</button>
+                        </div>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
     </section>
 
