@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="387293ac-6c61-4aa3-92dc-f0d068650f15" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/templates/sample/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/sample/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/templates/sample/post_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/sample/post_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/common-js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/common-js/main.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -159,7 +157,7 @@
       <workItem from="1584881815375" duration="102256000" />
       <workItem from="1585179276405" duration="1804000" />
       <workItem from="1585181377927" duration="75891000" />
-      <workItem from="1585516214433" duration="5529000" />
+      <workItem from="1585516214433" duration="6339000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed post description text overflow and added favicon">
       <created>1585347277162</created>
@@ -252,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585514909601</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Fixed no cover found error and added scrollbar css">
+      <created>1585605821577</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1585605821577</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -284,7 +289,8 @@
     <MESSAGE value="Fixed logo issues in small screens" />
     <MESSAGE value="Redesigned create post and update post pages" />
     <MESSAGE value="Compressed large images for faster page rendering" />
-    <option name="LAST_COMMIT_MESSAGE" value="Compressed large images for faster page rendering" />
+    <MESSAGE value="Fixed no cover found error and added scrollbar css" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed no cover found error and added scrollbar css" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
