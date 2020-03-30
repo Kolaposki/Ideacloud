@@ -106,43 +106,12 @@
         </div>
 
 
-        <section class="recomended-area section">
+        <section class="blog-area section">
             <div class="container">
                 <h4 class="mb-2"><b>Recommended Posts</b></h4>
                 <hr>
                 <div class="row">
-                    {% for post in recommended_post %}
-                        <div class="col-lg-4 col-md-6">
-                            <div class="card h-100">
-                                <div class="single-post post-style-1">
-
-                                    <div class="blog-image"><img src="{{ post.cover.url }}"
-                                                                 alt="{{ post.title|lower }}"
-                                                                 style="height: 219px">
-                                    </div>
-
-                                    <a class="avatar" href="{% url 'user_posts' post.author.username %}"><img
-                                            src="{{ post.author.profile.image.url }}"
-                                            alt="{{ post.author.profile }} Profile"></a>
-
-                                    <div class="blog-info">
-                                        <h4 class="title">
-                                            <a href="{% url 'post_detail' post.slug post.id %}"><b>{{ post.title|title }}</b></a>
-                                        </h4>
-
-                                        <ul class="post-footer">
-                                            <li><i class="ion-android-bulb"></i>57</li>
-                                            <li><i class="ion-eye"></i>{{ post.view_count }}</li>
-                                            <li>
-                                                <i class="ion-ios-book-outline"></i>
-                                                {{ post.content |striptags | calculate_time_read }} min read
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div><!-- single-post -->
-                            </div><!-- card -->
-                        </div><!-- col-md-6 col-sm-12 -->
-                    {% endfor %}
+                    {% include 'partials/_recommend-cards.html' %}
                 </div><!-- row -->
             </div><!-- container -->
         </section>

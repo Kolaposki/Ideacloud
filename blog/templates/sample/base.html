@@ -28,7 +28,9 @@
     <link href="{% static 'common-css/swiper.css' %}" rel="stylesheet">
     <link href="{% static 'common-css/theme.css' %}" rel="stylesheet">
     <link href="{% static 'common-css/responsive.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'common-css/OverlayScrollbars.css' %}" rel="stylesheet"/>
 </head>
+
 <body>
 
 <header>
@@ -62,6 +64,7 @@
 
     </div><!-- conatiner -->
 </header>
+
 {% if messages %}
     <div class="container">
         <div class="row">
@@ -87,6 +90,7 @@
 </footer>
 
 <script src="{% static 'common-js/jquery-3.1.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'common-js/OverlayScrollbars.js' %}"></script>
 
 <script src="{% static 'common-js/tether.min.js' %}"></script>
 
@@ -96,5 +100,14 @@
 
 <script src="{% static 'common-js/scripts.js' %}"></script>
 <script src="{% static 'common-js/main.js' %}"></script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        //The first argument are the elements to which the plugin shall be initialized
+        //The second argument has to be at least a empty object or a object with your desired options
+        OverlayScrollbars(document.querySelectorAll("body"), {});
+    });
+</script>
 </body>
 </html>

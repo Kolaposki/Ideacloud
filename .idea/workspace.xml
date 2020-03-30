@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="387293ac-6c61-4aa3-92dc-f0d068650f15" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/blog/templates/partials/_blog-cards.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/partials/_blog-cards.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/templates/sample/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/sample/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/templates/sample/post_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/sample/post_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -59,23 +61,23 @@
     <property name="DefaultHtmlFileTemplate" value="HTML4 File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/blog/templates/sample" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/static/common-css" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\KOLAPO\Desktop\ideacloud\static\common-css" />
+      <recent name="C:\Users\KOLAPO\Desktop\ideacloud\static\common-js" />
+      <recent name="C:\Users\KOLAPO\Desktop\ideacloud\blog\templates\partials" />
+      <recent name="C:\Users\KOLAPO\Desktop\ideacloud\blog\templates\sample" />
+      <recent name="C:\Users\KOLAPO\Desktop\ideacloud\users\templates\users" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\KOLAPO\Desktop\ideacloud\blog\templates\sample" />
       <recent name="C:\Users\KOLAPO\Desktop\ideacloud\templates" />
       <recent name="C:\Users\KOLAPO\Desktop\ideabank\blog\templates\sample" />
       <recent name="C:\Users\KOLAPO\Desktop\ideabank\blog\myutils" />
       <recent name="C:\Users\KOLAPO\Desktop\ideabank\users\templates\users" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\KOLAPO\Desktop\ideacloud\blog\templates\sample" />
-      <recent name="C:\Users\KOLAPO\Desktop\ideacloud\blog\templates\partials" />
-      <recent name="C:\Users\KOLAPO\Desktop\ideacloud\static\common-js" />
-      <recent name="C:\Users\KOLAPO\Desktop\ideacloud\static\common-css" />
-      <recent name="C:\Users\KOLAPO\Desktop\ideacloud\users\templates\users" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -156,7 +158,8 @@
       <workItem from="1584782093667" duration="1166000" />
       <workItem from="1584881815375" duration="102256000" />
       <workItem from="1585179276405" duration="1804000" />
-      <workItem from="1585181377927" duration="75680000" />
+      <workItem from="1585181377927" duration="75891000" />
+      <workItem from="1585516214433" duration="5529000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed post description text overflow and added favicon">
       <created>1585347277162</created>
