@@ -22,16 +22,32 @@
     <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
 
     <!-- Stylesheets -->
+
     <link href="{% static 'common-css/bootstrap.css' %}" rel="stylesheet">
     <link href="{% static 'common-css/main.css' %}" rel="stylesheet">
     <link href="{% static 'common-css/ionicons.css' %}" rel="stylesheet">
     <link href="{% static 'common-css/swiper.css' %}" rel="stylesheet">
-    <link href="{% static 'common-css/theme.css' %}" rel="stylesheet">
     <link href="{% static 'common-css/responsive.css' %}" rel="stylesheet">
     <link type="text/css" href="{% static 'common-css/OverlayScrollbars.css' %}" rel="stylesheet"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+
+    <script>
+        // Wait for window load
+        $(window).load(function () {
+            // Animate loader off screen
+            $(".se-pre-con").fadeOut("slow");
+            ;
+        });
+
+    </script>
+
+    <link href="{% static 'common-css/theme.css' %}" rel="stylesheet">
 </head>
 
 <body>
+<div class="se-pre-con"></div>
 
 <header>
     <div class="container-fluid position-relative no-side-padding">
@@ -89,7 +105,10 @@
     {% include 'partials/_footer.html' %}
 </footer>
 
-<script src="{% static 'common-js/jquery-3.1.1.min.js' %}"></script>
+
+<!-- Javascript files -->
+
+
 <script type="text/javascript" src="{% static 'common-js/OverlayScrollbars.js' %}"></script>
 
 <script src="{% static 'common-js/tether.min.js' %}"></script>

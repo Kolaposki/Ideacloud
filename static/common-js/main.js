@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     OverlayScrollbars(document.querySelectorAll("body"), {});
 });
 
+
 (function ($) {
     "use strict";
 
