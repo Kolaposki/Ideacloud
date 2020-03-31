@@ -1153,7 +1153,6 @@ footer .input-area .submit-btn {
 }
 
 .darkmode--activated .all-comment{
-	mix-blend-mode: difference !important;
 	background: #000;
 }
 .slider {
