@@ -1139,7 +1139,7 @@ footer .input-area .submit-btn {
     color: #000 !important;
 }
 
-.darkmode--activated .sider-bar .title {
+.darkmode--activated .sider-bar .title, .darkmode--activated .menu-nav-icon {
     color: #fff !important;
 }
 
