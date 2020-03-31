@@ -2,16 +2,18 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
-    <div class="continer m-5 p-5">
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <fieldset class='form-group'>
-                <legend class="border-button mb-4">Update Post</legend>
-                {{ form | crispy }}
-            </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Update</button>
-            </div>
-        </form>
+    <div class="container m-5 p-5">
+        <div class="form-content">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset class='form-group'>
+                    <legend class="border-button mb-4 text-center">Update Post</legend>
+                    {{ form | crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-info" type="submit">Update</button>
+                </div>
+            </form>
+        </div>
     </div>
 {% endblock content %}

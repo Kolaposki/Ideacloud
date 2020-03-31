@@ -13,13 +13,13 @@ from .forms import CommentForm, PostForm
 def all_category(request):
     posts = Post.objects.order_by('?')  # order objects randomly
     boot_class = 'col-lg-4 col-md-6'
-    return render(request, 'sample/all_category.html', context={'posts': posts, 'boot_class': boot_class})
+    return render(request, 'blog/all_category.html', context={'posts': posts, 'boot_class': boot_class})
 
 
 def home_page(request):
     posts = Post.objects.order_by('?')  # order objects randomly
     boot_class = 'col-md-6 col-sm-12'
-    return render(request, 'sample/home.html', context={'posts': posts, 'boot_class': boot_class})
+    return render(request, 'blog/home.html', context={'posts': posts, 'boot_class': boot_class})
 
 
 # Using Class based view
@@ -43,7 +43,7 @@ class PostListView(ListView):
 # View list of all posts from a specific author/user
 class UserPostListView(ListView):
     model = Post
-    template_name = 'sample/user_posts.html'
+    template_name = 'blog/user_posts.html'
     context_object_name = 'posts'
     # ordering is done by the filter below
     paginate_by = 5
@@ -98,12 +98,12 @@ def post_detail(request, slug, pk):
     else:
         comment_form = CommentForm()
 
-    return render(request, 'sample/post_detail.html', {'post': post,
+    return render(request, 'blog/post_detail.html', {'post': post,
                                                        'comments': comments,
                                                        'new_comment': new_comment,
                                                        'comment_form': comment_form,
                                                        'recommended_post': recommended_post,
-                                                       })
+                                                     })
 
 
 # a view to create a single post. Form included
@@ -111,7 +111,7 @@ def post_detail(request, slug, pk):
 class PostCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Post
     # fields = ['title', 'content', 'cover']  # form fields to be added in order
-    template_name = 'sample/post_form.html'  # convention name
+    template_name = 'blog/post_form.html'  # convention name
     success_message = "Post was successfully created"
 
     form_class = PostForm  # where to get the form to render in page
@@ -133,7 +133,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     # fields = ['title', 'content', 'cover']
     form_class = PostForm
-    template_name = 'sample/post_update.html'
+    template_name = 'blog/post_update.html'
 
     # no need of a template_name since the post being viewed is d one to b updated
 
@@ -165,10 +165,6 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return False
 
 
-def about(request):
-    return render(request, 'blog/about.html')
-
-
 # filters all posts with the specific tag
 def tag_posts(request, tags):
     # posts = Post.objects.filter(tagged_items=tags)
@@ -181,13 +177,13 @@ def tag_posts(request, tags):
         'post_tag': tags,
         'boot_class': boot_class,
     }
-    return render(request, 'sample/tag_posts.html', context)
+    return render(request, 'blog/tag_posts.html', context)
 
 
 # filters all posts with the specific category
 class PostCategoryListView(ListView):
     model = Post
-    template_name = 'sample/category.html'
+    template_name = 'blog/category.html'
     context_object_name = 'posts'
     paginate_by = 5
 

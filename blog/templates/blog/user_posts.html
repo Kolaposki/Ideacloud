@@ -1,47 +1,23 @@
 {% extends "blog/base.html" %}
-{% load my_extras %}
+{% load static %}
+{% block title %}{{ view.kwargs.username }} | Ideacloud {% endblock title %}
+{% block head_title %}{{ view.kwargs.username }} | Ideacloud {% endblock head_title %}
+
 {% block content %}
-    <div class="alert alert-primary mb-3">
-        <h2>Posts by <b>{{ view.kwargs.username }}</b></h2>
-        <h4>Total posts : {{ page_obj.paginator.count }}</h4>
-    </div>
 
-    {% for post in posts %}
-        <article class="card media content-section">
-            <img src="{{ post.author.profile.image.url }}" class="rounded-circle article-img">
-            <div class="media-body">
-                <div class="article-metadata">
-                    <a class="mr-2" href="{% url 'user_posts' post.author.username %}">{{ post.author }}</a>
-                    <small class="text-muted">{{ post.date_posted | date:"M d, Y" }}</small>
-                    <small class="text-muted"> | {{ post.content | safe | calculate_time_read }} min read </small>
-                    <small class="text-muted">| Category:<a href="{% url 'category' post.category|lower %}"> {{ post.category }}</a></small>
+    <div class="slider display-table center-text">
+        <h1 class="title mb-3"><b>Posts by {{ view.kwargs.username }}</b><br></h1>
+        <h3 class="title">Total posts : {{ posts.count }}</h3>
+    </div><!-- slider -->
 
+    <section class="blog-area section">
+        <div class="container">
+            <div class="row">
+                {% include 'partials/_blog-cards.html' %}
+            </div><!-- row -->
+            <!--    Pagination Section  -->
+            {% include 'partials/_pagination.html' %}
+        </div><!-- container -->
+    </section><!-- section -->
 
-                    <div style="display:flex">
-                        {% for tag in post.tags.all %}
-                            <a href="{% url 'post_tags' tag %}"
-                               class="mt-1 mb-1 mr-1 badge badge-secondary">#{{ tag }}</a>
-                        {% endfor %}
-                    </div>
-                </div>
-                <h2><a class="card-title article-title"
-                       href="{% url 'post_detail' post.id %}">{{ post.title|title }}</a>
-                </h2>
-                <i><span class="fa fa-comments"></span> Comments: {{ post.comments.count }}</i>
-                <div class="text-center">
-                    {% if post.cover.url == "/media/cover_pics/default.jpg" %}
-                        <span></span>
-                    {% elif post.cover.url != "/media/cover_pics/default.jpg" %}
-                        <img src="{{ post.cover.url }}" class="img-fluid img-thumbnail rounded" height="225px"
-                             width="225px" alt="">
-                    {% endif %}
-                </div>
-
-                <p class="card-text article-content">{{ post.content|safe|capfirst|truncatewords:100 }}</p>
-            </div>
-        </article>
-    {% endfor %}
-
-    <!--    Pagination Section  -->
-    {% include 'partials/_pagination.html' %}
-{% endblock content %}
+{% endblock %}

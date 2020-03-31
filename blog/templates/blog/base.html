@@ -2,135 +2,105 @@
 {% load humanize %}
 {% load my_extras %}
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script href="{% static 'js/jquery.min.js' %}"></script>
-    <script href="{% static 'js/bootstrap.js' %}"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-    <link rel="stylesheet" href="{% static 'css/new-bootstrap.css' %}" type="text/css">
-    <link rel="icon" href="{% static 'img/fav.png' %}" type="image/png">
-    {% if title %}
-        <title>Idea Bank - {{ title }}</title>
-    {% else %}
-        <title> Idea Bank </title>
-    {% endif %}
+    <meta property="og:image" content="{% static 'images/logo.png' %}"/>
+    <meta property="og:title" content="{% block head_title %}Ideacloud{% endblock head_title %}"/>
+    <meta property="og:description" content="{% block head_desc %}Insights in the cloud{% endblock head_desc %}"/>
+    <meta property="og:image:width" content="265">
+    <meta property="og:image:height" content="265">
+    <meta property="og:site_name" content="ideacloud">
 
+
+    <title>
+        {% block title %}Ideacloud{% endblock title %}
+    </title>
+    <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
+
+    <!-- Stylesheets -->
+    <link href="{% static 'common-css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'common-css/main.css' %}" rel="stylesheet">
+    <link href="{% static 'common-css/ionicons.css' %}" rel="stylesheet">
+    <link href="{% static 'common-css/swiper.css' %}" rel="stylesheet">
+    <link href="{% static 'common-css/theme.css' %}" rel="stylesheet">
+    <link href="{% static 'common-css/responsive.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'common-css/OverlayScrollbars.css' %}" rel="stylesheet"/>
 </head>
+
 <body>
 
-<header class="site-header">
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand mr-4" href="{% url 'blog-home' %}">Idea Bank</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
-                    aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarToggle">
-                <div class="navbar-nav mr-auto">
-                    <a class="nav-item nav-link" href="{% url 'category' 'news' %}">News</a>
-                    <a class="nav-item nav-link" href="{% url 'category' 'tech' %}">Tech</a>
-                    <a class="nav-item nav-link" href="{% url 'category' 'fashion' %}">Fashion</a>
-                    <a class="nav-item nav-link" href="{% url 'category' 'politics' %}">Politics</a>
-                    <a class="nav-item nav-link" href="{% url 'category' 'health' %}">Health</a>
-                    <a class="nav-item nav-link" href="{% url 'category' 'entertainment' %}">Entertainment</a>
-                    <a class="nav-item nav-link" href="{% url 'category' 'sport' %}">Sport</a>
-                </div>
+<header>
+    <div class="container-fluid position-relative no-side-padding">
 
-                <!-- Navbar Right Side -->
-                <div class="navbar-nav">
-                    {% if user.is_authenticated %}
-                        <a href="{% url 'profile' %}"><img src="{{ user.profile.image.url }}"
-                                                           class="rounded-circle article-img" alt="user"></a>
-                        <a class="nav-item nav-link" href="{% url 'profile' %}">{{ user.username }} Profile</a>
-                        <a class="nav-item nav-link" href="{% url 'post_create' %}">New Post</a>
-                        <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
-                    {% else %}
-                        <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
-                        <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
-                    {% endif %}
-                    <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
-                </div>
-            </div>
+        <a href="{% url 'blog-home' %}" class="logo"><img src="{% static 'images/logo.png' %}" alt="Logo Image"></a>
+
+        <div class="menu-nav-icon" data-nav-menu="#main-menu"><i class="ion-navicon"></i></div>
+
+        <ul class="main-menu visible-on-click" id="main-menu">
+            <li><a href="{% url 'blog-home' %}">Home</a></li>
+            <li><a href="{% url 'all_category' %}">Categories</a></li>
+
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'profile' %}">{{ user.username | title }}'s profile</a></li>
+                <li><a href="{% url 'post_create' %}">New Post</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+            {% endif %}
+        </ul><!-- main-menu -->
+
+        <div class="src-area">
+            <form action="{% url 'search' %}">
+                <button class="src-btn" type="submit"><i class="ion-ios-search-strong"></i></button>
+                <input class="src-input" type="text" placeholder="Search Ideacloud" name="search_term"
+                       value="{{ search_term }}">
+            </form>
         </div>
-    </nav>
+
+    </div><!-- conatiner -->
 </header>
 
-<div class="container">
-    <main role="main" class="container">
+{% if messages %}
+    <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                {% if messages %}
-                    {% for message in messages %}
-                        <div class="alert alert-{{ message.tags }}">
-                            {{ message }}
-                        </div>
-                    {% endfor %}
-                {% endif %}
-                {% block content %}
-                    <!--Content here--->
-                {% endblock %}
-            </div>
-            <div class="col-md-4">
-                <div class="content-section">
-                    <h3>Our Sidebar</h3>
-                    <p class='text-muted'>You can put any information here you'd like.</p>
-                    <ul class="list-group">
-                        <li class="list-group-item list-group-item-light">Latest Posts</li>
-                        <li class="list-group-item list-group-item-light">Announcements</li>
-                        <li class="list-group-item list-group-item-light">Calendars</li>
-                        <li class="list-group-item list-group-item-light">etc</li>
-                    </ul>
+            <div class="col-md-8 mt-3 mb-0 text-center">
 
-                </div>
-
-                <div class="content-section">
-                    <h3>Recent posts</h3>
-                    <p class='text-muted'></p>
-                    <ul class="list-group">
-                        {% for post in recent_posts %}
-                            <a href="{% url 'post_detail' post.slug post.id %}"
-                               class="mb-1 list-group-item list-group-item-action list-group-item-secondary">{{ post.title }}
-                                | {{ post.date_posted | naturaltime }} in {{ post.category }}</a>
-                        {% endfor %}
-                    </ul>
-                </div>
-
-                <div class="content-section">
-                    <h3>Tag clouds</h3>
-                    <p class='text-muted'></p>
-                    <div class="list-group-sm card card-body">
-                        {% for tag in common_tags %}
-                            <li class="list-group-item">
-                                <a href="{% url 'post_tags' tag %}"
-                                   class="mt-1 mb-1 mr-1 text-white badge badge-{{ tag | rand_css }}">#{{ tag }}</a>
-                            </li>
-                        {% endfor %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
                     </div>
-                </div>
+                {% endfor %}
 
             </div>
         </div>
-    </main>
-</div>
-
-<!-- Footer -->
-<footer class="mt-3 page-footer font-small alert-success">
-
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© {% now "Y" %} Copyright:
-        <a href=""> Idea Bank</a><br>
     </div>
-    <!-- Copyright -->
+{% endif %}
 
-    <div class="text-center mb-1">
-        {% now "jS F Y H:i" %}
-    </div>
+{% block content %}
+    <!-- content -->
+{% endblock %}
 
+<footer>
+    {% include 'partials/_footer.html' %}
 </footer>
-<!-- Footer -->
+
+<script src="{% static 'common-js/jquery-3.1.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'common-js/OverlayScrollbars.js' %}"></script>
+
+<script src="{% static 'common-js/tether.min.js' %}"></script>
+
+<script src="{% static 'common-js/bootstrap.js' %}"></script>
+
+<script src="{% static 'common-js/swiper.js' %}"></script>
+
+<script src="{% static 'common-js/scripts.js' %}"></script>
+<script src="{% static 'common-js/main.js' %}"></script>
+
+
 </body>
 </html>

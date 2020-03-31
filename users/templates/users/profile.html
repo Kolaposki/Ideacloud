@@ -1,13 +1,15 @@
-{% extends "sample/base.html" %}
+{% extends "blog/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
     <section class="blog-area section">
         <div class="container">
             <div class="left-area">
                 <div class="left-area">
-                    <a class="avatar" href="#"><img
-                            src="{{ user.profile.image.url }}"
-                            alt="{{ user.username }}"></a>
+                    <a class="avatar" href="#">
+                        <img
+                                src="{{ user.profile.image.url }}"
+                                alt="{{ user.username }}">
+                    </a>
                 </div>
                 <div class="media-body">
                     <h2 class="account-heading"> {{ user.username }}</h2>
