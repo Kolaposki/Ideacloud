@@ -16,7 +16,7 @@ class PostForm(forms.ModelForm):
                         ("sport", "sport")]
 
     content = forms.CharField(widget=SummernoteWidget())  # instead of forms.Textarea
-    title = forms.CharField(max_length=120, required=True, strip=True)
+    title = forms.CharField(max_length=115, required=True, strip=True, min_length=5)
     cover = forms.ImageField(required=False)
     short_description = forms.CharField(max_length=170, required=False, strip=True,
                                         help_text='Provide an optional short description')
