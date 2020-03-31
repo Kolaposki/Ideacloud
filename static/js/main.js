@@ -4,6 +4,17 @@ document.addEventListener("DOMContentLoaded", function () {
     OverlayScrollbars(document.querySelectorAll("body"), {});
 });
 
+var options = {
+  time: '0.5s', // default: '0.3s'
+  saveInCookies: false, // default: true,
+  label: '🌓', // default: ''
+  autoMatchOsTheme: true // default: true
+}
+
+const darkmode = new Darkmode(options);
+darkmode.showWidget();
+
+
 
 (function ($) {
     "use strict";

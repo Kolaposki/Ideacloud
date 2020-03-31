@@ -108,7 +108,7 @@
 
         <section class="blog-area section">
             <div class="container">
-                <h4 class="mb-2"><b>Recommended Posts</b></h4>
+                <h4 class="mb-2 recommend"><b>Recommended Posts</b></h4>
                 <hr>
                 <div class="row">
                     {% include 'partials/_recommend-cards.html' %}
@@ -116,108 +116,112 @@
             </div><!-- container -->
         </section>
 
-        <section class="comment-section" style="background: #EDF3F3 !important;">
-            <div class="container">
 
-                {% if new_comment %}
+        <div class="all-comment">
+            <section class="comment-section">
+                <div class="container">
 
-                    <div class="alert alert-success text-center" role="alert">
-                        Thank you for your response. Your comment is awaiting moderation.
-                    </div>
-                {% else %}
+                    {% if new_comment %}
 
-                    <h4><b>Leave a reply</b></h4>
-                    <span class="mt-2">Your email address will not be published.</span>
-                    <div class="row">
+                        <div class="alert alert-success text-center" role="alert">
+                            Thank you for your response. Your comment is awaiting moderation.
+                        </div>
+                    {% else %}
 
-                        <div class="col-lg-8 col-md-12">
-                            <div class="comment-form">
-                                <form method="post">
-                                    {% csrf_token %}
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <input type="text" aria-required="true" name="name" class="form-control"
-                                                   placeholder="Enter your name" aria-invalid="true" required>
-                                        </div><!-- col-sm-6 -->
-                                        <div class="col-sm-6">
-                                            <input type="email" aria-required="true" name="email" class="form-control"
-                                                   placeholder="Enter your email" aria-invalid="true" required>
-                                        </div><!-- col-sm-6 -->
-                                        <div class="col-sm-12">
+                        <div class="comment-text">
+                            <h4><b>Leave a reply</b></h4>
+                            <span class="mt-2">Your email address will not be published.</span>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-lg-8 col-md-12">
+                                <div class="comment-form">
+                                    <form method="post">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <input type="text" aria-required="true" name="name" class="form-control"
+                                                       placeholder="Enter your name" aria-invalid="true" required>
+                                            </div><!-- col-sm-6 -->
+                                            <div class="col-sm-6">
+                                                <input type="email" aria-required="true" name="email"
+                                                       class="form-control"
+                                                       placeholder="Enter your email" aria-invalid="true" required>
+                                            </div><!-- col-sm-6 -->
+                                            <div class="col-sm-12">
 									<textarea name="body" rows="2" class="text-area-messge form-control"
                                               placeholder="Enter your comment" aria-required="true"
                                               aria-invalid="false"></textarea>
-                                        </div><!-- col-sm-12 -->
-                                        <div class="col-sm-12">
-                                            <input type="url" name="website" class="form-control"
-                                                   placeholder="Enter website">
-                                        </div><!-- col-sm-6 -->
-                                        <div class="col-sm-12">
-                                            <button class="submit-btn" type="submit"><b>POST COMMENT</b></button>
-                                        </div><!-- col-sm-12 -->
+                                            </div><!-- col-sm-12 -->
+                                            <div class="col-sm-12">
+                                                <input type="url" name="website" class="form-control"
+                                                       placeholder="Enter website">
+                                            </div><!-- col-sm-6 -->
+                                            <div class="col-sm-12">
+                                                <button class="submit-btn" type="submit"><b>POST COMMENT</b></button>
+                                            </div><!-- col-sm-12 -->
 
-                                    </div><!-- row -->
-                                </form>
-                            </div><!-- comment-form -->
+                                        </div><!-- row -->
+                                    </form>
+                                </div><!-- comment-form -->
 
-                        </div>
-
-                    </div>
-                {% endif %}
-            </div>
-        </section>
-
-
-
-        {% if comments %}
-            <section class="comment-section" style="background: #EDF3F3 !important;">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 col-md-12">
-
-                            <h4><b>{{ comments.count }} COMMENTS</b></h4>
-
-                            <div class="commnets-area ">
-
-                                {% for comment in comments %}
-
-                                    <div class="comment">
-
-                                        <div class="post-info">
-
-                                            <div class="left-area">
-                                                <a class="avatar" href="#"><img
-                                                        src="{% static 'images/avatar-1-120x120.jpg' %}"
-                                                        alt="Profile Image"></a>
-                                            </div>
-
-                                            <div class="middle-area">
-                                                <a class="name" href="#"><b>{{ comment.name }}</b></a>
-                                                <h6 class="date">on {{ comment.created_on }}</h6>
-                                            </div>
-
-                                            <div class="right-area">
-                                                <h5 class="reply-btn"><a href="#"><b>REPLY</b></a></h5>
-                                            </div>
-
-                                        </div><!-- post-info -->
-
-                                        <p>{{ comment.body | linebreaks }}</p>
-
-                                    </div>
-
-                                {% endfor %}
-                            </div><!-- commnets-area -->
-
-                            {% if comments.count > 10 %}
-                                <a class="more-comment-btn" href="#"><b>VIEW MORE COMMENTS</b></a>
-                            {% endif %}
+                            </div>
 
                         </div>
-                    </div>
+                    {% endif %}
                 </div>
             </section>
-        {% endif %}
+
+            {% if comments %}
+                <section class="comment-section" style="background: #EDF3F3 !important;">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-12">
+
+                                <h4><b>{{ comments.count }} COMMENTS</b></h4>
+
+                                <div class="commnets-area ">
+
+                                    {% for comment in comments %}
+
+                                        <div class="comment">
+
+                                            <div class="post-info">
+
+                                                <div class="left-area">
+                                                    <a class="avatar" href="#"><img
+                                                            src="{% static 'images/avatar-1-120x120.jpg' %}"
+                                                            alt="Profile Image"></a>
+                                                </div>
+
+                                                <div class="middle-area">
+                                                    <a class="name" href="#"><b>{{ comment.name }}</b></a>
+                                                    <h6 class="date">on {{ comment.created_on }}</h6>
+                                                </div>
+
+                                                <div class="right-area">
+                                                    <h5 class="reply-btn"><a href="#"><b>REPLY</b></a></h5>
+                                                </div>
+
+                                            </div><!-- post-info -->
+
+                                            <p>{{ comment.body | linebreaks }}</p>
+
+                                        </div>
+
+                                    {% endfor %}
+                                </div><!-- commnets-area -->
+
+                                {% if comments.count > 10 %}
+                                    <a class="more-comment-btn" href="#"><b>VIEW MORE COMMENTS</b></a>
+                                {% endif %}
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            {% endif %}
+        </div>
     </section>
 
 {% endblock %}
