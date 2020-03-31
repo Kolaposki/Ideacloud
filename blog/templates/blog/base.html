@@ -23,11 +23,13 @@
 
     <!-- Stylesheets -->
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
-    <link href="{% static 'css/main.css' %}" rel="stylesheet">
     <link href="{% static 'css/ionicons.css' %}" rel="stylesheet">
-    <link href="{% static 'css/swiper.css' %}" rel="stylesheet">
+    <link href="{% static 'css/theme.css' %}" rel="stylesheet">
     <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <link href="{% static 'css/swiper.css' %}" rel="stylesheet">
     <link type="text/css" href="{% static 'css/OverlayScrollbars.css' %}" rel="stylesheet"/>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
@@ -42,7 +44,7 @@
 
     </script>
 
-    <link href="{% static 'css/theme.css' %}" rel="stylesheet">
+
 </head>
 
 <body>
@@ -53,7 +55,9 @@
 
         <a href="{% url 'blog-home' %}" class="logo"><img src="{% static 'images/logo.png' %}" alt="Logo Image"></a>
 
-        <div class="menu-nav-icon" data-nav-menu="#main-menu"><i class="ion-navicon"></i></div>
+        <div class="menu-nav-icon" data-nav-menu="#main-menu">
+            <i class="ion-navicon"></i>
+        </div>
 
         <ul class="main-menu visible-on-click" id="main-menu">
             <li><a href="{% url 'blog-home' %}">Home</a></li>
@@ -106,6 +110,7 @@
 
 
 <!-- Javascript files -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/OverlayScrollbars.js' %}"></script>
 
 <script src="{% static 'js/tether.min.js' %}"></script>
