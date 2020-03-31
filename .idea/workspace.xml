@@ -1,17 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="387293ac-6c61-4aa3-92dc-f0d068650f15" name="Default Changelist" comment="Create preloader for all pages">
-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/common-js/modernizr.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/loading.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ideacloud.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ideacloud.iml" afterDir="false" />
+    <list default="true" id="387293ac-6c61-4aa3-92dc-f0d068650f15" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/templates/blog/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/blog/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/common-css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/common-css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/common-css/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/common-css/theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/common-js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/common-js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/common-js/jquery.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/common-css/OverlayScrollbars.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/OverlayScrollbars.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/common-css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/bootstrap.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/common-css/ionicons.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/ionicons.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/common-css/main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/common-css/responsive.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/responsive.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/common-css/swiper.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/swiper.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/common-css/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/theme.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/common-js/OverlayScrollbars.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/OverlayScrollbars.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/common-js/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/common-js/fontawesome.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/common-js/jquery-3.1.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/common-js/jquery.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/common-js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/common-js/modernizr.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/modernizr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/common-js/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/scripts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/common-js/solid.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/solid.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/common-js/swiper.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/swiper.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/common-js/tether.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/tether.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/all.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/font-awesome.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/new-bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/fav.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/common-css/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/common-css/ionicons.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/common-css/responsive.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/common-css/swiper.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/common-css/theme.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/common-js/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/common-js/fontawesome.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/common-js/jquery-3.1.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/common-js/scripts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/common-js/solid.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/common-js/swiper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/common-js/tether.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/css/all.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/css/font-awesome.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/css/main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/css/new-bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/images/alex-lambley-205711.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/images/audrey-jackson-260657.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/images/avatar-1-120x120.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/images/averie-woodard-319832.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/images/ben-o-sullivan-382817.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/images/blog-1-1000x600.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/images/brooke-lark-194251.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/images/caroline-veronez-165944.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/images/category-1-400x250.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/images/category-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/images/category-2-400x250.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/images/category-3-400x250.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/images/category-4-400x250.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/images/category-5-400x250.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/images/category-6-400x250.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/images/christopher-campbell-28567.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/images/dmitri-popov-326976.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/images/favicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/images/icons8-team-355979.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/images/icons8-team-355990.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/images/marion-michele-330691.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/images/noah-buscher-400915.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/images/pexels-photo-370474.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/images/sarah-diniz-outeiro-407602.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/images/slider-1-1600x900.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/images/slider-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/img/fav.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/js/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/js/jquery.min.js" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -165,7 +226,7 @@
       <workItem from="1584881815375" duration="102256000" />
       <workItem from="1585179276405" duration="1804000" />
       <workItem from="1585181377927" duration="75891000" />
-      <workItem from="1585516214433" duration="16450000" />
+      <workItem from="1585516214433" duration="17441000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed post description text overflow and added favicon">
       <created>1585347277162</created>
@@ -286,7 +347,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585665631307</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Create preloader for all pages">
+      <created>1585671849656</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1585671849656</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -306,6 +374,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Fixed post description text overflow and added favicon" />
     <MESSAGE value="Tested and integrated comment section for each posts" />
     <MESSAGE value="Redesigned comment section and add recommended posts" />
