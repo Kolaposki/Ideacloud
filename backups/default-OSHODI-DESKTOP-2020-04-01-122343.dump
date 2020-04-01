@@ -1,0 +1,1113 @@
+CREATE TABLE "auth_group" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "name" varchar(150) NOT NULL UNIQUE);
+CREATE UNIQUE INDEX "auth_group_permissions_group_id_permission_id_0cd325b0_uniq" ON "auth_group_permissions" ("group_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_group_id_b120cbf9" ON "auth_group_permissions" ("group_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_permission_id_84c5c92e" ON "auth_group_permissions" ("permission_id");
+CREATE UNIQUE INDEX "auth_user_groups_user_id_group_id_94350c0c_uniq" ON "auth_user_groups" ("user_id", "group_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_user_id_6a12ed8b" ON "auth_user_groups" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_group_id_97559544" ON "auth_user_groups" ("group_id");
+CREATE UNIQUE INDEX "auth_user_user_permissions_user_id_permission_id_14a6b632_uniq" ON "auth_user_user_permissions" ("user_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_user_id_a95ead1b" ON "auth_user_user_permissions" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_permission_id_1fbb5f2c" ON "auth_user_user_permissions" ("permission_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_content_type_id_c4bce8eb" ON "django_admin_log" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_user_id_c564eba6" ON "django_admin_log" ("user_id");
+CREATE UNIQUE INDEX "django_content_type_app_label_model_76bd3d3b_uniq" ON "django_content_type" ("app_label", "model");
+CREATE UNIQUE INDEX "auth_permission_content_type_id_codename_01ab375a_uniq" ON "auth_permission" ("content_type_id", "codename");
+CREATE INDEX IF NOT EXISTS "auth_permission_content_type_id_2f476e4b" ON "auth_permission" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_session_expire_date_a5c62663" ON "django_session" ("expire_date");
+CREATE INDEX IF NOT EXISTS "blog_comment_post_id_580e96ef" ON "blog_comment" ("post_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_object_id_e2d7d1df" ON "taggit_taggeditem" ("object_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_9957a03c" ON "taggit_taggeditem" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_tag_id_f4f5b767" ON "taggit_taggeditem" ("tag_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_object_id_196cc965_idx" ON "taggit_taggeditem" ("content_type_id", "object_id");
+CREATE UNIQUE INDEX "taggit_taggeditem_content_type_id_object_id_tag_id_4bb97a8e_uniq" ON "taggit_taggeditem" ("content_type_id", "object_id", "tag_id");
+CREATE INDEX IF NOT EXISTS "blog_post_author_id_dd7a8485" ON "blog_post" ("author_id");
+CREATE INDEX IF NOT EXISTS "blog_post_category_id_c326dbf8" ON "blog_post" ("category_id");
+CREATE TABLE "auth_group_permissions" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "group_id" integer NOT NULL REFERENCES "auth_group" ("id") DEFERRABLE INITIALLY DEFERRED, "permission_id" integer NOT NULL REFERENCES "auth_permission" ("id") DEFERRABLE INITIALLY DEFERRED);
+CREATE UNIQUE INDEX "auth_group_permissions_group_id_permission_id_0cd325b0_uniq" ON "auth_group_permissions" ("group_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_group_id_b120cbf9" ON "auth_group_permissions" ("group_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_permission_id_84c5c92e" ON "auth_group_permissions" ("permission_id");
+CREATE UNIQUE INDEX "auth_user_groups_user_id_group_id_94350c0c_uniq" ON "auth_user_groups" ("user_id", "group_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_user_id_6a12ed8b" ON "auth_user_groups" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_group_id_97559544" ON "auth_user_groups" ("group_id");
+CREATE UNIQUE INDEX "auth_user_user_permissions_user_id_permission_id_14a6b632_uniq" ON "auth_user_user_permissions" ("user_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_user_id_a95ead1b" ON "auth_user_user_permissions" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_permission_id_1fbb5f2c" ON "auth_user_user_permissions" ("permission_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_content_type_id_c4bce8eb" ON "django_admin_log" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_user_id_c564eba6" ON "django_admin_log" ("user_id");
+CREATE UNIQUE INDEX "django_content_type_app_label_model_76bd3d3b_uniq" ON "django_content_type" ("app_label", "model");
+CREATE UNIQUE INDEX "auth_permission_content_type_id_codename_01ab375a_uniq" ON "auth_permission" ("content_type_id", "codename");
+CREATE INDEX IF NOT EXISTS "auth_permission_content_type_id_2f476e4b" ON "auth_permission" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_session_expire_date_a5c62663" ON "django_session" ("expire_date");
+CREATE INDEX IF NOT EXISTS "blog_comment_post_id_580e96ef" ON "blog_comment" ("post_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_object_id_e2d7d1df" ON "taggit_taggeditem" ("object_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_9957a03c" ON "taggit_taggeditem" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_tag_id_f4f5b767" ON "taggit_taggeditem" ("tag_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_object_id_196cc965_idx" ON "taggit_taggeditem" ("content_type_id", "object_id");
+CREATE UNIQUE INDEX "taggit_taggeditem_content_type_id_object_id_tag_id_4bb97a8e_uniq" ON "taggit_taggeditem" ("content_type_id", "object_id", "tag_id");
+CREATE INDEX IF NOT EXISTS "blog_post_author_id_dd7a8485" ON "blog_post" ("author_id");
+CREATE INDEX IF NOT EXISTS "blog_post_category_id_c326dbf8" ON "blog_post" ("category_id");
+CREATE TABLE "auth_permission" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "content_type_id" integer NOT NULL REFERENCES "django_content_type" ("id") DEFERRABLE INITIALLY DEFERRED, "codename" varchar(100) NOT NULL, "name" varchar(255) NOT NULL);
+INSERT INTO "auth_permission" VALUES(1,1,'add_logentry','Can add log entry');
+INSERT INTO "auth_permission" VALUES(2,1,'change_logentry','Can change log entry');
+INSERT INTO "auth_permission" VALUES(3,1,'delete_logentry','Can delete log entry');
+INSERT INTO "auth_permission" VALUES(4,1,'view_logentry','Can view log entry');
+INSERT INTO "auth_permission" VALUES(5,2,'add_permission','Can add permission');
+INSERT INTO "auth_permission" VALUES(6,2,'change_permission','Can change permission');
+INSERT INTO "auth_permission" VALUES(7,2,'delete_permission','Can delete permission');
+INSERT INTO "auth_permission" VALUES(8,2,'view_permission','Can view permission');
+INSERT INTO "auth_permission" VALUES(9,3,'add_group','Can add group');
+INSERT INTO "auth_permission" VALUES(10,3,'change_group','Can change group');
+INSERT INTO "auth_permission" VALUES(11,3,'delete_group','Can delete group');
+INSERT INTO "auth_permission" VALUES(12,3,'view_group','Can view group');
+INSERT INTO "auth_permission" VALUES(13,4,'add_user','Can add user');
+INSERT INTO "auth_permission" VALUES(14,4,'change_user','Can change user');
+INSERT INTO "auth_permission" VALUES(15,4,'delete_user','Can delete user');
+INSERT INTO "auth_permission" VALUES(16,4,'view_user','Can view user');
+INSERT INTO "auth_permission" VALUES(17,5,'add_contenttype','Can add content type');
+INSERT INTO "auth_permission" VALUES(18,5,'change_contenttype','Can change content type');
+INSERT INTO "auth_permission" VALUES(19,5,'delete_contenttype','Can delete content type');
+INSERT INTO "auth_permission" VALUES(20,5,'view_contenttype','Can view content type');
+INSERT INTO "auth_permission" VALUES(21,6,'add_session','Can add session');
+INSERT INTO "auth_permission" VALUES(22,6,'change_session','Can change session');
+INSERT INTO "auth_permission" VALUES(23,6,'delete_session','Can delete session');
+INSERT INTO "auth_permission" VALUES(24,6,'view_session','Can view session');
+INSERT INTO "auth_permission" VALUES(25,7,'add_category','Can add category');
+INSERT INTO "auth_permission" VALUES(26,7,'change_category','Can change category');
+INSERT INTO "auth_permission" VALUES(27,7,'delete_category','Can delete category');
+INSERT INTO "auth_permission" VALUES(28,7,'view_category','Can view category');
+INSERT INTO "auth_permission" VALUES(29,8,'add_post','Can add post');
+INSERT INTO "auth_permission" VALUES(30,8,'change_post','Can change post');
+INSERT INTO "auth_permission" VALUES(31,8,'delete_post','Can delete post');
+INSERT INTO "auth_permission" VALUES(32,8,'view_post','Can view post');
+INSERT INTO "auth_permission" VALUES(33,9,'add_comment','Can add comment');
+INSERT INTO "auth_permission" VALUES(34,9,'change_comment','Can change comment');
+INSERT INTO "auth_permission" VALUES(35,9,'delete_comment','Can delete comment');
+INSERT INTO "auth_permission" VALUES(36,9,'view_comment','Can view comment');
+INSERT INTO "auth_permission" VALUES(37,10,'add_profile','Can add profile');
+INSERT INTO "auth_permission" VALUES(38,10,'change_profile','Can change profile');
+INSERT INTO "auth_permission" VALUES(39,10,'delete_profile','Can delete profile');
+INSERT INTO "auth_permission" VALUES(40,10,'view_profile','Can view profile');
+INSERT INTO "auth_permission" VALUES(41,11,'add_attachment','Can add attachment');
+INSERT INTO "auth_permission" VALUES(42,11,'change_attachment','Can change attachment');
+INSERT INTO "auth_permission" VALUES(43,11,'delete_attachment','Can delete attachment');
+INSERT INTO "auth_permission" VALUES(44,11,'view_attachment','Can view attachment');
+INSERT INTO "auth_permission" VALUES(45,12,'add_tag','Can add Tag');
+INSERT INTO "auth_permission" VALUES(46,12,'change_tag','Can change Tag');
+INSERT INTO "auth_permission" VALUES(47,12,'delete_tag','Can delete Tag');
+INSERT INTO "auth_permission" VALUES(48,12,'view_tag','Can view Tag');
+INSERT INTO "auth_permission" VALUES(49,13,'add_taggeditem','Can add Tagged Item');
+INSERT INTO "auth_permission" VALUES(50,13,'change_taggeditem','Can change Tagged Item');
+INSERT INTO "auth_permission" VALUES(51,13,'delete_taggeditem','Can delete Tagged Item');
+INSERT INTO "auth_permission" VALUES(52,13,'view_taggeditem','Can view Tagged Item');
+CREATE UNIQUE INDEX "auth_group_permissions_group_id_permission_id_0cd325b0_uniq" ON "auth_group_permissions" ("group_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_group_id_b120cbf9" ON "auth_group_permissions" ("group_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_permission_id_84c5c92e" ON "auth_group_permissions" ("permission_id");
+CREATE UNIQUE INDEX "auth_user_groups_user_id_group_id_94350c0c_uniq" ON "auth_user_groups" ("user_id", "group_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_user_id_6a12ed8b" ON "auth_user_groups" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_group_id_97559544" ON "auth_user_groups" ("group_id");
+CREATE UNIQUE INDEX "auth_user_user_permissions_user_id_permission_id_14a6b632_uniq" ON "auth_user_user_permissions" ("user_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_user_id_a95ead1b" ON "auth_user_user_permissions" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_permission_id_1fbb5f2c" ON "auth_user_user_permissions" ("permission_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_content_type_id_c4bce8eb" ON "django_admin_log" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_user_id_c564eba6" ON "django_admin_log" ("user_id");
+CREATE UNIQUE INDEX "django_content_type_app_label_model_76bd3d3b_uniq" ON "django_content_type" ("app_label", "model");
+CREATE UNIQUE INDEX "auth_permission_content_type_id_codename_01ab375a_uniq" ON "auth_permission" ("content_type_id", "codename");
+CREATE INDEX IF NOT EXISTS "auth_permission_content_type_id_2f476e4b" ON "auth_permission" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_session_expire_date_a5c62663" ON "django_session" ("expire_date");
+CREATE INDEX IF NOT EXISTS "blog_comment_post_id_580e96ef" ON "blog_comment" ("post_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_object_id_e2d7d1df" ON "taggit_taggeditem" ("object_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_9957a03c" ON "taggit_taggeditem" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_tag_id_f4f5b767" ON "taggit_taggeditem" ("tag_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_object_id_196cc965_idx" ON "taggit_taggeditem" ("content_type_id", "object_id");
+CREATE UNIQUE INDEX "taggit_taggeditem_content_type_id_object_id_tag_id_4bb97a8e_uniq" ON "taggit_taggeditem" ("content_type_id", "object_id", "tag_id");
+CREATE INDEX IF NOT EXISTS "blog_post_author_id_dd7a8485" ON "blog_post" ("author_id");
+CREATE INDEX IF NOT EXISTS "blog_post_category_id_c326dbf8" ON "blog_post" ("category_id");
+CREATE TABLE "auth_user" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "password" varchar(128) NOT NULL, "last_login" datetime NULL, "is_superuser" bool NOT NULL, "username" varchar(150) NOT NULL UNIQUE, "first_name" varchar(30) NOT NULL, "email" varchar(254) NOT NULL, "is_staff" bool NOT NULL, "is_active" bool NOT NULL, "date_joined" datetime NOT NULL, "last_name" varchar(150) NOT NULL);
+INSERT INTO "auth_user" VALUES(1,'pbkdf2_sha256$180000$yXCGJITF02Sp$TlUSf8MizK3htQYUZh6Z4LScPRRLM8cintzc2OVsL1g=','2020-03-29 18:17:02.833259',1,'kolapo','Oshodi','leo@gmil.com',1,1,'2020-03-23 10:39:02','Abiodun');
+INSERT INTO "auth_user" VALUES(2,'pbkdf2_sha256$180000$yAm3GfHrxbsF$y0knMEcKzvXNOevtArAvDaHtEYTqk3QUIkSC7pA+30M=','2020-03-29 18:16:22.732664',0,'RachelChu','Rachel','RachelChu@mail.com',0,1,'2020-03-24 12:30:28.501263','Chu');
+INSERT INTO "auth_user" VALUES(3,'pbkdf2_sha256$180000$cJdR0WInXb4o$FNOl0zz1/VB7Cq+b3oIj8OwJwxg4rXW2NKnilbLGZC4=','2020-03-24 13:22:32.598927',0,'katyliu','Katy','doe@mail.com',0,1,'2020-03-24 13:22:02.989866','Liu');
+INSERT INTO "auth_user" VALUES(4,'pbkdf2_sha256$180000$aGwA7rbhnQ8a$MmERUiwtmHNE8KznG18VB6nLB2TUhpG/yJnktxZqIJs=','2020-03-28 12:43:45.678163',0,'shereejoe','Sheree','NieshaBruch@mail.com',0,1,'2020-03-27 22:24:32.102035','Joseph');
+INSERT INTO "auth_user" VALUES(5,'pbkdf2_sha256$180000$QtAtyhnymij3$dffuo7xKB4Y/B/lDvsFP8lGNFHADgSxYGZMqZFXWmUQ=',NULL,0,'christy','','',0,1,'2020-03-29 18:20:26.060873','');
+CREATE UNIQUE INDEX "auth_group_permissions_group_id_permission_id_0cd325b0_uniq" ON "auth_group_permissions" ("group_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_group_id_b120cbf9" ON "auth_group_permissions" ("group_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_permission_id_84c5c92e" ON "auth_group_permissions" ("permission_id");
+CREATE UNIQUE INDEX "auth_user_groups_user_id_group_id_94350c0c_uniq" ON "auth_user_groups" ("user_id", "group_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_user_id_6a12ed8b" ON "auth_user_groups" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_group_id_97559544" ON "auth_user_groups" ("group_id");
+CREATE UNIQUE INDEX "auth_user_user_permissions_user_id_permission_id_14a6b632_uniq" ON "auth_user_user_permissions" ("user_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_user_id_a95ead1b" ON "auth_user_user_permissions" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_permission_id_1fbb5f2c" ON "auth_user_user_permissions" ("permission_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_content_type_id_c4bce8eb" ON "django_admin_log" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_user_id_c564eba6" ON "django_admin_log" ("user_id");
+CREATE UNIQUE INDEX "django_content_type_app_label_model_76bd3d3b_uniq" ON "django_content_type" ("app_label", "model");
+CREATE UNIQUE INDEX "auth_permission_content_type_id_codename_01ab375a_uniq" ON "auth_permission" ("content_type_id", "codename");
+CREATE INDEX IF NOT EXISTS "auth_permission_content_type_id_2f476e4b" ON "auth_permission" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_session_expire_date_a5c62663" ON "django_session" ("expire_date");
+CREATE INDEX IF NOT EXISTS "blog_comment_post_id_580e96ef" ON "blog_comment" ("post_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_object_id_e2d7d1df" ON "taggit_taggeditem" ("object_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_9957a03c" ON "taggit_taggeditem" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_tag_id_f4f5b767" ON "taggit_taggeditem" ("tag_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_object_id_196cc965_idx" ON "taggit_taggeditem" ("content_type_id", "object_id");
+CREATE UNIQUE INDEX "taggit_taggeditem_content_type_id_object_id_tag_id_4bb97a8e_uniq" ON "taggit_taggeditem" ("content_type_id", "object_id", "tag_id");
+CREATE INDEX IF NOT EXISTS "blog_post_author_id_dd7a8485" ON "blog_post" ("author_id");
+CREATE INDEX IF NOT EXISTS "blog_post_category_id_c326dbf8" ON "blog_post" ("category_id");
+CREATE TABLE "auth_user_groups" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "user_id" integer NOT NULL REFERENCES "auth_user" ("id") DEFERRABLE INITIALLY DEFERRED, "group_id" integer NOT NULL REFERENCES "auth_group" ("id") DEFERRABLE INITIALLY DEFERRED);
+CREATE UNIQUE INDEX "auth_group_permissions_group_id_permission_id_0cd325b0_uniq" ON "auth_group_permissions" ("group_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_group_id_b120cbf9" ON "auth_group_permissions" ("group_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_permission_id_84c5c92e" ON "auth_group_permissions" ("permission_id");
+CREATE UNIQUE INDEX "auth_user_groups_user_id_group_id_94350c0c_uniq" ON "auth_user_groups" ("user_id", "group_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_user_id_6a12ed8b" ON "auth_user_groups" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_group_id_97559544" ON "auth_user_groups" ("group_id");
+CREATE UNIQUE INDEX "auth_user_user_permissions_user_id_permission_id_14a6b632_uniq" ON "auth_user_user_permissions" ("user_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_user_id_a95ead1b" ON "auth_user_user_permissions" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_permission_id_1fbb5f2c" ON "auth_user_user_permissions" ("permission_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_content_type_id_c4bce8eb" ON "django_admin_log" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_user_id_c564eba6" ON "django_admin_log" ("user_id");
+CREATE UNIQUE INDEX "django_content_type_app_label_model_76bd3d3b_uniq" ON "django_content_type" ("app_label", "model");
+CREATE UNIQUE INDEX "auth_permission_content_type_id_codename_01ab375a_uniq" ON "auth_permission" ("content_type_id", "codename");
+CREATE INDEX IF NOT EXISTS "auth_permission_content_type_id_2f476e4b" ON "auth_permission" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_session_expire_date_a5c62663" ON "django_session" ("expire_date");
+CREATE INDEX IF NOT EXISTS "blog_comment_post_id_580e96ef" ON "blog_comment" ("post_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_object_id_e2d7d1df" ON "taggit_taggeditem" ("object_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_9957a03c" ON "taggit_taggeditem" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_tag_id_f4f5b767" ON "taggit_taggeditem" ("tag_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_object_id_196cc965_idx" ON "taggit_taggeditem" ("content_type_id", "object_id");
+CREATE UNIQUE INDEX "taggit_taggeditem_content_type_id_object_id_tag_id_4bb97a8e_uniq" ON "taggit_taggeditem" ("content_type_id", "object_id", "tag_id");
+CREATE INDEX IF NOT EXISTS "blog_post_author_id_dd7a8485" ON "blog_post" ("author_id");
+CREATE INDEX IF NOT EXISTS "blog_post_category_id_c326dbf8" ON "blog_post" ("category_id");
+CREATE TABLE "auth_user_user_permissions" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "user_id" integer NOT NULL REFERENCES "auth_user" ("id") DEFERRABLE INITIALLY DEFERRED, "permission_id" integer NOT NULL REFERENCES "auth_permission" ("id") DEFERRABLE INITIALLY DEFERRED);
+CREATE UNIQUE INDEX "auth_group_permissions_group_id_permission_id_0cd325b0_uniq" ON "auth_group_permissions" ("group_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_group_id_b120cbf9" ON "auth_group_permissions" ("group_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_permission_id_84c5c92e" ON "auth_group_permissions" ("permission_id");
+CREATE UNIQUE INDEX "auth_user_groups_user_id_group_id_94350c0c_uniq" ON "auth_user_groups" ("user_id", "group_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_user_id_6a12ed8b" ON "auth_user_groups" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_group_id_97559544" ON "auth_user_groups" ("group_id");
+CREATE UNIQUE INDEX "auth_user_user_permissions_user_id_permission_id_14a6b632_uniq" ON "auth_user_user_permissions" ("user_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_user_id_a95ead1b" ON "auth_user_user_permissions" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_permission_id_1fbb5f2c" ON "auth_user_user_permissions" ("permission_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_content_type_id_c4bce8eb" ON "django_admin_log" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_user_id_c564eba6" ON "django_admin_log" ("user_id");
+CREATE UNIQUE INDEX "django_content_type_app_label_model_76bd3d3b_uniq" ON "django_content_type" ("app_label", "model");
+CREATE UNIQUE INDEX "auth_permission_content_type_id_codename_01ab375a_uniq" ON "auth_permission" ("content_type_id", "codename");
+CREATE INDEX IF NOT EXISTS "auth_permission_content_type_id_2f476e4b" ON "auth_permission" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_session_expire_date_a5c62663" ON "django_session" ("expire_date");
+CREATE INDEX IF NOT EXISTS "blog_comment_post_id_580e96ef" ON "blog_comment" ("post_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_object_id_e2d7d1df" ON "taggit_taggeditem" ("object_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_9957a03c" ON "taggit_taggeditem" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_tag_id_f4f5b767" ON "taggit_taggeditem" ("tag_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_object_id_196cc965_idx" ON "taggit_taggeditem" ("content_type_id", "object_id");
+CREATE UNIQUE INDEX "taggit_taggeditem_content_type_id_object_id_tag_id_4bb97a8e_uniq" ON "taggit_taggeditem" ("content_type_id", "object_id", "tag_id");
+CREATE INDEX IF NOT EXISTS "blog_post_author_id_dd7a8485" ON "blog_post" ("author_id");
+CREATE INDEX IF NOT EXISTS "blog_post_category_id_c326dbf8" ON "blog_post" ("category_id");
+CREATE TABLE "blog_category" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "slug" varchar(50) NOT NULL UNIQUE, "name" varchar(20) NOT NULL);
+INSERT INTO "blog_category" VALUES(1,'news','news');
+INSERT INTO "blog_category" VALUES(2,'tech','tech');
+INSERT INTO "blog_category" VALUES(3,'fashion','fashion');
+INSERT INTO "blog_category" VALUES(4,'politics','politics');
+INSERT INTO "blog_category" VALUES(5,'health','health');
+INSERT INTO "blog_category" VALUES(6,'entertainment','entertainment');
+INSERT INTO "blog_category" VALUES(7,'sport','sport');
+CREATE UNIQUE INDEX "auth_group_permissions_group_id_permission_id_0cd325b0_uniq" ON "auth_group_permissions" ("group_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_group_id_b120cbf9" ON "auth_group_permissions" ("group_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_permission_id_84c5c92e" ON "auth_group_permissions" ("permission_id");
+CREATE UNIQUE INDEX "auth_user_groups_user_id_group_id_94350c0c_uniq" ON "auth_user_groups" ("user_id", "group_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_user_id_6a12ed8b" ON "auth_user_groups" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_group_id_97559544" ON "auth_user_groups" ("group_id");
+CREATE UNIQUE INDEX "auth_user_user_permissions_user_id_permission_id_14a6b632_uniq" ON "auth_user_user_permissions" ("user_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_user_id_a95ead1b" ON "auth_user_user_permissions" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_permission_id_1fbb5f2c" ON "auth_user_user_permissions" ("permission_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_content_type_id_c4bce8eb" ON "django_admin_log" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_user_id_c564eba6" ON "django_admin_log" ("user_id");
+CREATE UNIQUE INDEX "django_content_type_app_label_model_76bd3d3b_uniq" ON "django_content_type" ("app_label", "model");
+CREATE UNIQUE INDEX "auth_permission_content_type_id_codename_01ab375a_uniq" ON "auth_permission" ("content_type_id", "codename");
+CREATE INDEX IF NOT EXISTS "auth_permission_content_type_id_2f476e4b" ON "auth_permission" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_session_expire_date_a5c62663" ON "django_session" ("expire_date");
+CREATE INDEX IF NOT EXISTS "blog_comment_post_id_580e96ef" ON "blog_comment" ("post_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_object_id_e2d7d1df" ON "taggit_taggeditem" ("object_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_9957a03c" ON "taggit_taggeditem" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_tag_id_f4f5b767" ON "taggit_taggeditem" ("tag_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_object_id_196cc965_idx" ON "taggit_taggeditem" ("content_type_id", "object_id");
+CREATE UNIQUE INDEX "taggit_taggeditem_content_type_id_object_id_tag_id_4bb97a8e_uniq" ON "taggit_taggeditem" ("content_type_id", "object_id", "tag_id");
+CREATE INDEX IF NOT EXISTS "blog_post_author_id_dd7a8485" ON "blog_post" ("author_id");
+CREATE INDEX IF NOT EXISTS "blog_post_category_id_c326dbf8" ON "blog_post" ("category_id");
+CREATE TABLE "blog_comment" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "name" varchar(80) NOT NULL, "email" varchar(254) NOT NULL, "body" text NOT NULL, "website" varchar(200) NULL, "created_on" datetime NOT NULL, "active" bool NOT NULL, "post_id" integer NOT NULL REFERENCES "blog_post" ("id") DEFERRABLE INITIALLY DEFERRED);
+INSERT INTO "blog_comment" VALUES(1,'Aoran James','james@mail.com','Great writeup','http://www.google.com','2020-03-27 23:09:43.520496',1,17);
+INSERT INTO "blog_comment" VALUES(2,'Leo John','leoleo@mail.com','Thumps up!','http://www.google.com','2020-03-27 23:49:47.395566',1,17);
+CREATE UNIQUE INDEX "auth_group_permissions_group_id_permission_id_0cd325b0_uniq" ON "auth_group_permissions" ("group_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_group_id_b120cbf9" ON "auth_group_permissions" ("group_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_permission_id_84c5c92e" ON "auth_group_permissions" ("permission_id");
+CREATE UNIQUE INDEX "auth_user_groups_user_id_group_id_94350c0c_uniq" ON "auth_user_groups" ("user_id", "group_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_user_id_6a12ed8b" ON "auth_user_groups" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_group_id_97559544" ON "auth_user_groups" ("group_id");
+CREATE UNIQUE INDEX "auth_user_user_permissions_user_id_permission_id_14a6b632_uniq" ON "auth_user_user_permissions" ("user_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_user_id_a95ead1b" ON "auth_user_user_permissions" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_permission_id_1fbb5f2c" ON "auth_user_user_permissions" ("permission_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_content_type_id_c4bce8eb" ON "django_admin_log" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_user_id_c564eba6" ON "django_admin_log" ("user_id");
+CREATE UNIQUE INDEX "django_content_type_app_label_model_76bd3d3b_uniq" ON "django_content_type" ("app_label", "model");
+CREATE UNIQUE INDEX "auth_permission_content_type_id_codename_01ab375a_uniq" ON "auth_permission" ("content_type_id", "codename");
+CREATE INDEX IF NOT EXISTS "auth_permission_content_type_id_2f476e4b" ON "auth_permission" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_session_expire_date_a5c62663" ON "django_session" ("expire_date");
+CREATE INDEX IF NOT EXISTS "blog_comment_post_id_580e96ef" ON "blog_comment" ("post_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_object_id_e2d7d1df" ON "taggit_taggeditem" ("object_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_9957a03c" ON "taggit_taggeditem" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_tag_id_f4f5b767" ON "taggit_taggeditem" ("tag_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_object_id_196cc965_idx" ON "taggit_taggeditem" ("content_type_id", "object_id");
+CREATE UNIQUE INDEX "taggit_taggeditem_content_type_id_object_id_tag_id_4bb97a8e_uniq" ON "taggit_taggeditem" ("content_type_id", "object_id", "tag_id");
+CREATE INDEX IF NOT EXISTS "blog_post_author_id_dd7a8485" ON "blog_post" ("author_id");
+CREATE INDEX IF NOT EXISTS "blog_post_category_id_c326dbf8" ON "blog_post" ("category_id");
+CREATE TABLE "blog_post" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "content" text NOT NULL, "date_posted" datetime NOT NULL, "cover" varchar(100) NULL, "author_id" integer NOT NULL REFERENCES "auth_user" ("id") DEFERRABLE INITIALLY DEFERRED, "category_id" integer NOT NULL REFERENCES "blog_category" ("id") DEFERRABLE INITIALLY DEFERRED, "short_description" varchar(170) NULL, "slug" varchar(200) NOT NULL UNIQUE, "view_count" integer NOT NULL, "title" varchar(115) NOT NULL);
+INSERT INTO "blog_post" VALUES(6,'<p>THIS IS NOT AN OFFICIAL GOVERNMENT WEBSITE AND IT IS NOT INTENDED TO OFFER HELP IN CASE
+OF EMERGENCY ! (AT LEAST NOT YET !)</p>
+<p>The aim of this platform is to try and help people in need during this awful pandemic. The main goals are:</p>
+<ul><li>Implement country-specific maps</li><li>Give users the possibility to mark themselves as possible infected or infected when the have a proof</li><li>Let users help other users in need. For example, people in quarantine should be able to ask help with groceries</li><li>Implement translations for as many languages as possible</li></ul>
+<p>The possibilities are endless. Any ideas are more than welcome.</p>
+<p>While governments and big tech companies are doing their part of the 
+job (at least some of them), I think the open source community can 
+achieve so much more if we join forces !</p>
+<p>I was sitting these days and thinking how can I help ? How can I do something for people ? And this is what I came up with.</p>
+<p>I really hope that at least some of you will appreciate my intention and maybe even contributing to this project.</p>
+<p>I am working on this late in the evenings as I am the father of a 1.5
+ years old boy, expecting a daughter any day now and working remotely 
+from 08:00 to 16:00</p>
+<p>Let''s make something useful for our fellows, for us.</p>
+<p>This README is a draft and I will do my best to update it as often as I can.</p>','2020-03-23 16:16:41','cover_pics/user-1_covid.jpg',1,5,'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam','coronavirus-covid-19-social-platform',10,'Coronavirus CoVid-19 Social Platform');
+INSERT INTO "blog_post" VALUES(16,'<p id="2ebc" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">The intercom buzzed.</p><p id="efcd" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph=""><br></p><p id="efcd" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">‘Hello?’</p><p id="79f2" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">‘Hello, is Alex there?’</p><p id="c6cd" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">‘Uh no he is not, sorry’</p><p id="1fec" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">They hang up and I am surprised to be standing there at all.</p><p id="1f01" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">I
+ had walked past this busy street thousands of times and not once did I 
+ever stop to think that people lived here. This was the city <em class="hb">city. </em>It
+ didn’t get more urban than this. Tall, foreboding steel gates marked 
+the entrance. I heard French voices wafting in and out of the building.</p><p id="0400" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">Finally
+ my longtime French friend and her French boyfriend spot me from a 
+distance. Alex (who lives in the building) calls out to me.</p><p id="336c" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">‘MISS AUSTRALIA!’</p><p id="4a9d" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">‘Are you ready for my house? We are ten people living there….like your house, but instead of three, we are ten’.</p><p id="5f31" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">‘You must be exaggerating’ I respond, ‘I live in a three-bedroom house’.</p><p id="650f" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">‘So
+ is ours’, he said. And so it was. Eight people sharing two rooms, and 
+one couple in another room. They still paid between $160-$250 each 
+including bills.</p><p id="3c64" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">It
+ wasn’t particularly big. The rooms were as big as the smallest room in 
+my house. Rules were hung up on the wall explicitly stating that they 
+could have no guests or parties, that people must leave before 10pm etc.</p><p id="e3f1" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">Representatives
+ come around to check on the place unannounced (something that sounds 
+extremely shifty, as most landlords need to give two weeks’ notice). It 
+seemed extreme to me. Whoever they were, they owned the whole building 
+and had other students living in similar situations.</p><p id="c1dd" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">We
+ sat around chatting with the French guys and the Argentinian girls. The
+ topic turned to the privilege of living in a city like Sydney. They 
+spoke of how much safer Sydney is than Europe or Argentina.</p><p id="c263" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">‘Not anymore for me’ piped up one of the Argentinian girls.</p><p id="57de" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">‘I got robbed today in the Chinese markets’.</p><p id="1754" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">This was very uncommon and I hadn’t heard of it happening until now.</p><p id="683f" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">‘I had my zipper undone because I think Australia is safe and I am relaxed now’.</p><p id="44a8" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">‘Not like Argentina’, the local Buenos Aires girl offered up.</p><p id="2523" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">‘No,
+ in Argentina you have to be very careful…they steal everything, your 
+bag, your necklace from around your neck, even while they’re on a moto. 
+Never wear gold or expensive things…never take your iPhone out or wear 
+headphones because they’ll know you have it and take it’.</p><p id="0446" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">‘Yeah they even steal your hair!’ the BA girl offered.</p><p id="95f6" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">‘WHAT?!’ exclaimed the girl from Cordoba and me simultaneously, mouths agape.</p><p id="9f3e" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">‘Yeah it happened to someone I knew, they can cut off your hair in a ponytail. They love the blonde girls with long hair’.</p><p id="4429" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">‘This can’t be common, I didn’t know about it’, reassured the other girl from the South.</p><p id="36f7" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">I asked them if they had ever experienced danger or theft.</p><p id="a34d" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">‘Oh no, not really. I had two of my phones stolen, but it’s no big deal’</p><p id="470f" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">I clutched my iPhone in a moment of panic..</p><p id="a6d0" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">‘In Argentina we say we are lucky because we are alive and these are just material things and we are not hurt’.</p><p id="7126" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">Good point and all, but I was still clutching my iPhone for dear, ironic life.</p><p id="2747" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">The
+ other thing that struck me as interesting was how they communicated 
+with one another. The Argentinian girls spoke Spanish between them and 
+the French guys spoke French to each other, even though neither groups 
+could speak the other language. They only spoke English to each other 
+and to me.</p><p id="7a09" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">I
+ understood everyone in the room and found the dynamic so strange. They 
+actually struggled to speak English to each other and I picked up on so 
+many errors. The problem with this living arrangement is there are no 
+English native speakers there to correct their pronunciation and teach 
+them how to master the language. I cannot stress how important it is to 
+live with native speakers when you live overseas and are trying to learn
+ the language.</p><p id="1e42" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">As
+ a result of this situation, it didn’t feel like there was much 
+conviviality or life in the house. How can there be with such a big 
+barrier of communication and with angry landlords coming to check that 
+people are adhering to the ‘rules’? If you are an international student 
+or a foreigner coming to Sydney, I highly recommend searching far and 
+wide for affordable accommodation. I know it exists and in far more 
+relaxed circumstances.</p><p id="bf36" class="gp gq ap ce gr b dy gs ea gt gu gv gw gx gy gz ha cx" data-selectable-paragraph="">I came to leave and felt my dear friend let out a slight and subtle sigh of relief that she was coming back home with me…</p>','2020-03-27 17:14:10','cover_pics/user-2_lost.jpeg',2,4,NULL,'are-young-travellers-really-living-dream',6,'Are young travellers really living the dream?');
+INSERT INTO "blog_post" VALUES(17,'<p><em class="gz">I wasn’t doing well but then I thought for a moment that I might have been okay after all.</em></p><p><br></p><p id="7f58" class="gl gm dh az gn b go gp gq gr gs gt gu gv gw gx gy cz" data-selectable-paragraph=""><em class="gz">I
+ was suspended between the moment of feeling bad and feeling better and 
+there he was, waiting. He came around almost unannounced. I’m not even 
+sure how it happened, but it did, it definitely happened. Didn’t it? Or 
+did I imagine the whole thing? Imagine how he pitter-pattered his way to
+ my heart, taking careful steps to walk around the debris that had 
+fallen there, he seamlessly, wordlessly worked some magic. He made me 
+see that I was no longer marooned on an island, alone, invisible.</em></p><p id="ecff" class="gl gm dh az gn b go gp gq gr gs gt gu gv gw gx gy cz" data-selectable-paragraph=""><em class="gz">He saw me, asked after me.</em></p><p id="24d7" class="gl gm dh az gn b go gp gq gr gs gt gu gv gw gx gy cz" data-selectable-paragraph=""><em class="gz">‘Who’s that girl?’</em></p><p id="3338" class="gl gm dh az gn b go gp gq gr gs gt gu gv gw gx gy cz" data-selectable-paragraph=""><em class="gz">And
+ slowly but surely, I believed I could stand up and walk again. Mainly 
+because he led me along the path, quite literally. It was all those 
+steps taken and all the little stars he placed carefully along the path,
+ mapping out the trail like it was always there. Up, up, up along the 
+hill I wandered, trying not to squeal, delight mixed with anticipation, 
+meshed with trepidation. The destination was a hill and when we got 
+there, a blanket suddenly materialised, and so did pre-made gin and 
+tonics that were still cold despite my being late, a punnet of 
+strawberries and a view to lay it all down and die for, die for the 
+whole damn lot. And then of course there was him, nervous and worried 
+that I would find the whole thing stupid and me oblivious to that worry,
+ simply relishing every minute and questioning every other one to make 
+sure it wasn’t just a surreal short film, although there were elements 
+suggesting the contrary.</em></p><p id="368e" class="gl gm dh az gn b go gp gq gr gs gt gu gv gw gx gy cz" data-selectable-paragraph=""><em class="gz">Like
+ making for the highest point in the old tower to look at the stars and 
+the moon, watching my face light up with delight at seeing the sky 
+through a tube, the way he would shyly take my hand, make jokes that 
+would result in my laughter reverberating around the room, me leaning 
+over and saying ‘it’s just like that song Moon River’, him nodding 
+absently and then, while running to the bathroom, hearing a voice sing 
+the Moon River song and then him denying it later, but knowing it could 
+only be him, surely. There were more jokes, like impersonating how the 
+Latino tour guide would suddenly start using the telescope to see into 
+other people’s apartments. When it was over and we were done watching a 
+fairly tedious and dry 3D film about space exploration (‘God, we should 
+really see Gravity, it’s just not the same), we exited the tower to 
+discover spontaneous fireworks.</em></p><p id="9f2b" class="gl gm dh az gn b go gp gq gr gs gt gu gv gw gx gy cz" data-selectable-paragraph=""><em class="gz">‘And now my final surprise!’ he joked, taking credit for the Fleet week celebrations. I giggled, half believing it.</em></p><p id="dd58" class="gl gm dh az gn b go gp gq gr gs gt gu gv gw gx gy cz" data-selectable-paragraph=""><em class="gz">We
+ find ourselves running through the oldest part of the city holding 
+hands, searching for food, delirious, overjoyed, letting each other know
+ that we were both equally plagued by thoughts of the other person that 
+entire week. Running through an aisle that seemed to go on forever to 
+reach the one bar at the end of the wharf, still only serving croissants
+ and Hendricks gin and tonics, laughing at how there was literally no 
+more food left in the world except for croissants, and what a ridiculous
+ mix of food and beverage this was.</em></p><p id="c493" class="gl gm dh az gn b go gp gq gr gs gt gu gv gw gx gy cz" data-selectable-paragraph=""><em class="gz">I
+ really want to steal those flowers, I whispered. And before I have time
+ to protest, he has surreptitiously grabbed them and placed them under 
+his jacket, beckoning his head towards the door in a show of planning a 
+quick escape. We run back through the corridor like giddy school 
+children, high on the slight debauchery.</em></p><p id="1dd4" class="gl gm dh az gn b go gp gq gr gs gt gu gv gw gx gy cz" data-selectable-paragraph=""><em class="gz">A kiss at the end of the wharf and every other place too.</em></p><p id="c459" class="gl gm dh az gn b go gp gq gr gs gt gu gv gw gx gy cz" data-selectable-paragraph=""><em class="gz">Mixtapes
+ and theatre tickets and hand drawn flowers sent in the mail and real 
+life orchids delivered and scrabble games, and playing articulate with 
+drunk friends under the stars and breakfast in the shape of a love heart
+ and poker with m&amp;ms for chips and racing each other to see who can 
+read the same book the fastest and a detour for curly fries and fried 
+chicken with waffles and waking up to watch his favourite show, all the 
+tears and then the final swim in Gordon’s Bay.</em></p><p id="c459" class="gl gm dh az gn b go gp gq gr gs gt gu gv gw gx gy cz" data-selectable-paragraph=""><em class="gz">And now; nothingness.</em></p><p id="9499" class="gl gm dh az gn b go gp gq gr gs gt gu gv gw gx gy cz" data-selectable-paragraph=""><em class="gz">I liked the beginning and the end.</em></p><p id="f6ce" class="gl gm dh az gn b go gp gq gr gs gt gu gv gw gx gy cz" data-selectable-paragraph=""><em class="gz">We got lost somewhere in the middle.</em></p><p id="c81d" class="gl gm dh az gn b go gp gq gr gs gt gu gv gw gx gy cz" data-selectable-paragraph=""><em class="gz"><br></em></p><p id="c81d" class="gl gm dh az gn b go gp gq gr gs gt gu gv gw gx gy cz" data-selectable-paragraph=""><em class="gz">We, the never ending honeymooners.</em></p><p><em class="gz"></em></p>','2020-03-27 22:30:17','cover_pics/user-4_honeymoon.jpg',4,6,NULL,'we-never-ending-honeymooners',82,'We, the never ending honeymooners');
+INSERT INTO "blog_post" VALUES(18,'<p>I don’t know how familiar you are with German art and literature, my 
+friends, but I’m sure you’re aware of Germany’s place in the course of 
+20th century history. The perpetrator of two world wars and arguably the
+ most horrific genocide of the modern age, Germany has paid millions of 
+dollars in reparations and taken on and systematized its immense 
+cultural guilt.</p><p><br></p><p>Perhaps the most-visited sublimation of this guilt is the “Memorial to 
+the Murdered Jews of Europe.” Named not for the Holocaust but for the 
+German-perpetrated wrongdoing at its core, the memorial occupies an 
+entire city block just south of the Brandenburg Gate in the center of 
+Berlin. If you have not visited this memorial, it will be hard to 
+understand the horrifying range of emotions that it evokes.</p><p><br></p><p id="d3c2" class="ik il av cd im b in ms ip mt mu mv mw mx my mz ix ge" data-selectable-paragraph="">Let
+ me start with facts: it is a large lot paved with a bland cement grid 
+and covered in endless rows of what appear to be very large cement 
+coffins, also in a regular grid pattern. From the street it resembles a 
+kind of upside down cemetery in stone. If you choose to step between two
+ of these coffins, and perhaps continue to step forward, passing one 
+then another then another, you’ll eventually find that they are getting 
+larger—or you are getting smaller. In any case, you can’t see above them
+ or around them anymore.</p><p id="d3c2" class="ik il av cd im b in ms ip mt mu mv mw mx my mz ix ge" data-selectable-paragraph=""><br></p><p id="39d1" class="ik il av cd im b in ms ip mt mu mv mw mx my mz ix ge" data-selectable-paragraph="">You are lost in a maze of disconcertingly <em class="je">not </em>homogenous
+ structures. There is no discernible pattern to their growth. There is 
+no discernible pattern to your shrinking. There is no easy way to 
+determine your location. It is a maze in the guise of a pattern, and a 
+reflective visitor will feel dizzied by the implications, and somehow, 
+by their complicity in choosing to let the structure act upon them.</p><p><br></p><section class="ge gf gg gh gi"><div class="n p"><div class="ai aj ak al am kg ao v"><p id="470a" class="ik il av cd im b in ms ip mt mu mv mw mx my mz ix ge" data-selectable-paragraph="">I share this example so that you’ll know that Modern Germany is aware of its place in history.</p><p id="8f58" class="ik il av cd im b in ms ip mt mu mv mw mx my mz ix ge" data-selectable-paragraph="">In
+ fact, Germany has been shockingly aware of its own subtle cultural 
+shifts for quite a long time. The word Zeitgeist, one of those 
+wonderfully expressive German portmanteaus for which our otherwise 
+dynamic language cannot seem to produce an analog, means “spirit of the 
+times.” The German literary tradition is uncommonly preoccupied with the
+ task of eloquently framing and presenting the current Zeitgeist.</p><p id="ca0d" class="ik il av cd im b in ms ip mt mu mv mw mx my mz ix ge" data-selectable-paragraph="">Perhaps
+ no author was as skilled at reducing his entire culture to an elaborate
+ metaphor than Thomas Mann. In his century-straddling lifetime, he wrote
+ <em class="je">The Magic Mountain </em>(1924), perhaps our most ironic and philosophical take on Europe’s descent into World War I, and <em class="je">Doktor Faustus </em>(1947),
+ an equally symbolic novel mirroring the rise of National Socialism. 
+Although not powerful enough to stop the course of history, Mann was 
+perceptive enough to save himself from it. In 1933 he emigrated to Los 
+Angeles, and in 1936 the Nazi government revoked his German citizenship.</p><p id="ca0d" class="ik il av cd im b in ms ip mt mu mv mw mx my mz ix ge" data-selectable-paragraph=""><br></p><section class="ge gf gg gh gi"><div class="n p"><div class="ai aj ak al am kg ao v"><p id="4170" class="ik il av cd im b in ms ip mt mu mv mw mx my mz ix ge" data-selectable-paragraph="">The list of German Zeitgesit-capturers is endless: Bertolt Brecht, Georg Büchner, Hans Böll, Heinrich Heine, Günter Grass…</p><p id="7bba" class="ik il av cd im b in ms ip mt mu mv mw mx my mz ix ge" data-selectable-paragraph="">These
+ men focused the issues and absurdities of their time into 
+self-contained worlds that simultaneously warned and mourned the worlds 
+they lived in.</p><p id="f76e" class="ik il av cd im b in ms ip mt mu mv mw mx my mz ix ge" data-selectable-paragraph="">Some
+ English-speaking fiction writers have embarked upon the mission of 
+capturing their Zeitgeist, but few have achieved the simple grace of 
+their German counterparts. Our language, our culture, our Zeitgeist 
+itself, seems to require something different. The Zeitgeist-capturers of
+ the English language are moving outside of fiction altogether.</p><p id="f76e" class="ik il av cd im b in ms ip mt mu mv mw mx my mz ix ge" data-selectable-paragraph=""><br></p><section class="ge gf gg gh gi"><div class="n p"><div class="ai aj ak al am kg ao v"><p id="6a5b" class="ik il av cd im b in ms ip mt mu mv mw mx my mz ix ge" data-selectable-paragraph="">The
+ English-speaking world is, compared to those other great cultures of 
+the 20th century, culturally complex. Particularly the United States, 
+Canada, and Australia are nations of immigrants. Our cultures are 
+growing, new cultures are arising. What for the Germans was digestible, 
+if only to the most perceptive, is for us a rhizome shooting countless 
+stalks out of the ground at an incredible rate.</p><p id="a11f" class="ik il av cd im b in ms ip mt mu mv mw mx my mz ix ge" data-selectable-paragraph="">We
+ no longer have the time or space to capture cultures in novels. Culture
+ is too big, and culture is too fast. Those authors interested in 
+Zeitgeists now work in small bursts of text or speech. We live in the 
+age of the essay, the photograph, and the memoir. Take for example Alain
+ de Botton’s <em class="je">The Pleasures and Sorrows of Work (2009)</em>.
+ Attempting to show how we work and relate to our labor in the modern 
+day, he writes a collection of essays—each on a different aspect of the 
+same topic. Each essay is accompanied by several complementary 
+photographs to do the work of contextuliazation that language cannot in 
+such limited space.</p><p id="fa3b" class="ik il av cd im b in ms ip mt mu mv mw mx my mz ix ge" data-selectable-paragraph="">Marginally
+ successful though Botton’s book is in its goal, glimpses into the 
+Zeitgeist are not commonly found in such ambitious scale. Much more 
+commonly writers with a concern for <em class="je">who are we </em>and <em class="je">what is our culture</em>
+ narrow their scope considerably. Take, for example, “Some Dreamers of 
+the Golden Dream” (1966) an exquisite essay by Joan Didion. In it she 
+uses the story of one domestic drama into a compelling and tragic study 
+of the culture of the entire San Bernardino Valley.</p><p id="fa3b" class="ik il av cd im b in ms ip mt mu mv mw mx my mz ix ge" data-selectable-paragraph=""><br></p><p id="fa3b" class="ik il av cd im b in ms ip mt mu mv mw mx my mz ix ge" data-selectable-paragraph=""><br></p><p id="fa3b" class="ik il av cd im b in ms ip mt mu mv mw mx my mz ix ge" data-selectable-paragraph="">Culture can no longer be reduced to microcosm. Writers seeking to 
+capture anything significant about culture must now seek living 
+microcosms and reduce them even further. In a world of constant and 
+subtle change, the historical event is no longer sufficient as jumping 
+off point to capture a Zeitgeist. We must now seek to find larger 
+meaning in stories and experiences, and we must cast our net wide.</p></div></div></section></div></div></section></div></div></section>','2020-03-28 00:23:28','cover_pics/user-4_zeil.jpeg',4,6,'Self-aware literature in a complex society','name-your-zeitgeist',3,'Name Your Zeitgeist');
+INSERT INTO "blog_post" VALUES(19,'<section class="eu ev ew ex ey"><div class="n p" style="line-height: 2;"><div class="z ab ac ae af cy ah ai" style="line-height: 2;">People already don’t trust one another. And it’s about to get a whole lot worse.<p id="db80" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">I
+ grew up conservative. I was always taught that lying wasn’t okay. Your 
+“word is your bond”, and you stood by it regardless of it’s convenience.
+ Our grandparents lived by that motto, but today truth is only truth if 
+it’s convenient to us.</p><p id="ad59" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">I distinctly remember my first lie at age 20.</p><p id="ba2e" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">I
+ didn’t realize how abnormal this thinking was until I was a freshman in
+ college. A girl I liked told me she thought I was lying about something
+ totally random and insignificant. I responded by telling her that I had
+ never lied. She called me a liar for saying that.</p><p id="d53b" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">We never spoke again after that.</p><p id="6e8c" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">I spent the next 5 years of my life trying to figure out if everyone else around me was lying.</p><p id="26f4" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">Biggest shocker was when I figured out how often my parents lied.</p><p id="f108" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">Deepfakes
+ are super advanced lies. They take something that could probably 
+happen, and make it a reality. And because the line between what is 
+distinguishable and what isn’t is becoming so damn thin, an enormous 
+amount of people are deceived into believing something that is in fact a
+ lie.</p><p id="534e" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">Deepfakes are in fact the most advanced lie.</p><p id="e988" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">I
+ recall when the internet started to call images “photoshopped”, good 
+designers and pranksters alike found ways to manipulate images in their 
+favor through Adobe’s photoshop.</p><p id="d0a6" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">Carriers
+ were made off being good at photoshopping away the blemishes and 
+refining image quality for marketing and fame purposes, and now the vast
+ majority of Instagram and Snapchat is “photoshopped” live. Not only do 
+most people not care, but it’s actually common place, it is accepted.</p><p id="7cba" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">The lie is accepted.</p><p id="9c6c" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">I
+ posted a photo to Reddit a couple months back. I was shocked at how 
+many clustered security cameras there were in JFK. They were everywhere 
+and I thought the dystopian nature of JFK would get me some natural 
+karma on the internet’s front page.</p><p id="2e51" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">Instead everyone said I faked it.</p><p id="b7d9" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">“Looks photoshopped” one comment said.</p><p id="e643" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">“Looks fake to me” said another.</p><p id="b426" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">The
+ funny thing is it was an actual photo, taken on my phone, just hours 
+before. I zoomed a bunch on the photo, to protect the security of the 
+gate and to quickly remove the faces of the people in line and running 
+security.</p><p id="3acb" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">But no photoshopping here.</p><p id="ad19" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">A friend saw the post and mentiond that people probably weren’t used to the quality of the new iPhone’s camera.</p><p id="7d90" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">“Yeah that’s probably it” I said, “that camera is crazy.”</p><p id="cb66" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">When everything is a lie nothing can be the truth.</p><p id="c476" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">Yesterday on Twitter I kept seeing a video of Tiger Woods <a href="https://twitter.com/qtrresearch/status/1208606495501438978?s=21" class="bx ei fn fo fp fq" target="_blank" rel="noopener nofollow">putting a ball</a>,
+ and in true gangster form, he turn away from the putt while 
+simultaneously removing his hat in victory, seconds later the putt sinks
+ into the hole.</p><p id="3100" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">Geez I thought, this guys is a legend. What a baller move.</p><p id="7bb6" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">Turns
+ out it was a fake. Not a deep fake, no faces had been changed, no 
+voices had been added to manipulate the audience into thinking Tigger 
+was saying something he actually wasn’t.</p><p id="e4f2" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">But it was a damn good manipulation. A compete and total farse.</p><p id="3979" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">Here is the <a href="https://twitter.com/golfchannel/status/1206040362093105152?s=21" class="bx ei fn fo fp fq" target="_blank" rel="noopener nofollow">original unedited</a> (to my knowledge)</p><p id="dd8b" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">Not
+ only did I believe it, but it seems just about everyone else did on my 
+Twitter feed as well. I saw it posted countless times throughout the 
+day.</p><p id="c763" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">Moments after that, on Twitter, I saw someone <a href="https://twitter.com/harlanhaskins/status/1208580521476919302?s=21" class="bx ei fn fo fp fq" target="_blank" rel="noopener nofollow">post a photo</a> of the new Mac Pro on a plane flight. My first thought, “that’s got to be fake.”</p><p id="83c1" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">I scrolled the comments “ARKit is just… amazing.”</p><p id="4100" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">My god it could be ARKit. Is it ARKit? I don’t even know. I moved on without knowing.</p><p id="ab61" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">Fascinating how quickly I could care less if someone lied to me.</p><p id="9118" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">We’ve
+ also been seeing this play out in politics lately. Won’t go super heavy
+ into that shit storm, but without a doubt what is “fact” and what is 
+“farse” is becoming one and the same.</p><p id="bd43" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">The truth is normalizing as the lie.</p><p id="d9c2" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">And the sad part is hardly anyone cares. We just move on to the next day, the next subtle change of the facts, the next lie.</p><p id="69c2" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">This
+ journey of truth shifting has led us to deepfakes. We are on the verge 
+of massive  dystopian destruction of truthful reality. The core of 
+everything we once knew and held known is on the precipice.</p><p id="89c0" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">Once
+ Deepfakes are out in the wild, unknown as anything other than truth or a
+ close resemblance there of, the ramifications of this will be profound.</p><p id="d14e" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">Politicians
+ will say things they never said, celebrities will encourage their fans 
+to buy something when they never actually did, marriages will be ruined 
+even though nothing was in fact done, governments will shift public 
+opinion about war even when no war was ever warranted.</p><p id="5064" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">Truth manipulation is the ultimate hack if you think about it.</p><p id="3acd" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">We did it to ourselves.</p><p id="b047" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">Can we pivot as a society and undo it ourselves?</p><p id="b94a" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">—</p><p id="1722" class="ez fa ap ce fb b fc fd fe ff fg fh fi fj fk fl fm eu" data-selectable-paragraph="" style="line-height: 2;">By the way… can you spot the lie within this article?</p></div></div></section>','2020-03-28 12:05:07','',4,2,NULL,'deepfakes-are-going-fuck-society',1,'Deepfakes are going to fuck up society');
+INSERT INTO "blog_post" VALUES(21,'<p class="_6bdca">Nigeria, Africa’s most populous country, has a case 
+count of fewer than 50 coronavirus cases. But what’s become increasingly
+ clear is that low number is not because the country has been lucky or 
+particularly effective with preventing the spread of the disease—it’s 
+more likely because local authorities are simply not testing enough 
+people.</p><p class="_6bdca">The <a href="https://www.ncdc.gov.ng/diseases/sitreps/?cat=14&amp;name=An">latest available report</a>
+ by Nigeria’s Centre for Disease Control (NCDC) shows the country had 
+tested only 152 people as of Mar. 22. That’s compared with South Africa 
+which has conducted <a href="http://www.nicd.ac.za/">over 15,500 tests</a> so far despite recording its index case <a href="https://qz.com/africa/1813309/coronavirus-africa-algeria-south-africa-senegal-confirm-cases/">a week later than Nigeria</a>.</p><p class="_6bdca">For
+ its part, the NCDC has adopted a strategy of limiting tests to only 
+people already showing symptoms of the disease or have come in contact 
+with confirmed cases. It’s similar to approaches adopted in the United 
+States and the United Kingdom but in comparison to those countries, 
+Nigeria’s test numbers are far lower. The UK had tested <a href="https://twitter.com/DHSCgovuk/status/1241793655737921537">over 78,000 people</a> as of Mar. 22.</p><p class="_6bdca">The
+ slow pace of Nigeria’s tests is largely down to a lack of capacity. 
+While it can conduct tests locally, Nigeria lacks the manpower or 
+capacity to do so on a very large scale. Indeed, very few countries do: 
+despite ramping up testing in recent days, the UK remains short of its <a href="https://www.telegraph.co.uk/news/2020/03/23/pressure-increase-testing-number-coronavirus-cases-uk-continues/">10,000 tests per day target</a>. The danger however is that, unlike the UK, Nigeria’s public health infrastructure is <a href="https://www.icirnigeria.org/investigation-minister-of-health-exaggerated-nigeria-not-prepared-to-combat-coronavirus/">starkly short</a> on critical medical equipment and facilities to deal with a full-blown outbreak: there are reportedly<a href="https://punchng.com/nigeria-has-less-than-500-ventilators-for-coronavirus-patients-sources/"> fewer than 500 ventilators</a> across the entire country.</p><p class="_6bdca"><br></p><p class="_6bdca">Beyond low testing figures, there are also questions over Nigeria’s handling of the outbreak since <a href="https://qz.com/africa/1810075/coronavirus-nigeria-confirms-sub-saharan-africas-first-case/">confirming its index case</a>
+ at the end of February. Despite evidence that early confirmed cases 
+comprised mainly of foreign travelers and Nigerians returning from 
+high-risk countries, the Nigerian government did not move to limit 
+incoming international flights until Mar. 23 following widespread calls 
+from civic society groups. Several other African countries had <a href="https://qz.com/africa/1819076/coronavirus-african-countries-issuing-travel-bans-and-quarantine-restrictions/">adopted stiffer measures</a> on international flights a week earlier to mitigate the risk of importing the virus.</p>','2020-03-28 12:37:00.254053','cover_pics/user-4_nigeria-airport_EENCYeQ.jpg',4,5,'','the-troubling-data-point-behind-nigerias-low-number-of-coronavirus-cases',1,'The troubling data point behind Nigeria’s low number of coronavirus cases');
+INSERT INTO "blog_post" VALUES(22,'<p class="_6bdca">Since scientists learned the coronavirus (Covid-19) 
+might have origins with bats and potentially spread to humans through 
+pangolins in a wildlife market in Wuhan, China, Chinese authorities have
+ <a href="https://www.theguardian.com/environment/2020/feb/25/coronavirus-closures-reveal-vast-scale-of-chinas-secretive-wildlife-farm-industry" rel="noopener noreferrer" data-saferedirecturl="https://www.google.com/url?q=https://www.theguardian.com/environment/2020/feb/25/coronavirus-closures-reveal-vast-scale-of-chinas-secretive-wildlife-farm-industry&amp;source=gmail&amp;ust=1585068549180000&amp;usg=AFQjCNEi9yO575P0EYXI8S-FXx8ZhbXvBQ">closed down</a> or put under quarantine about 20,000 wildlife farms to curb wildlife trade. Vietnam is <a href="https://www.independent.co.uk/news/world/asia/coronavirus-animals-china-vietnam-wildlife-ban-wet-markets-disease-pandemic-a9410236.html" rel="noopener noreferrer" data-saferedirecturl="https://www.google.com/url?q=https://www.independent.co.uk/news/world/asia/coronavirus-animals-china-vietnam-wildlife-ban-wet-markets-disease-pandemic-a9410236.html&amp;source=gmail&amp;ust=1585068549180000&amp;usg=AFQjCNG8653VDf0XbBVEWOrxEXZdeGV9fQ">considering</a> a similar ban.</p><p class="_6bdca">This
+ drastic action by China, the largest market of pangolin in East Asia is
+ getting commendation globally from wildlife conservationists. However, 
+they are concerned Nigeria, one of the <a href="https://wildlifejustice.org/wp-content/uploads/2020/02/WJC_PangolinReport_2020_Executive-Summary.pdf">largest pangolin trade hubs</a> in Africa has not reacted to these reports. An <a href="https://wildlifejustice.org/wp-content/uploads/2020/02/WJC_PangolinReport_2020_Executive-Summary.pdf">investigation</a> into pangolin trafficking found Nigeria was linked to 55% of pangolin scales seized global between 2016 and 2019.</p><p class="_6bdca">The
+ trade of pangolin, an endangered scaly ant-eating animal has been of 
+concern for many wildlife conservation groups as it is the most 
+trafficked mammal in the world. In China and Vietnam, the pangolin is 
+valued for its scales—which are used to make medicines—as well as for 
+its meat.</p><p class="_6bdca">WildAid, another organization that works 
+to increase public support for wildlife conservation in Africa, is also 
+urging Nigeria to join China in closing down live wildlife markets and 
+crack down on its bushmeat trade to prevent another disease outbreak. 
+Locally, bushmeat refers to wild animals hunted or caught in forests, 
+and can range from large bush rats to antelopes. It is often smoked, 
+cooked in stews and served with meals as a delicacy.</p><p class="_6bdca"><img style="width: 620px;" src="/media/django-summernote/2020-03-28/443d283a-b44c-46cc-9f13-c024e680f62b.jpg"></p><p class="_6bdca"><br></p><p class="_6bdca">“The coronavirus outbreak has finally made us 
+recognize that conservation is a public health issue,” says WildAid CEO 
+Peter Knights. “China is now taking the right steps by closing wildlife 
+markets, increasing penalties, strengthening enforcement and improving 
+public education to dissuade wild meat consumption. Ideally, Nigeria 
+should follow suit by shutting down the bushmeat trade, and protect 
+endangered pangolins.”</p><p class="_6bdca">Though Nigeria already has a
+ penalty of $2.70 fine (for a first-time offense) for hunting or selling
+ a pangolin it is viewed as being highly inadequate as a deterrent 
+measure for a global trafficking hub. This is especially true when 
+compared with other African countries with less trade volume. Uganda, 
+for instance, has a stringent law that includes penalties of up to life 
+imprisonment and/ or fines up to the equivalent of $5.4 million for 
+certain wildlife crimes.</p><p class="_6bdca">“The administration of 
+laws and regulations to nip the [pangolin] trade has so far been 
+ineffective due to limited funding and the intractable nature of the 
+trade,” says Stephen Aina of the Nigerian Conservation Foundation (NCF).</p><p class="_6bdca">Open
+ market trade of pangolin bushmeat has dropped in local markets in 
+Gabon’s capital Libreville due to fear of coronavirus transmission, 
+according to a recent <a href="https://www.france24.com/en/20200316-pangolin-sales-plunge-in-gabon-over-coronavirus-fears" rel="noopener noreferrer" data-saferedirecturl="https://www.google.com/url?q=https://www.france24.com/en/20200316-pangolin-sales-plunge-in-gabon-over-coronavirus-fears&amp;source=gmail&amp;ust=1585068549180000&amp;usg=AFQjCNHKBzH41Q4fm5XijxDrMP_wA1_bJQ">report</a>. But in Nigeria there has been little impact on sales so far, says Aina.</p><p class="_6bdca">“Pangolins
+ are still consumed as edible meats in the rural communities, in the 
+same way, wildlife trade was unabated during the Ebola epidemic.”, he 
+said. “In fact, the notion of adding a few drops of red palm oil to 
+prepare wildlife meats as a measure to kill any foreign virus gained 
+prominence during the Ebola epidemic in Africa”, he added.</p><p class="_6bdca">Fears
+ around the pangolin’s link to coronavirus was reported by scientists in
+ China who believe the mammal was the most likely intermediate host from
+ which humans contracted the novel coronavirus. The pangolin-vector 
+claim was made public on Feb. 7 <a href="http://www.xinhuanet.com/english/2020-02/07/c_138763566.htm">by researchers</a>&nbsp;at
+ South China Agricultural University who said they found the genome 
+sequence of the coronavirus separated from pangolins to be 99% identical
+ to that collected from infected people.</p><p class="_6bdca">There are 
+speculations that the ban on wildlife trade in China will be permanent. 
+Nevertheless, Pangolin trafficking may still flourish in Nigeria because
+ while China dropped to be the primary destination for pangolin from 
+Nigeria only in East Asia in May 2018, Vietnam has since then been 
+the&nbsp;primary destination for pangolin from Nigeria worldwide.</p>','2020-03-28 12:47:08.563476','cover_pics/user-4_nig-meat.jpg',4,5,'','despite-coronavirus-fears-nigeria-has-taken-no-action-to-stop-its-pangolin-trade',12,'Despite coronavirus fears, Nigeria has taken no action to stop its pangolin trade');
+INSERT INTO "blog_post" VALUES(23,'<div class="_8dfb8"><div id="article-content"><p class="_6bdca">Yesterday, the WHO’s coronavirus <a href="https://cms.qz.com/wp-content/uploads/2020/03/mythbuster-1.png">myth-buster page</a> said there was no evidence that animals such as dogs or cats could be infected with virus. Today, that section is gone.</p><p class="_6bdca">The
+ WHO told Quartz in an email that, “currently, there is no evidence that
+ pets such as dogs and cats have infected humans with Covid-19.”</p><p class="_6bdca">The
+ revised stance comes in the wake of an infected dog being found in Hong
+ Kong. The dog tested positive after remaining with its owners who were 
+sick with the virus. The dog wasn’t showing any clinical signs of the 
+disease, according to <a href="https://www.oie.int/wahis_2/public/wahid.php/Reviewreport/Review?page_refer=MapFullEventReport&amp;reportid=33546">a report</a>
+ from World Organisation for Animal Health. There’s no evidence that 
+dogs can spread the disease or that the disease can cause an animal to 
+fall ill, the organization says, though further studies may bring new 
+findings.</p><p class="_6bdca">The organization advises pet owners 
+infected or susceptible of being infected with the coronavirus to avoid 
+close contact with their pets and have another member of the household 
+care for the animals. If they must look after their pet, they should 
+maintain good hygiene practices and wear a face mask if possible. More 
+information regarding pet health amid the epidemic can be found <a href="https://www.oie.int/en/scientific-expertise/specific-information-and-recommendations/questions-and-answers-on-2019novel-coronavirus/">on their website</a>.</p><p class="_6bdca">Shelley
+ Rankin, a microbiologist at the University of Pennsylvania School of 
+Veterinary Medicine, Philadelphia, advises pet owners include animals in
+ their family’s preparedness planning. <a href="https://www.sciencemag.org/news/2020/03/quarantine-cat-disinfect-dog-latest-advice-about-coronavirus-and-your-pets">She told Science</a>, that some animals might be quarantined in a hospital, or at home.</p></div></div>','2020-03-28 12:50:32.851049','cover_pics/user-4_cat-looking-out-of-window-e1584122530334.jpg',4,5,'','the-who-has-changed-its-position-on-coronavirus-and-pets',8,'The WHO has changed its position on coronavirus and pets');
+INSERT INTO "blog_post" VALUES(24,'<div class="n p" style="line-height: 2;"><div class="z ab ac ae af dm ah ai" style="line-height: 2;"><p id="6578" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“I’ve been thinking lately.”</p><p id="a79a" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;"><br></p><p id="a79a" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“About?”</p><p id="8515" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“A lot of things. And very few things. Does that make sense?”</p><p id="17a8" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“It does to me.”</p><p id="fc8e" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">She smiles.</p><p id="ef23" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“I thought it might.”</p><p id="fc0c" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">I wonder if this is what we’re looking for, understanding.</p><p id="2a58" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">It’s
+ our first time out alone. I knew her friends, she knew mine. Every now 
+and then we’d bump into each other and exchange small talk.</p><p id="8fe6" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">Hows your day? Hows work? What have you been up to? Anything new?</p><p id="1b2d" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">We spoke, but never really said anything.</p><p id="1d7c" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">Still, I was drawn to her.</p><p id="6c7d" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">I knew she had more to say.</p><p id="c38e" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">With some people you just know.</p><p id="e283" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“So what’s something you’ve been thinking about?”</p><p id="e87a" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">She shuffles through her thoughts, trying to find the right topic.</p><p id="717e" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“Buildings.”</p><p id="766f" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“Buildings? What about them?”</p><p id="85ae" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“I live on the 12th story of my building and it’s 19 stories altogether. That means there are seven floors above me. <em class="hy">Seven</em>.”</p><p id="38a1" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“So?”</p><p id="0e17" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“Well
+ each story has several apartments. These apartments are filled with 
+beds, couches, televisions, desks, chairs, rugs, all sorts of things. So
+ much mass and weight just there, floating right above me. I realized I 
+never give it a second thought. I go about my days without a worry, 
+oblivious to what’s just above my head. It’s one of the many things I 
+take for granted.”</p><p id="df3d" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">I wonder why we never notice how much weight everything and everyone around us is carrying.</p><p id="f8a4" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">I
+ imagine her lying in bed at night thinking about this. I try to guess 
+what sparked her train of thought. Was it the sound of the neighbors 
+television? Somebody moving furniture around? The comfort of her bed? 
+The sight of her dark ceiling?</p><p id="589b" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">Thought works in weird ways, I think.</p><p id="e644" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“I’ve never looked at it that way, it’s pretty profound.”</p><p id="388a" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“It’s not profound, it’s just rambling.”</p><p id="17da" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“It’s essential rambling.”</p><p id="6a9e" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“Your turn then. What do you see when you look at buildings?”</p><p id="7dbc" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">I shuffle through my thoughts, trying to find the right answer.</p><p id="4d73" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“Stories.”</p><p id="5b76" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“Stories?”</p><p id="91b6" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“Yeah.
+ When I look at buildings I think about the people living inside them. 
+Everybody has a story. I wonder how many untold stories are trapped 
+behind the concrete walls. Sometimes I even try to guess what type of 
+story is hidden behind each window. A drama? A comedy? A romance? I’ll 
+never know.”</p><p id="8df6" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">I realize I’ve thought more about buildings than I thought I did.</p><p id="9508" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“Seems like you’ve been doing a lot of thinking too.”</p><p id="8298" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“I’m just trying to make sense of things.”</p><p id="f5e5" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“That makes the two of us.”</p><p id="b431" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">I think about us.</p><p id="ddc8" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">I’m 25, unemployed, and single.</p><p id="82e2" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">She’s 28, works a 9–5, and is in a relationship.</p><p id="a9b5" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">She says it’s complicated.</p><p id="107c" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">She says talking to me isn’t.</p><p id="3c48" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">I wonder where “us” is going.</p></div></div><hr class="hz ci ia ib ic id ie if ig ih ii"><section class="dh di dj dk dl"><div class="n p" style="line-height: 2;"><div class="z ab ac ae af dm ah ai" style="line-height: 2;"><p id="00af" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“I love watching strangers.”</p><p id="3b05" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“You mean people watching?”</p><p id="472e" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“Yeah, but specifically strangers.”</p><p id="5885" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“Why specifically strangers?”</p><p id="afd6" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">She turns to look at the few people walking around us.</p><p id="795f" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“They’re blank canvases. They could be anyone, doing anything, going anywhere. Their possibilities are endless.”</p><p id="ce83" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">I turn and look at them too.</p><p id="949e" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">I see mothers, fathers, sons, daughters, friends, lovers, and strangers.</p><p id="d040" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">The covers of books I’ll never read.</p><p id="9993" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">What they are is clear, who they are isn’t.</p><p id="3dce" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">I turn and look at her.</p><p id="e75f" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">No cover, only words.</p><p id="99a7" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">Who she is is clear, what she is isn’t.</p><p id="68b8" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“Sometimes when I’m stranger watching, I fantasize about being able to know their entire stories by touching them.”</p><p id="c0f0" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“Wouldn’t that be counterproductive?”</p><p id="e52a" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“How?”</p><p id="6dff" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“Learning their story would mean they aren’t strangers anymore.”</p><p id="9f31" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“So?”</p><p id="1817" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“Doesn’t that mean you’d lose interest in them?”</p><p id="22f1" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“Depends on their story.”</p><p id="f998" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“That’s fair. And what about their endless possibilities? Do they lose them?”</p><p id="ea1d" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“No. We’re all strangers in someone’s eyes.”</p><p id="823f" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">I wonder what I am in hers.</p><p id="e1eb" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">She turns and looks directly at me.</p><p id="00b1" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">She’s peering through a window.</p><p id="6297" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">I’m a stranger in a building she’s trying to touch.</p><p id="686f" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">She reaches out and puts a finger on my hand.</p><p id="2c58" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“Anything?”</p><p id="5919" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“No. Not yet.”</p><p id="e2b2" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“Not yet?”</p><p id="5e12" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">She pulls away and smiles.</p><p id="248b" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“It’s only our second time out together, I’ll know your story eventually.”</p><p id="02ef" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">I know she will.</p><p id="fbb3" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">I wonder what type of story this is turning into.</p><p id="d76f" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">A romance? A tragedy? A comedy? An epic?</p><p id="17df" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">A poem? A short story? A novella? A novel?</p><p id="43e8" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">I wonder if she’s going to leave her mark on it.</p><p id="d7e5" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">I can still feel the warmth of her touch on my hand.</p><p id="77c8" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">I wonder if she already has.</p></div></div></section><hr class="hz ci ia ib ic id ie if ig ih ii"><p id="6da3" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“Do you know how airplanes fly?”</p><p id="c095" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“Engines, wings, air, speed, that type of stuff?”</p><p id="9c61" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">She laughs.</p><p id="e8ad" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“I said something similar when I was first asked. Not too far off. It’s more lift, drag, thrust, gravity type of stuff though.”</p><p id="1e42" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“No idea what any of that stuff is. I imagine this is the part where you enlighten me.”</p><p id="b3bb" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“You have a pretty realistic imagination.”</p><p id="ec46" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">If only, I think.</p><p id="0daa" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">She
+ starts talking about Newton’s Laws, air molecules, upward force, 
+downward force, and of course lift, drag, thrust, and gravity.</p><p id="b7dc" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">She
+ says that in order to fly, an airplane’s engine must move its 
+propellers fast enough to push air molecules backwards. The backward 
+motion of the air molecules moves the plane forward. When this forward 
+movement becomes fast enough, the wings of the plane begin pushing air 
+molecules downward. When enough air molecules are pushed down, the plane
+ goes up.</p><p id="3d95" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">I have her explain this to me several times to make sure I get it.</p><p id="746b" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“So backwards causes forwards and down equals up?”</p><p id="dcb4" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“Yup.”</p><p id="fb08" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“But aren’t they opposites?”</p><p id="8cca" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“Sometimes, opposites need each other to work.”</p><p id="ec0d" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">I think about how differently we work.</p><p id="88d2" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“It’s
+ strange, to me airplanes were always heavy metal objects that flew 
+through the sky. Magic. Now, you’re saying that airplanes are engines, 
+wings, force, gravity, rules, and laws. Science.”</p><p id="61c8" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“Is that a problem?”</p><p id="0d60" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“I think it is. I prefer the former to the latter.”</p><p id="b4d0" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“And what if I told you they were the same?”</p><p id="30fb" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“How so?”</p><p id="134e" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;"><em class="hy">“Magic is simply undiscovered science, and science is merely discovered magic</em>.”</p><p id="8a9d" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">I’m skeptical.</p><p id="452d" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“Did you come up with that?”</p><p id="3cfa" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“No, it’s a quote.”</p><p id="41c3" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“Who said it? A scientist?”</p><p id="9b5b" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">“No. A poet.”</p><p id="c30f" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">I’m far less skeptical.</p><p id="0502" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">I imagine scientists writing verse and poets conducting experiments.</p><p id="9468" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">I think about up causing down and magic being science.</p><p id="214e" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">I ponder perspective.</p><p id="0065" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">She sees buildings, strangers, and science.</p><p id="2ed4" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">I see stories, books, and magic.</p><p id="d7d6" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">Combining what we each see gives us more.</p><p id="454a" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">I wonder if this is what we’re looking for, more.</p><p id="f8fc" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">We live what we perceive.</p><p id="5a32" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;"><mark class="rg rh jm">The world’s a simple place, but people complicate it.</mark></p><p id="b186" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">It’s filled with buildings and stories, strangers and lovers, ups and downs, and science and magic.</p><p id="e8fe" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">A lot of things and very few things.</p><p id="1dd5" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">Together, we’re trying to make the most of them.</p><p id="6a85" class="hk hl dp ar hm b hn ho hp hq hr hs ht hu hv hw hx dh" data-selectable-paragraph="" style="line-height: 2;">I wonder if this is us starting to understand our story.</p>Or us getting lost in it','2020-03-28 12:59:10','cover_pics/user-4_lost_GkexPc8.jpeg',4,6,NULL,'lost-in-conversation',25,'Lost in Conversation');
+INSERT INTO "blog_post" VALUES(25,'<p>This about the times when we all reverberate in a theater, consumed by 
+anticipation in the pitch black as the orchestra tunes itself toward 
+endless possibility.</p><p><br></p><p>This is about Airplane and a child’s body tethered to yours yet 
+“soaring” above the earth in the tiny, infinite world you’ve imagined 
+and created together. You are connected by feet and chest and name and 
+blood, and she is propelled to the sky by your magic and grounded to 
+safety by your love.</p><p><br></p><p>This is about my fingers as a dune buggy race on the endless sands of 
+your back or as submarines descending through the uncharted depths of 
+your hair to your very top’s very bottom.</p><p><br></p><p>This is about when he kisses my cheek and hugs me with intention and 
+heat and says I Love You, and about falling in love with this man with a
+ fearlessness reserved only for friendship.</p><p><br></p><section class="cy cz da db dc"><div class="n p"><div class="z ab ac ae af dd ah ai"><p id="ad37" class="ip iq dy ay ir b er is et it iu iv iw ix iy iz ja cy" data-selectable-paragraph="">This
+ is about 100,000 worshippers in a stadium captivated by the sound of 
+drums emerging from a tunnel, echoing through our memory and roaring 
+into the present, triumphantly, on a rocket fueled by nostalgia and 
+electricity and hope.</p></div></div></section><hr class="jb dg jc jd je im jf jg jh ji jj"><section class="cy cz da db dc"><div class="n p"><div class="z ab ac ae af dd ah ai"><p id="6c36" class="ip iq dy ay ir b er is et it iu iv iw ix iy iz ja cy" data-selectable-paragraph="">This
+ is about lying face down, my body cradled by the kind sponge of the 
+carpet, and about doing what I rarely do: asking for exactly what I 
+need, and having you oblige with enthusiasm and laminate your body on 
+mine like skin. Incubated by humanity, I can feel your heart singing 
+silent lullabies through my clothes and my skin and into the deepest 
+regions of my insides’ unknowns.</p></div></div></section><hr class="jb dg jc jd je im jf jg jh ji jj"><section class="cy cz da db dc"><div class="n p"><div class="z ab ac ae af dd ah ai"><p id="65b8" class="ip iq dy ay ir b er is et it iu iv iw ix iy iz ja cy" data-selectable-paragraph="">This
+ about our sacred heirloom called The Hora, which we’ve passed down for 
+untold generations, and about holding hands with a complete stranger or 
+with the cousin who tried to set up your sister with her granddaughter, 
+who is also your sister’s cousin. This is about concentric circles, 
+bound by survival, expanding and contracting with life like lungs, then 
+orbiting like planets, held in cosmic alignment by the indefatigable 
+gravity of love at the center; two souls on chairs, launched to 
+impossible heights as one.</p></div></div></section><hr class="jb dg jc jd je im jf jg jh ji jj"><p id="928c" class="ip iq dy ay ir b er is et it iu iv iw ix iy iz ja cy" data-selectable-paragraph="">This
+ is about sitting at my grandfather’s hospice bed, kneading his feet, 
+feeling the softest softs and the hardest hards of his soles and his 
+skin and his toes, the kind of extremities achieved by a near-century.</p><p id="4b15" class="ip iq dy ay ir b er is et it iu iv iw ix iy iz ja cy" data-selectable-paragraph="">These
+ are the feet that carried my grandfather into Germany and, somehow, out
+ of an inferno that swallowed so many once-future grandfathers. These 
+are the feet that carried him, by a separate miracle, to safety after 
+his jeep flipped into a river. He never learned to swim. Perhaps he was 
+divinely plucked out of the water like Moses. Perhaps he floundered, 
+paddled, stumbled onto land and onto those feet, landing, like a cat 
+after a several-story plummet, terrified but somehow, inexplicably, 
+whole.</p><p id="93e6" class="ip iq dy ay ir b er is et it iu iv iw ix iy iz ja cy" data-selectable-paragraph="">These
+ are the feet that carried the hands that carried the coffins of two 
+wives. The feet that carried the hands that carried the children and 
+grandchildren and great-grandchildren by the dozens. The feet that 
+carried him to the Islamic Center and across centuries of division, and 
+that blazed a trail of togetherness and community and peace. The feet 
+that, as a boy, took him to Germany to destroy Nazis and, as a man, to 
+plant trees alongside his progeny in a land whose promise Nazis could 
+not destroy.</p><p id="56f7" class="ip iq dy ay ir b er is et it iu iv iw ix iy iz ja cy" data-selectable-paragraph="">These
+ are the feet that carried him to the men in the prison and to the new 
+immigrants at the community center so he could, as it were, walk in 
+their journeys to heal and restore, thrive and survive.</p><p id="88c0" class="ip iq dy ay ir b er is et it iu iv iw ix iy iz ja cy" data-selectable-paragraph="">These
+ are the feet that walked beside my grandmother in times when romance 
+was also exercise. I’ve often thought about the things that sustain us 
+and the way we sustain each other.</p><p id="88c0" class="ip iq dy ay ir b er is et it iu iv iw ix iy iz ja cy" data-selectable-paragraph=""><br></p><p id="4e8b" class="ip iq dy ay ir b er is et it iu iv iw ix iy iz ja cy" data-selectable-paragraph="">These
+ are the feet that would walk through the valley of the shadow of death,
+ which, the more I think about it, feels not so ominous but perhaps 
+quiet and gentle like sleep.</p><p id="6959" class="ip iq dy ay ir b er is et it iu iv iw ix iy iz ja cy" data-selectable-paragraph="">This
+ is about those feet in my hands, and trying to be gentle and strong 
+like him. This is about, I hope, osmosis, and invisibly bartering my 
+comfort and vitality for his wisdom and patience. This is about holding 
+his feet in my hands for a few moments and about carrying his everything
+ with me, always and forever.</p>','2020-03-29 20:08:22','cover_pics/user-4_love.jpeg',4,6,NULL,'brief-beautiful-moments-togetherness-and-touch',3,'Brief, Beautiful Moments of Togetherness and Touch');
+INSERT INTO "blog_post" VALUES(26,'<p id="b051" class="ie if ds ay ig b el ih en ii ij ik il im in io ip cy" data-selectable-paragraph=""><em class="iq">&nbsp;Along the way, we stumble upon countless stories that surprise us — 
+proof of the internet’s enduring ability to deliver what we didn’t know 
+we needed. Each week, i’ll share a few of our favorites in a roundup we
+ call ‘Reading Roulette.’ If you come across anything we missed, let us 
+know in the responses!</em></p><p><br><ul class=""><li id="b23f" class="ie if ds ay ig b el ih en ii ij ik il im in io ip iv iw ix" data-selectable-paragraph="">A quarantine is the perfect time to cook something tedious — like <a href="https://medium.com/u/642f0fa775c3?source=post_page-----45fb2ec2505----------------------" class="iy be go" target="_blank" rel="noopener">Daniel Chudnow</a>’s “<a href="https://medium.com/@daniel.chudnow/chicken-soup-for-the-social-distancer-1e39dfc7d2b2" class="fr go ir is it iu" target="_blank" rel="noopener">Chicken Soup for the Social Distancer</a>.”
+ This recipe has everything: soggy vegetables that have been sitting in 
+your fridge all week, tomato paste you don’t have, and approximately 700
+ reminders to wash your hands.</li><li id="a241" class="ie if ds ay ig b el iz en ja ij jb il jc in jd ip iv iw ix" data-selectable-paragraph="">Cats were working from home long before the rest of us. <a href="https://medium.com/u/13d08c52c821?source=post_page-----45fb2ec2505----------------------" class="iy be go" target="_blank" rel="noopener">Jack Shepherd</a>’s ode to our feline colleagues, “<a href="https://medium.com/tenderlymag/16-reasons-your-cat-is-a-better-coworker-than-karen-7379ec47cf1c" class="fr go ir is it iu" target="_blank" rel="noopener">16 Reasons Your Cat Is a Better Coworker Than Karen</a>,” is a testament to their collegiality.</li><li id="67ed" class="ie if ds ay ig b el iz en ja ij jb il jc in jd ip iv iw ix" data-selectable-paragraph="">Locked in an apartment with your significant other? Slowly detaching from reality? Sing along with <a href="https://medium.com/u/f542844574a1?source=post_page-----45fb2ec2505----------------------" class="iy be go" target="_blank" rel="noopener">Jeffrey Denny</a> to “<a href="https://medium.com/@jeffreydenny77/the-12-days-of-quarantine-7e8941b885f8" class="fr go ir is it iu" target="_blank" rel="noopener">The 12 Days of Quarantine</a>.”</li><li id="0a47" class="ie if ds ay ig b el iz en ja ij jb il jc in jd ip iv iw ix" data-selectable-paragraph="">If you want comedy, there’s always Netflix (and Hulu, and Amazon Prime, and… Starz?). <a href="https://medium.com/u/551dbd087c15?source=post_page-----45fb2ec2505----------------------" class="iy be go" target="_blank" rel="noopener">Shamita</a>’s “<a href="https://medium.com/@shamitajay/a-guide-to-quarantine-television-e7e3c5cc09d2" class="fr go ir is it iu" target="_blank" rel="noopener">Guide to Quarantine Television</a>”
+ is the most comprehensive list of streaming recommendations we’ve seen.
+ From poignant dark comedies to garbage reality TV that will remind you 
+of a simpler time, this guide has you covered.</li><li id="c90a" class="ie if ds ay ig b el iz en ja ij jb il jc in jd ip iv iw ix" data-selectable-paragraph="">“Hello and welcome to Ridiculously Local, a new travel show hosted by the voices inside your own head,” begins <a href="https://medium.com/u/fe8d49f07105?source=post_page-----45fb2ec2505----------------------" class="iy be go" target="_blank" rel="noopener">Shani Silver</a>’s <a href="https://medium.com/@shanisilver/the-best-places-to-go-inside-your-own-apartment-5616b33515cf" class="fr go ir is it iu" target="_blank" rel="noopener">satirical travel guide</a>. We all live in our heads now. Might as well empty our junk drawers and explore.</li></ul></p>','2020-03-29 20:15:49','',4,6,'This week: dystopian soup, quarantine TV, and cats','human-parts-we-spend-our-days-scouring-medium-platform-essays-and-perspectives-we-think-our-audience-would-l',10,'At Human Parts, we spend our days scouring the Medium platform for essays and perspectives we think our audience would l');
+CREATE UNIQUE INDEX "auth_group_permissions_group_id_permission_id_0cd325b0_uniq" ON "auth_group_permissions" ("group_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_group_id_b120cbf9" ON "auth_group_permissions" ("group_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_permission_id_84c5c92e" ON "auth_group_permissions" ("permission_id");
+CREATE UNIQUE INDEX "auth_user_groups_user_id_group_id_94350c0c_uniq" ON "auth_user_groups" ("user_id", "group_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_user_id_6a12ed8b" ON "auth_user_groups" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_group_id_97559544" ON "auth_user_groups" ("group_id");
+CREATE UNIQUE INDEX "auth_user_user_permissions_user_id_permission_id_14a6b632_uniq" ON "auth_user_user_permissions" ("user_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_user_id_a95ead1b" ON "auth_user_user_permissions" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_permission_id_1fbb5f2c" ON "auth_user_user_permissions" ("permission_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_content_type_id_c4bce8eb" ON "django_admin_log" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_user_id_c564eba6" ON "django_admin_log" ("user_id");
+CREATE UNIQUE INDEX "django_content_type_app_label_model_76bd3d3b_uniq" ON "django_content_type" ("app_label", "model");
+CREATE UNIQUE INDEX "auth_permission_content_type_id_codename_01ab375a_uniq" ON "auth_permission" ("content_type_id", "codename");
+CREATE INDEX IF NOT EXISTS "auth_permission_content_type_id_2f476e4b" ON "auth_permission" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_session_expire_date_a5c62663" ON "django_session" ("expire_date");
+CREATE INDEX IF NOT EXISTS "blog_comment_post_id_580e96ef" ON "blog_comment" ("post_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_object_id_e2d7d1df" ON "taggit_taggeditem" ("object_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_9957a03c" ON "taggit_taggeditem" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_tag_id_f4f5b767" ON "taggit_taggeditem" ("tag_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_object_id_196cc965_idx" ON "taggit_taggeditem" ("content_type_id", "object_id");
+CREATE UNIQUE INDEX "taggit_taggeditem_content_type_id_object_id_tag_id_4bb97a8e_uniq" ON "taggit_taggeditem" ("content_type_id", "object_id", "tag_id");
+CREATE INDEX IF NOT EXISTS "blog_post_author_id_dd7a8485" ON "blog_post" ("author_id");
+CREATE INDEX IF NOT EXISTS "blog_post_category_id_c326dbf8" ON "blog_post" ("category_id");
+CREATE TABLE "django_admin_log" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "action_time" datetime NOT NULL, "object_id" text NULL, "object_repr" varchar(200) NOT NULL, "change_message" text NOT NULL, "content_type_id" integer NULL REFERENCES "django_content_type" ("id") DEFERRABLE INITIALLY DEFERRED, "user_id" integer NOT NULL REFERENCES "auth_user" ("id") DEFERRABLE INITIALLY DEFERRED, "action_flag" smallint unsigned NOT NULL CHECK ("action_flag" >= 0));
+INSERT INTO "django_admin_log" VALUES(1,'2020-03-23 10:50:09.838211','1','news','[{"added": {}}]',7,1,1);
+INSERT INTO "django_admin_log" VALUES(2,'2020-03-23 10:50:34.498339','1','A lovely post','[{"added": {}}]',8,1,1);
+INSERT INTO "django_admin_log" VALUES(3,'2020-03-23 10:54:04.313742','2','fatima','[{"added": {}}]',8,1,1);
+INSERT INTO "django_admin_log" VALUES(4,'2020-03-23 11:04:22.781513','2','tech','[{"added": {}}]',7,1,1);
+INSERT INTO "django_admin_log" VALUES(5,'2020-03-23 11:04:52.893149','3','fashion','[{"added": {}}]',7,1,1);
+INSERT INTO "django_admin_log" VALUES(6,'2020-03-23 11:05:49.459589','4','politics','[{"added": {}}]',7,1,1);
+INSERT INTO "django_admin_log" VALUES(7,'2020-03-23 11:06:41.815409','5','health','[{"added": {}}]',7,1,1);
+INSERT INTO "django_admin_log" VALUES(8,'2020-03-23 11:07:59.485305','6','design','[{"added": {}}]',7,1,1);
+INSERT INTO "django_admin_log" VALUES(9,'2020-03-23 11:09:02.275666','7','sport','[{"added": {}}]',7,1,1);
+INSERT INTO "django_admin_log" VALUES(10,'2020-03-23 11:19:17.434511','3','The Zen of Python, by Tim Peters','[{"added": {}}]',8,1,1);
+INSERT INTO "django_admin_log" VALUES(11,'2020-03-23 14:59:04.095232','6','Entertainment','[{"changed": {"fields": ["Name", "Slug"]}}]',7,1,2);
+INSERT INTO "django_admin_log" VALUES(12,'2020-03-23 15:50:04.086075','4','Lorem Ipsum','[{"added": {}}]',8,1,1);
+INSERT INTO "django_admin_log" VALUES(13,'2020-03-23 16:27:17.160659','7','Another Lorem ipsum','[{"added": {}}]',8,1,1);
+INSERT INTO "django_admin_log" VALUES(14,'2020-03-25 08:40:15.098743','9','The future we dreamt of','[{"changed": {"fields": ["Short description"]}}]',8,1,2);
+INSERT INTO "django_admin_log" VALUES(15,'2020-03-25 08:40:37.859825','8','A word for the wise','[{"changed": {"fields": ["Short description"]}}]',8,1,2);
+INSERT INTO "django_admin_log" VALUES(16,'2020-03-25 08:40:56.788820','6','Coronavirus CoVid-19 Social Platform','[{"changed": {"fields": ["Short description"]}}]',8,1,2);
+INSERT INTO "django_admin_log" VALUES(17,'2020-03-25 08:41:20.008620','4','Lorem Ipsum','[{"changed": {"fields": ["Tags", "Short description"]}}]',8,1,2);
+INSERT INTO "django_admin_log" VALUES(18,'2020-03-25 09:54:32.798756','11','Why we should read more non-fiction books to our children','[{"added": {}}]',8,1,1);
+INSERT INTO "django_admin_log" VALUES(19,'2020-03-25 09:57:14.394456','12','What Does It Mean to Think Like a Freak?','[{"added": {}}]',8,1,1);
+INSERT INTO "django_admin_log" VALUES(20,'2020-03-25 09:59:05.386315','13','How to Win Friends  and Influence People','[{"added": {}}]',8,1,1);
+INSERT INTO "django_admin_log" VALUES(21,'2020-03-25 10:21:05.798178','14','Why Github is referred to where software is built','[{"added": {}}]',8,1,1);
+INSERT INTO "django_admin_log" VALUES(22,'2020-03-25 10:23:36.897987','15','Terminator: Dark Fate review round-up — Linda Hamilton surprises with her ''amount of power'' in a rather ''stale storyline','[{"added": {}}]',8,1,1);
+INSERT INTO "django_admin_log" VALUES(23,'2020-03-27 17:52:39.907146','1','kolapo','[{"changed": {"fields": ["First name", "Last name"]}}]',4,1,2);
+INSERT INTO "django_admin_log" VALUES(24,'2020-03-27 21:21:17.702321','7','Another Lorem ipsum','',8,1,3);
+INSERT INTO "django_admin_log" VALUES(25,'2020-03-27 21:21:17.815142','4','Lorem Ipsum','',8,1,3);
+INSERT INTO "django_admin_log" VALUES(26,'2020-03-27 21:21:17.967907','2','fatima','',8,1,3);
+INSERT INTO "django_admin_log" VALUES(27,'2020-03-27 23:14:50.595435','1','Comment Great writeup by Aoran James','[{"changed": {"fields": ["Active"]}}]',9,1,2);
+INSERT INTO "django_admin_log" VALUES(28,'2020-03-27 23:50:16.661260','2','Comment Thumps up! by Leo John','[{"changed": {"fields": ["Active"]}}]',9,1,2);
+INSERT INTO "django_admin_log" VALUES(29,'2020-03-28 11:36:10.046798','8','A word for the wise','',8,1,3);
+INSERT INTO "django_admin_log" VALUES(30,'2020-03-28 11:36:10.291575','5','Manchester Derby is the next big match in Europe','',8,1,3);
+INSERT INTO "django_admin_log" VALUES(31,'2020-03-28 11:36:10.473317','3','The Zen of Python, by Tim Peters','',8,1,3);
+INSERT INTO "django_admin_log" VALUES(32,'2020-03-28 11:36:10.582980','1','A lovely post','',8,1,3);
+INSERT INTO "django_admin_log" VALUES(33,'2020-03-28 11:36:57.857822','18','Name Your Zeitgeist','[{"changed": {"fields": ["Slug"]}}]',8,1,2);
+INSERT INTO "django_admin_log" VALUES(34,'2020-03-28 11:37:42.964145','17','We, the never ending honeymooners','[{"changed": {"fields": ["Slug"]}}]',8,1,2);
+INSERT INTO "django_admin_log" VALUES(35,'2020-03-28 11:38:27.891227','16','Are young travellers really living the dream?','[{"changed": {"fields": ["Slug"]}}]',8,1,2);
+INSERT INTO "django_admin_log" VALUES(36,'2020-03-28 11:42:19.340736','16','Are young travellers really living the dream?','[]',8,1,2);
+INSERT INTO "django_admin_log" VALUES(37,'2020-03-28 11:43:08.881917','15','Terminator: Dark Fate review round-up — Linda Hamilton surprises with her ''amount of power'' in a rather ''stale storyline','',8,1,3);
+INSERT INTO "django_admin_log" VALUES(38,'2020-03-28 11:43:09.049652','14','Why Github is referred to where software is built','',8,1,3);
+INSERT INTO "django_admin_log" VALUES(39,'2020-03-28 11:43:09.137515','13','How to Win Friends  and Influence People','',8,1,3);
+INSERT INTO "django_admin_log" VALUES(40,'2020-03-28 11:43:09.252333','12','What Does It Mean to Think Like a Freak?','',8,1,3);
+INSERT INTO "django_admin_log" VALUES(41,'2020-03-28 11:43:09.397111','11','Why we should read more non-fiction books to our children','',8,1,3);
+INSERT INTO "django_admin_log" VALUES(42,'2020-03-28 11:43:09.551864','10','Terminator: Dark Fate review','',8,1,3);
+INSERT INTO "django_admin_log" VALUES(43,'2020-03-28 11:43:34.420627','9','The future we dreamt of','[{"changed": {"fields": ["Slug"]}}]',8,1,2);
+INSERT INTO "django_admin_log" VALUES(44,'2020-03-28 11:43:53.772365','6','Coronavirus CoVid-19 Social Platform','[{"changed": {"fields": ["Slug"]}}]',8,1,2);
+INSERT INTO "django_admin_log" VALUES(45,'2020-03-28 12:09:06.721173','19','Deepfakes are going to fuck up society','[{"added": {}}]',8,1,1);
+INSERT INTO "django_admin_log" VALUES(46,'2020-03-28 12:11:35.300170','19','Deepfakes are going to fuck up society','[{"changed": {"fields": ["Content"]}}]',8,1,2);
+INSERT INTO "django_admin_log" VALUES(47,'2020-03-28 12:39:38.090643','20','The troubling data point behind Nigeria’s low number of coronavirus cases','',8,1,3);
+INSERT INTO "django_admin_log" VALUES(48,'2020-03-29 09:56:13.527307','16','Are young travellers really living the dream?','[{"changed": {"fields": ["Author", "Cover", "Tags"]}}]',8,1,2);
+INSERT INTO "django_admin_log" VALUES(49,'2020-03-29 10:00:10.301662','6','Coronavirus CoVid-19 Social Platform','[{"changed": {"fields": ["Cover", "View count"]}}]',8,1,2);
+INSERT INTO "django_admin_log" VALUES(50,'2020-03-29 10:08:20.060595','17','We, the never ending honeymooners','[{"changed": {"fields": ["Cover"]}}]',8,1,2);
+INSERT INTO "django_admin_log" VALUES(51,'2020-03-29 18:20:26.825675','5','christy','[{"added": {}}]',4,1,1);
+INSERT INTO "django_admin_log" VALUES(52,'2020-03-29 18:22:04.829834','9','The future we dreamt of','[{"changed": {"fields": ["Cover"]}}]',8,1,2);
+INSERT INTO "django_admin_log" VALUES(53,'2020-03-29 18:25:40.469894','9','The future we dreamt of','',8,1,3);
+INSERT INTO "django_admin_log" VALUES(54,'2020-03-29 20:14:55.016134','25','Brief, Beautiful Moments of Togetherness and Touch','[{"added": {}}]',8,1,1);
+INSERT INTO "django_admin_log" VALUES(55,'2020-03-29 20:21:44.763463','26','At Human Parts, we spend our days scouring the Medium platform for essays and perspectives we think our audience would l','[{"added": {}}]',8,1,1);
+INSERT INTO "django_admin_log" VALUES(56,'2020-03-30 20:23:18.469771','24','Lost in Conversation','[{"changed": {"fields": ["Cover"]}}]',8,1,2);
+CREATE UNIQUE INDEX "auth_group_permissions_group_id_permission_id_0cd325b0_uniq" ON "auth_group_permissions" ("group_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_group_id_b120cbf9" ON "auth_group_permissions" ("group_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_permission_id_84c5c92e" ON "auth_group_permissions" ("permission_id");
+CREATE UNIQUE INDEX "auth_user_groups_user_id_group_id_94350c0c_uniq" ON "auth_user_groups" ("user_id", "group_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_user_id_6a12ed8b" ON "auth_user_groups" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_group_id_97559544" ON "auth_user_groups" ("group_id");
+CREATE UNIQUE INDEX "auth_user_user_permissions_user_id_permission_id_14a6b632_uniq" ON "auth_user_user_permissions" ("user_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_user_id_a95ead1b" ON "auth_user_user_permissions" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_permission_id_1fbb5f2c" ON "auth_user_user_permissions" ("permission_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_content_type_id_c4bce8eb" ON "django_admin_log" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_user_id_c564eba6" ON "django_admin_log" ("user_id");
+CREATE UNIQUE INDEX "django_content_type_app_label_model_76bd3d3b_uniq" ON "django_content_type" ("app_label", "model");
+CREATE UNIQUE INDEX "auth_permission_content_type_id_codename_01ab375a_uniq" ON "auth_permission" ("content_type_id", "codename");
+CREATE INDEX IF NOT EXISTS "auth_permission_content_type_id_2f476e4b" ON "auth_permission" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_session_expire_date_a5c62663" ON "django_session" ("expire_date");
+CREATE INDEX IF NOT EXISTS "blog_comment_post_id_580e96ef" ON "blog_comment" ("post_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_object_id_e2d7d1df" ON "taggit_taggeditem" ("object_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_9957a03c" ON "taggit_taggeditem" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_tag_id_f4f5b767" ON "taggit_taggeditem" ("tag_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_object_id_196cc965_idx" ON "taggit_taggeditem" ("content_type_id", "object_id");
+CREATE UNIQUE INDEX "taggit_taggeditem_content_type_id_object_id_tag_id_4bb97a8e_uniq" ON "taggit_taggeditem" ("content_type_id", "object_id", "tag_id");
+CREATE INDEX IF NOT EXISTS "blog_post_author_id_dd7a8485" ON "blog_post" ("author_id");
+CREATE INDEX IF NOT EXISTS "blog_post_category_id_c326dbf8" ON "blog_post" ("category_id");
+CREATE TABLE "django_content_type" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "app_label" varchar(100) NOT NULL, "model" varchar(100) NOT NULL);
+INSERT INTO "django_content_type" VALUES(1,'admin','logentry');
+INSERT INTO "django_content_type" VALUES(2,'auth','permission');
+INSERT INTO "django_content_type" VALUES(3,'auth','group');
+INSERT INTO "django_content_type" VALUES(4,'auth','user');
+INSERT INTO "django_content_type" VALUES(5,'contenttypes','contenttype');
+INSERT INTO "django_content_type" VALUES(6,'sessions','session');
+INSERT INTO "django_content_type" VALUES(7,'blog','category');
+INSERT INTO "django_content_type" VALUES(8,'blog','post');
+INSERT INTO "django_content_type" VALUES(9,'blog','comment');
+INSERT INTO "django_content_type" VALUES(10,'users','profile');
+INSERT INTO "django_content_type" VALUES(11,'django_summernote','attachment');
+INSERT INTO "django_content_type" VALUES(12,'taggit','tag');
+INSERT INTO "django_content_type" VALUES(13,'taggit','taggeditem');
+CREATE UNIQUE INDEX "auth_group_permissions_group_id_permission_id_0cd325b0_uniq" ON "auth_group_permissions" ("group_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_group_id_b120cbf9" ON "auth_group_permissions" ("group_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_permission_id_84c5c92e" ON "auth_group_permissions" ("permission_id");
+CREATE UNIQUE INDEX "auth_user_groups_user_id_group_id_94350c0c_uniq" ON "auth_user_groups" ("user_id", "group_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_user_id_6a12ed8b" ON "auth_user_groups" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_group_id_97559544" ON "auth_user_groups" ("group_id");
+CREATE UNIQUE INDEX "auth_user_user_permissions_user_id_permission_id_14a6b632_uniq" ON "auth_user_user_permissions" ("user_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_user_id_a95ead1b" ON "auth_user_user_permissions" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_permission_id_1fbb5f2c" ON "auth_user_user_permissions" ("permission_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_content_type_id_c4bce8eb" ON "django_admin_log" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_user_id_c564eba6" ON "django_admin_log" ("user_id");
+CREATE UNIQUE INDEX "django_content_type_app_label_model_76bd3d3b_uniq" ON "django_content_type" ("app_label", "model");
+CREATE UNIQUE INDEX "auth_permission_content_type_id_codename_01ab375a_uniq" ON "auth_permission" ("content_type_id", "codename");
+CREATE INDEX IF NOT EXISTS "auth_permission_content_type_id_2f476e4b" ON "auth_permission" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_session_expire_date_a5c62663" ON "django_session" ("expire_date");
+CREATE INDEX IF NOT EXISTS "blog_comment_post_id_580e96ef" ON "blog_comment" ("post_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_object_id_e2d7d1df" ON "taggit_taggeditem" ("object_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_9957a03c" ON "taggit_taggeditem" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_tag_id_f4f5b767" ON "taggit_taggeditem" ("tag_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_object_id_196cc965_idx" ON "taggit_taggeditem" ("content_type_id", "object_id");
+CREATE UNIQUE INDEX "taggit_taggeditem_content_type_id_object_id_tag_id_4bb97a8e_uniq" ON "taggit_taggeditem" ("content_type_id", "object_id", "tag_id");
+CREATE INDEX IF NOT EXISTS "blog_post_author_id_dd7a8485" ON "blog_post" ("author_id");
+CREATE INDEX IF NOT EXISTS "blog_post_category_id_c326dbf8" ON "blog_post" ("category_id");
+CREATE TABLE "django_migrations" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "app" varchar(255) NOT NULL, "name" varchar(255) NOT NULL, "applied" datetime NOT NULL);
+INSERT INTO "django_migrations" VALUES(1,'contenttypes','0001_initial','2020-03-23 10:37:23.769723');
+INSERT INTO "django_migrations" VALUES(2,'auth','0001_initial','2020-03-23 10:37:23.997957');
+INSERT INTO "django_migrations" VALUES(3,'admin','0001_initial','2020-03-23 10:37:24.208138');
+INSERT INTO "django_migrations" VALUES(4,'admin','0002_logentry_remove_auto_add','2020-03-23 10:37:24.471226');
+INSERT INTO "django_migrations" VALUES(5,'admin','0003_logentry_add_action_flag_choices','2020-03-23 10:37:24.797710');
+INSERT INTO "django_migrations" VALUES(6,'contenttypes','0002_remove_content_type_name','2020-03-23 10:37:25.527196');
+INSERT INTO "django_migrations" VALUES(7,'auth','0002_alter_permission_name_max_length','2020-03-23 10:37:25.906426');
+INSERT INTO "django_migrations" VALUES(8,'auth','0003_alter_user_email_max_length','2020-03-23 10:37:26.260195');
+INSERT INTO "django_migrations" VALUES(9,'auth','0004_alter_user_username_opts','2020-03-23 10:37:26.801524');
+INSERT INTO "django_migrations" VALUES(10,'auth','0005_alter_user_last_login_null','2020-03-23 10:37:27.290136');
+INSERT INTO "django_migrations" VALUES(11,'auth','0006_require_contenttypes_0002','2020-03-23 10:37:27.574923');
+INSERT INTO "django_migrations" VALUES(12,'auth','0007_alter_validators_add_error_messages','2020-03-23 10:37:27.969660');
+INSERT INTO "django_migrations" VALUES(13,'auth','0008_alter_user_username_max_length','2020-03-23 10:37:28.378912');
+INSERT INTO "django_migrations" VALUES(14,'auth','0009_alter_user_last_name_max_length','2020-03-23 10:37:28.732535');
+INSERT INTO "django_migrations" VALUES(15,'auth','0010_alter_group_name_max_length','2020-03-23 10:37:29.164018');
+INSERT INTO "django_migrations" VALUES(16,'auth','0011_update_proxy_permissions','2020-03-23 10:37:29.821316');
+INSERT INTO "django_migrations" VALUES(17,'django_summernote','0001_initial','2020-03-23 10:37:30.169558');
+INSERT INTO "django_migrations" VALUES(18,'django_summernote','0002_update-help_text','2020-03-23 10:37:30.558175');
+INSERT INTO "django_migrations" VALUES(19,'sessions','0001_initial','2020-03-23 10:37:30.874079');
+INSERT INTO "django_migrations" VALUES(20,'users','0001_initial','2020-03-23 10:37:31.229892');
+INSERT INTO "django_migrations" VALUES(21,'users','0002_auto_20200307_2032','2020-03-23 10:37:31.655612');
+INSERT INTO "django_migrations" VALUES(22,'users','0003_auto_20200313_1819','2020-03-23 10:37:32.328206');
+INSERT INTO "django_migrations" VALUES(23,'users','0004_auto_20200313_2332','2020-03-23 10:37:32.614123');
+INSERT INTO "django_migrations" VALUES(24,'blog','0001_initial','2020-03-23 10:38:10.879209');
+INSERT INTO "django_migrations" VALUES(25,'blog','0002_auto_20200323_1647','2020-03-23 15:47:43.091057');
+INSERT INTO "django_migrations" VALUES(26,'taggit','0001_initial','2020-03-23 16:05:32.159926');
+INSERT INTO "django_migrations" VALUES(27,'taggit','0002_auto_20150616_2121','2020-03-23 16:05:32.376130');
+INSERT INTO "django_migrations" VALUES(28,'taggit','0003_taggeditem_add_unique_index','2020-03-23 16:05:32.529803');
+INSERT INTO "django_migrations" VALUES(29,'blog','0003_post_tags','2020-03-23 16:05:32.792883');
+INSERT INTO "django_migrations" VALUES(30,'blog','0004_post_short_description','2020-03-25 08:38:40.239722');
+INSERT INTO "django_migrations" VALUES(31,'blog','0005_auto_20200325_1053','2020-03-25 09:53:22.977496');
+INSERT INTO "django_migrations" VALUES(32,'blog','0006_post_slug','2020-03-28 11:34:05.094408');
+INSERT INTO "django_migrations" VALUES(33,'blog','0007_auto_20200328_1240','2020-03-28 11:41:03.581366');
+INSERT INTO "django_migrations" VALUES(34,'blog','0008_auto_20200328_1257','2020-03-28 11:57:48.530311');
+INSERT INTO "django_migrations" VALUES(35,'blog','0009_post_view_count','2020-03-28 22:30:09.418448');
+INSERT INTO "django_migrations" VALUES(36,'blog','0010_auto_20200331_1537','2020-03-31 14:38:28.104319');
+CREATE UNIQUE INDEX "auth_group_permissions_group_id_permission_id_0cd325b0_uniq" ON "auth_group_permissions" ("group_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_group_id_b120cbf9" ON "auth_group_permissions" ("group_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_permission_id_84c5c92e" ON "auth_group_permissions" ("permission_id");
+CREATE UNIQUE INDEX "auth_user_groups_user_id_group_id_94350c0c_uniq" ON "auth_user_groups" ("user_id", "group_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_user_id_6a12ed8b" ON "auth_user_groups" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_group_id_97559544" ON "auth_user_groups" ("group_id");
+CREATE UNIQUE INDEX "auth_user_user_permissions_user_id_permission_id_14a6b632_uniq" ON "auth_user_user_permissions" ("user_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_user_id_a95ead1b" ON "auth_user_user_permissions" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_permission_id_1fbb5f2c" ON "auth_user_user_permissions" ("permission_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_content_type_id_c4bce8eb" ON "django_admin_log" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_user_id_c564eba6" ON "django_admin_log" ("user_id");
+CREATE UNIQUE INDEX "django_content_type_app_label_model_76bd3d3b_uniq" ON "django_content_type" ("app_label", "model");
+CREATE UNIQUE INDEX "auth_permission_content_type_id_codename_01ab375a_uniq" ON "auth_permission" ("content_type_id", "codename");
+CREATE INDEX IF NOT EXISTS "auth_permission_content_type_id_2f476e4b" ON "auth_permission" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_session_expire_date_a5c62663" ON "django_session" ("expire_date");
+CREATE INDEX IF NOT EXISTS "blog_comment_post_id_580e96ef" ON "blog_comment" ("post_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_object_id_e2d7d1df" ON "taggit_taggeditem" ("object_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_9957a03c" ON "taggit_taggeditem" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_tag_id_f4f5b767" ON "taggit_taggeditem" ("tag_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_object_id_196cc965_idx" ON "taggit_taggeditem" ("content_type_id", "object_id");
+CREATE UNIQUE INDEX "taggit_taggeditem_content_type_id_object_id_tag_id_4bb97a8e_uniq" ON "taggit_taggeditem" ("content_type_id", "object_id", "tag_id");
+CREATE INDEX IF NOT EXISTS "blog_post_author_id_dd7a8485" ON "blog_post" ("author_id");
+CREATE INDEX IF NOT EXISTS "blog_post_category_id_c326dbf8" ON "blog_post" ("category_id");
+CREATE TABLE "django_session" ("session_key" varchar(40) NOT NULL PRIMARY KEY, "session_data" text NOT NULL, "expire_date" datetime NOT NULL);
+INSERT INTO "django_session" VALUES('3lro55134msibe58wfo5u8hg1yqb4vt9','NDc5Yzg3ZjAyMTNiYTUwMDY1NzFkZGIzNDZmZTYzMTRkZTA3OGI0NTp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIyMGUwMGMwYWE5OTI4MDcxYjBkMTE2OGJkZGFjMjI2YzI1YTU0MTI0In0=','2020-04-12 18:17:03.149765');
+CREATE UNIQUE INDEX "auth_group_permissions_group_id_permission_id_0cd325b0_uniq" ON "auth_group_permissions" ("group_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_group_id_b120cbf9" ON "auth_group_permissions" ("group_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_permission_id_84c5c92e" ON "auth_group_permissions" ("permission_id");
+CREATE UNIQUE INDEX "auth_user_groups_user_id_group_id_94350c0c_uniq" ON "auth_user_groups" ("user_id", "group_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_user_id_6a12ed8b" ON "auth_user_groups" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_group_id_97559544" ON "auth_user_groups" ("group_id");
+CREATE UNIQUE INDEX "auth_user_user_permissions_user_id_permission_id_14a6b632_uniq" ON "auth_user_user_permissions" ("user_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_user_id_a95ead1b" ON "auth_user_user_permissions" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_permission_id_1fbb5f2c" ON "auth_user_user_permissions" ("permission_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_content_type_id_c4bce8eb" ON "django_admin_log" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_user_id_c564eba6" ON "django_admin_log" ("user_id");
+CREATE UNIQUE INDEX "django_content_type_app_label_model_76bd3d3b_uniq" ON "django_content_type" ("app_label", "model");
+CREATE UNIQUE INDEX "auth_permission_content_type_id_codename_01ab375a_uniq" ON "auth_permission" ("content_type_id", "codename");
+CREATE INDEX IF NOT EXISTS "auth_permission_content_type_id_2f476e4b" ON "auth_permission" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_session_expire_date_a5c62663" ON "django_session" ("expire_date");
+CREATE INDEX IF NOT EXISTS "blog_comment_post_id_580e96ef" ON "blog_comment" ("post_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_object_id_e2d7d1df" ON "taggit_taggeditem" ("object_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_9957a03c" ON "taggit_taggeditem" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_tag_id_f4f5b767" ON "taggit_taggeditem" ("tag_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_object_id_196cc965_idx" ON "taggit_taggeditem" ("content_type_id", "object_id");
+CREATE UNIQUE INDEX "taggit_taggeditem_content_type_id_object_id_tag_id_4bb97a8e_uniq" ON "taggit_taggeditem" ("content_type_id", "object_id", "tag_id");
+CREATE INDEX IF NOT EXISTS "blog_post_author_id_dd7a8485" ON "blog_post" ("author_id");
+CREATE INDEX IF NOT EXISTS "blog_post_category_id_c326dbf8" ON "blog_post" ("category_id");
+CREATE TABLE "django_summernote_attachment" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "file" varchar(100) NOT NULL, "uploaded" datetime NOT NULL, "name" varchar(255) NULL);
+INSERT INTO "django_summernote_attachment" VALUES(1,'django-summernote/2020-03-24/2a3e4e6a-3a50-4e40-8924-7bc5076b457c.jpg','2020-03-24 12:42:44.817745','blogpic.jpg');
+INSERT INTO "django_summernote_attachment" VALUES(2,'django-summernote/2020-03-24/66892ac7-f4d6-4bd6-9c89-99051c5f28bd.jpg','2020-03-24 12:47:13.504669','terminator.jpg');
+INSERT INTO "django_summernote_attachment" VALUES(3,'django-summernote/2020-03-25/24119cbd-82e7-4490-9507-852fd1e983ab.jpg','2020-03-25 19:13:40.947513','field.jpg');
+INSERT INTO "django_summernote_attachment" VALUES(4,'django-summernote/2020-03-28/443d283a-b44c-46cc-9f13-c024e680f62b.jpg','2020-03-28 12:46:03.086049','India-pangolin-trade.jpg');
+CREATE UNIQUE INDEX "auth_group_permissions_group_id_permission_id_0cd325b0_uniq" ON "auth_group_permissions" ("group_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_group_id_b120cbf9" ON "auth_group_permissions" ("group_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_permission_id_84c5c92e" ON "auth_group_permissions" ("permission_id");
+CREATE UNIQUE INDEX "auth_user_groups_user_id_group_id_94350c0c_uniq" ON "auth_user_groups" ("user_id", "group_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_user_id_6a12ed8b" ON "auth_user_groups" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_group_id_97559544" ON "auth_user_groups" ("group_id");
+CREATE UNIQUE INDEX "auth_user_user_permissions_user_id_permission_id_14a6b632_uniq" ON "auth_user_user_permissions" ("user_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_user_id_a95ead1b" ON "auth_user_user_permissions" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_permission_id_1fbb5f2c" ON "auth_user_user_permissions" ("permission_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_content_type_id_c4bce8eb" ON "django_admin_log" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_user_id_c564eba6" ON "django_admin_log" ("user_id");
+CREATE UNIQUE INDEX "django_content_type_app_label_model_76bd3d3b_uniq" ON "django_content_type" ("app_label", "model");
+CREATE UNIQUE INDEX "auth_permission_content_type_id_codename_01ab375a_uniq" ON "auth_permission" ("content_type_id", "codename");
+CREATE INDEX IF NOT EXISTS "auth_permission_content_type_id_2f476e4b" ON "auth_permission" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_session_expire_date_a5c62663" ON "django_session" ("expire_date");
+CREATE INDEX IF NOT EXISTS "blog_comment_post_id_580e96ef" ON "blog_comment" ("post_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_object_id_e2d7d1df" ON "taggit_taggeditem" ("object_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_9957a03c" ON "taggit_taggeditem" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_tag_id_f4f5b767" ON "taggit_taggeditem" ("tag_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_object_id_196cc965_idx" ON "taggit_taggeditem" ("content_type_id", "object_id");
+CREATE UNIQUE INDEX "taggit_taggeditem_content_type_id_object_id_tag_id_4bb97a8e_uniq" ON "taggit_taggeditem" ("content_type_id", "object_id", "tag_id");
+CREATE INDEX IF NOT EXISTS "blog_post_author_id_dd7a8485" ON "blog_post" ("author_id");
+CREATE INDEX IF NOT EXISTS "blog_post_category_id_c326dbf8" ON "blog_post" ("category_id");
+CREATE TABLE "taggit_tag" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "name" varchar(100) NOT NULL UNIQUE, "slug" varchar(100) NOT NULL UNIQUE);
+INSERT INTO "taggit_tag" VALUES(1,'corona','corona');
+INSERT INTO "taggit_tag" VALUES(2,'virus','virus');
+INSERT INTO "taggit_tag" VALUES(3,'health','health');
+INSERT INTO "taggit_tag" VALUES(4,'word','word');
+INSERT INTO "taggit_tag" VALUES(5,'template','template');
+INSERT INTO "taggit_tag" VALUES(6,'loremipsum','loremipsum');
+INSERT INTO "taggit_tag" VALUES(7,'quote','quote');
+INSERT INTO "taggit_tag" VALUES(8,'future','future');
+INSERT INTO "taggit_tag" VALUES(9,'advice','advice');
+INSERT INTO "taggit_tag" VALUES(10,'machine','machine');
+INSERT INTO "taggit_tag" VALUES(11,'tech','tech');
+INSERT INTO "taggit_tag" VALUES(12,'robot','robot');
+INSERT INTO "taggit_tag" VALUES(13,'books','books');
+INSERT INTO "taggit_tag" VALUES(14,'read','read');
+INSERT INTO "taggit_tag" VALUES(15,'lorem','lorem');
+INSERT INTO "taggit_tag" VALUES(16,'opensource','opensource');
+INSERT INTO "taggit_tag" VALUES(17,'github','github');
+INSERT INTO "taggit_tag" VALUES(18,'git','git');
+INSERT INTO "taggit_tag" VALUES(19,'terminator','terminator');
+INSERT INTO "taggit_tag" VALUES(20,'derby','derby');
+INSERT INTO "taggit_tag" VALUES(21,'machester','machester');
+INSERT INTO "taggit_tag" VALUES(22,'football','football');
+INSERT INTO "taggit_tag" VALUES(23,'dream','dream');
+INSERT INTO "taggit_tag" VALUES(24,'travel','travel');
+INSERT INTO "taggit_tag" VALUES(25,'love','love');
+INSERT INTO "taggit_tag" VALUES(26,'relationship','relationship');
+INSERT INTO "taggit_tag" VALUES(27,'society','society');
+INSERT INTO "taggit_tag" VALUES(28,'literature','literature');
+INSERT INTO "taggit_tag" VALUES(29,'reality','reality');
+INSERT INTO "taggit_tag" VALUES(30,'life','life');
+INSERT INTO "taggit_tag" VALUES(31,'deepfakes','deepfakes');
+INSERT INTO "taggit_tag" VALUES(32,'#coronavirus','coronavirus');
+INSERT INTO "taggit_tag" VALUES(33,'covid19','covid19');
+INSERT INTO "taggit_tag" VALUES(34,'#nigeria','nigeria');
+INSERT INTO "taggit_tag" VALUES(35,'China in Africa','china-in-africa');
+INSERT INTO "taggit_tag" VALUES(36,'nigeria','nigeria_1');
+INSERT INTO "taggit_tag" VALUES(37,'china','china');
+INSERT INTO "taggit_tag" VALUES(38,'pets','pets');
+INSERT INTO "taggit_tag" VALUES(39,'who','who');
+INSERT INTO "taggit_tag" VALUES(40,'Short Story','short-story');
+INSERT INTO "taggit_tag" VALUES(41,'Relationships','relationships');
+INSERT INTO "taggit_tag" VALUES(42,'young','young');
+INSERT INTO "taggit_tag" VALUES(43,'This Is Us','this-is-us');
+INSERT INTO "taggit_tag" VALUES(44,'Poetry','poetry');
+INSERT INTO "taggit_tag" VALUES(45,'TV','tv');
+INSERT INTO "taggit_tag" VALUES(46,'Cats','cats');
+INSERT INTO "taggit_tag" VALUES(47,'Recommendations','recommendations');
+INSERT INTO "taggit_tag" VALUES(48,'Culture','culture');
+INSERT INTO "taggit_tag" VALUES(49,'Writing','writing');
+CREATE UNIQUE INDEX "auth_group_permissions_group_id_permission_id_0cd325b0_uniq" ON "auth_group_permissions" ("group_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_group_id_b120cbf9" ON "auth_group_permissions" ("group_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_permission_id_84c5c92e" ON "auth_group_permissions" ("permission_id");
+CREATE UNIQUE INDEX "auth_user_groups_user_id_group_id_94350c0c_uniq" ON "auth_user_groups" ("user_id", "group_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_user_id_6a12ed8b" ON "auth_user_groups" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_group_id_97559544" ON "auth_user_groups" ("group_id");
+CREATE UNIQUE INDEX "auth_user_user_permissions_user_id_permission_id_14a6b632_uniq" ON "auth_user_user_permissions" ("user_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_user_id_a95ead1b" ON "auth_user_user_permissions" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_permission_id_1fbb5f2c" ON "auth_user_user_permissions" ("permission_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_content_type_id_c4bce8eb" ON "django_admin_log" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_user_id_c564eba6" ON "django_admin_log" ("user_id");
+CREATE UNIQUE INDEX "django_content_type_app_label_model_76bd3d3b_uniq" ON "django_content_type" ("app_label", "model");
+CREATE UNIQUE INDEX "auth_permission_content_type_id_codename_01ab375a_uniq" ON "auth_permission" ("content_type_id", "codename");
+CREATE INDEX IF NOT EXISTS "auth_permission_content_type_id_2f476e4b" ON "auth_permission" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_session_expire_date_a5c62663" ON "django_session" ("expire_date");
+CREATE INDEX IF NOT EXISTS "blog_comment_post_id_580e96ef" ON "blog_comment" ("post_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_object_id_e2d7d1df" ON "taggit_taggeditem" ("object_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_9957a03c" ON "taggit_taggeditem" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_tag_id_f4f5b767" ON "taggit_taggeditem" ("tag_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_object_id_196cc965_idx" ON "taggit_taggeditem" ("content_type_id", "object_id");
+CREATE UNIQUE INDEX "taggit_taggeditem_content_type_id_object_id_tag_id_4bb97a8e_uniq" ON "taggit_taggeditem" ("content_type_id", "object_id", "tag_id");
+CREATE INDEX IF NOT EXISTS "blog_post_author_id_dd7a8485" ON "blog_post" ("author_id");
+CREATE INDEX IF NOT EXISTS "blog_post_category_id_c326dbf8" ON "blog_post" ("category_id");
+CREATE TABLE "taggit_taggeditem" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "object_id" integer NOT NULL, "content_type_id" integer NOT NULL REFERENCES "django_content_type" ("id") DEFERRABLE INITIALLY DEFERRED, "tag_id" integer NOT NULL REFERENCES "taggit_tag" ("id") DEFERRABLE INITIALLY DEFERRED);
+INSERT INTO "taggit_taggeditem" VALUES(1,6,8,1);
+INSERT INTO "taggit_taggeditem" VALUES(2,6,8,2);
+INSERT INTO "taggit_taggeditem" VALUES(3,6,8,3);
+INSERT INTO "taggit_taggeditem" VALUES(39,16,8,24);
+INSERT INTO "taggit_taggeditem" VALUES(41,16,8,23);
+INSERT INTO "taggit_taggeditem" VALUES(42,17,8,24);
+INSERT INTO "taggit_taggeditem" VALUES(43,17,8,25);
+INSERT INTO "taggit_taggeditem" VALUES(44,17,8,26);
+INSERT INTO "taggit_taggeditem" VALUES(45,18,8,24);
+INSERT INTO "taggit_taggeditem" VALUES(46,18,8,27);
+INSERT INTO "taggit_taggeditem" VALUES(47,18,8,28);
+INSERT INTO "taggit_taggeditem" VALUES(48,18,8,29);
+INSERT INTO "taggit_taggeditem" VALUES(49,18,8,30);
+INSERT INTO "taggit_taggeditem" VALUES(50,19,8,8);
+INSERT INTO "taggit_taggeditem" VALUES(51,19,8,31);
+INSERT INTO "taggit_taggeditem" VALUES(56,21,8,32);
+INSERT INTO "taggit_taggeditem" VALUES(57,21,8,1);
+INSERT INTO "taggit_taggeditem" VALUES(58,21,8,34);
+INSERT INTO "taggit_taggeditem" VALUES(59,21,8,33);
+INSERT INTO "taggit_taggeditem" VALUES(60,22,8,1);
+INSERT INTO "taggit_taggeditem" VALUES(61,22,8,33);
+INSERT INTO "taggit_taggeditem" VALUES(62,22,8,35);
+INSERT INTO "taggit_taggeditem" VALUES(63,22,8,36);
+INSERT INTO "taggit_taggeditem" VALUES(64,22,8,37);
+INSERT INTO "taggit_taggeditem" VALUES(65,23,8,33);
+INSERT INTO "taggit_taggeditem" VALUES(66,23,8,38);
+INSERT INTO "taggit_taggeditem" VALUES(67,23,8,39);
+INSERT INTO "taggit_taggeditem" VALUES(68,24,8,40);
+INSERT INTO "taggit_taggeditem" VALUES(69,24,8,25);
+INSERT INTO "taggit_taggeditem" VALUES(70,24,8,41);
+INSERT INTO "taggit_taggeditem" VALUES(71,16,8,42);
+INSERT INTO "taggit_taggeditem" VALUES(72,25,8,43);
+INSERT INTO "taggit_taggeditem" VALUES(73,25,8,44);
+INSERT INTO "taggit_taggeditem" VALUES(74,25,8,25);
+INSERT INTO "taggit_taggeditem" VALUES(75,25,8,26);
+INSERT INTO "taggit_taggeditem" VALUES(76,25,8,30);
+INSERT INTO "taggit_taggeditem" VALUES(77,26,8,45);
+INSERT INTO "taggit_taggeditem" VALUES(78,26,8,46);
+INSERT INTO "taggit_taggeditem" VALUES(79,26,8,47);
+INSERT INTO "taggit_taggeditem" VALUES(80,26,8,48);
+INSERT INTO "taggit_taggeditem" VALUES(81,26,8,49);
+CREATE UNIQUE INDEX "auth_group_permissions_group_id_permission_id_0cd325b0_uniq" ON "auth_group_permissions" ("group_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_group_id_b120cbf9" ON "auth_group_permissions" ("group_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_permission_id_84c5c92e" ON "auth_group_permissions" ("permission_id");
+CREATE UNIQUE INDEX "auth_user_groups_user_id_group_id_94350c0c_uniq" ON "auth_user_groups" ("user_id", "group_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_user_id_6a12ed8b" ON "auth_user_groups" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_group_id_97559544" ON "auth_user_groups" ("group_id");
+CREATE UNIQUE INDEX "auth_user_user_permissions_user_id_permission_id_14a6b632_uniq" ON "auth_user_user_permissions" ("user_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_user_id_a95ead1b" ON "auth_user_user_permissions" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_permission_id_1fbb5f2c" ON "auth_user_user_permissions" ("permission_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_content_type_id_c4bce8eb" ON "django_admin_log" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_user_id_c564eba6" ON "django_admin_log" ("user_id");
+CREATE UNIQUE INDEX "django_content_type_app_label_model_76bd3d3b_uniq" ON "django_content_type" ("app_label", "model");
+CREATE UNIQUE INDEX "auth_permission_content_type_id_codename_01ab375a_uniq" ON "auth_permission" ("content_type_id", "codename");
+CREATE INDEX IF NOT EXISTS "auth_permission_content_type_id_2f476e4b" ON "auth_permission" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_session_expire_date_a5c62663" ON "django_session" ("expire_date");
+CREATE INDEX IF NOT EXISTS "blog_comment_post_id_580e96ef" ON "blog_comment" ("post_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_object_id_e2d7d1df" ON "taggit_taggeditem" ("object_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_9957a03c" ON "taggit_taggeditem" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_tag_id_f4f5b767" ON "taggit_taggeditem" ("tag_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_object_id_196cc965_idx" ON "taggit_taggeditem" ("content_type_id", "object_id");
+CREATE UNIQUE INDEX "taggit_taggeditem_content_type_id_object_id_tag_id_4bb97a8e_uniq" ON "taggit_taggeditem" ("content_type_id", "object_id", "tag_id");
+CREATE INDEX IF NOT EXISTS "blog_post_author_id_dd7a8485" ON "blog_post" ("author_id");
+CREATE INDEX IF NOT EXISTS "blog_post_category_id_c326dbf8" ON "blog_post" ("category_id");
+CREATE TABLE "users_profile" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "image" varchar(100) NOT NULL, "user_id" integer NOT NULL UNIQUE REFERENCES "auth_user" ("id") DEFERRABLE INITIALLY DEFERRED, "birth_date" date NULL, "location" varchar(30) NOT NULL, "age" integer NULL, "bio" text NULL);
+INSERT INTO "users_profile" VALUES(1,'avatar.png',1,NULL,'',NULL,NULL);
+INSERT INTO "users_profile" VALUES(2,'avatar.png',2,NULL,'',NULL,NULL);
+INSERT INTO "users_profile" VALUES(3,'avatar.png',3,NULL,'',NULL,NULL);
+INSERT INTO "users_profile" VALUES(4,'avatar.png',4,NULL,'',NULL,NULL);
+INSERT INTO "users_profile" VALUES(5,'avatar.png',5,NULL,'',NULL,NULL);
+CREATE UNIQUE INDEX "auth_group_permissions_group_id_permission_id_0cd325b0_uniq" ON "auth_group_permissions" ("group_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_group_id_b120cbf9" ON "auth_group_permissions" ("group_id");
+CREATE INDEX IF NOT EXISTS "auth_group_permissions_permission_id_84c5c92e" ON "auth_group_permissions" ("permission_id");
+CREATE UNIQUE INDEX "auth_user_groups_user_id_group_id_94350c0c_uniq" ON "auth_user_groups" ("user_id", "group_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_user_id_6a12ed8b" ON "auth_user_groups" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_groups_group_id_97559544" ON "auth_user_groups" ("group_id");
+CREATE UNIQUE INDEX "auth_user_user_permissions_user_id_permission_id_14a6b632_uniq" ON "auth_user_user_permissions" ("user_id", "permission_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_user_id_a95ead1b" ON "auth_user_user_permissions" ("user_id");
+CREATE INDEX IF NOT EXISTS "auth_user_user_permissions_permission_id_1fbb5f2c" ON "auth_user_user_permissions" ("permission_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_content_type_id_c4bce8eb" ON "django_admin_log" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_admin_log_user_id_c564eba6" ON "django_admin_log" ("user_id");
+CREATE UNIQUE INDEX "django_content_type_app_label_model_76bd3d3b_uniq" ON "django_content_type" ("app_label", "model");
+CREATE UNIQUE INDEX "auth_permission_content_type_id_codename_01ab375a_uniq" ON "auth_permission" ("content_type_id", "codename");
+CREATE INDEX IF NOT EXISTS "auth_permission_content_type_id_2f476e4b" ON "auth_permission" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "django_session_expire_date_a5c62663" ON "django_session" ("expire_date");
+CREATE INDEX IF NOT EXISTS "blog_comment_post_id_580e96ef" ON "blog_comment" ("post_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_object_id_e2d7d1df" ON "taggit_taggeditem" ("object_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_9957a03c" ON "taggit_taggeditem" ("content_type_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_tag_id_f4f5b767" ON "taggit_taggeditem" ("tag_id");
+CREATE INDEX IF NOT EXISTS "taggit_taggeditem_content_type_id_object_id_196cc965_idx" ON "taggit_taggeditem" ("content_type_id", "object_id");
+CREATE UNIQUE INDEX "taggit_taggeditem_content_type_id_object_id_tag_id_4bb97a8e_uniq" ON "taggit_taggeditem" ("content_type_id", "object_id", "tag_id");
+CREATE INDEX IF NOT EXISTS "blog_post_author_id_dd7a8485" ON "blog_post" ("author_id");
+CREATE INDEX IF NOT EXISTS "blog_post_category_id_c326dbf8" ON "blog_post" ("category_id");
