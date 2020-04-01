@@ -42,8 +42,6 @@ INSTALLED_APPS = [
     'django_summernote',
     'taggit',
     'import_export',
-    'dbbackup_ui',
-    'dbbackup',  # django-dbbackup
 ]
 
 MIDDLEWARE = [
@@ -144,7 +142,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'leoposki666@gmail.com'
-EMAIL_HOST_PASSWORD = 'poski6665'
+EMAIL_HOST_PASSWORD = '_________'
 DEFAULT_FROM_EMAIL = 'leoposki666@gmail.com'
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'  # SummernoteWidget,
@@ -156,9 +154,3 @@ SUMMERNOTE_CONFIG = {
 }
 
 TAGGIT_CASE_INSENSITIVE = True  # make sure all the tags are not case sensitive
-
-DB_BACKUP_ROOT = os.path.join(BASE_DIR, 'backups')
-DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
-DBBACKUP_STORAGE_OPTIONS = {'location': DB_BACKUP_ROOT}
-
-# python manage.py dbbackup -o mybackup -O /backups

@@ -21,7 +21,6 @@ from blog import urls, views as blog_views
 from users import urls as users_urls
 
 urlpatterns = [
-    path('admin/backups/', include('dbbackup_ui.urls')),  # for db backups
     path('admin/', admin.site.urls),
     path('', include(urls.urlpatterns)),
     path('users/', include(users_urls.urlpatterns)),
