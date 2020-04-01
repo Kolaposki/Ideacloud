@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django_summernote',
     'taggit',
     'import_export',
+    'dbbackup_ui',
+    'dbbackup',  # django-dbbackup
 ]
 
 MIDDLEWARE = [
@@ -154,3 +156,9 @@ SUMMERNOTE_CONFIG = {
 }
 
 TAGGIT_CASE_INSENSITIVE = True  # make sure all the tags are not case sensitive
+
+DB_BACKUP_ROOT = os.path.join(BASE_DIR, 'backups')
+DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
+DBBACKUP_STORAGE_OPTIONS = {'location': DB_BACKUP_ROOT}
+
+# python manage.py dbbackup -o mybackup -O /backups

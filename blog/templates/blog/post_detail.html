@@ -28,8 +28,8 @@
                                 </div>
 
                                 <div class="middle-area">
-                                    <a class="name"
-                                       href="{% url 'user_posts' post.author.username %}"><b>{{ post.author.first_name }} {{ post.author.last_name }}</b>
+                                    <a class="name" href="{% url 'user_posts' post.author.username %}">
+                                        <b>{{ post.author.first_name }} {{ post.author.last_name }}</b>
                                     </a>
 
                                     <h6 class="date">on {{ post.date_posted | date:"M d, Y" }}
@@ -101,6 +101,7 @@
 
                     </div><!-- main-post -->
                 </div><!-- col-lg-8 col-md-12 -->
+
                 {% include 'partials/_sidebar.html' %}
             </div>
         </div>
