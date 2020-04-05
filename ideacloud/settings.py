@@ -38,10 +38,13 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'users.apps.UsersConfig',
     'django.contrib.humanize',
+
+    # External packages
     'crispy_forms',
     'django_summernote',
     'taggit',
     'import_export',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

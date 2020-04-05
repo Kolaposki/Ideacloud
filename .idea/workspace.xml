@@ -4,7 +4,6 @@
     <list default="true" id="387293ac-6c61-4aa3-92dc-f0d068650f15" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ideacloud/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ideacloud/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ideacloud/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ideacloud/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -161,6 +160,7 @@
       <workItem from="1585181377927" duration="75891000" />
       <workItem from="1585516214433" duration="42199000" />
       <workItem from="1585752393780" duration="1297000" />
+      <workItem from="1586076396854" duration="962000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed post description text overflow and added favicon">
       <created>1585347277162</created>
