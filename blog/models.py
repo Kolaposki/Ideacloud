@@ -42,7 +42,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     cover = models.ImageField(upload_to=user_directory_path, blank=True, null=True)  # default='cover_pics/default.jpg'
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='category', null=False)
-    tags = TaggableManager()
+    tags = TaggableManager(blank=True)
     short_description = models.CharField(max_length=170, null=True, blank=True)
     slug = models.SlugField(unique=True, null=False, max_length=200)
     view_count = models.IntegerField(default=0)

@@ -18,6 +18,7 @@ class PostForm(forms.ModelForm):
     content = forms.CharField(widget=SummernoteWidget())  # instead of forms.Textarea
     title = forms.CharField(max_length=115, required=True, strip=True, min_length=5)
     cover = forms.ImageField(required=False)
+    tags = forms.CharField(required=False)
     short_description = forms.CharField(max_length=170, required=False, strip=True,
                                         help_text='Provide an optional short description')
 

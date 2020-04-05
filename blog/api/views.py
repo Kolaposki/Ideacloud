@@ -66,3 +66,18 @@ def api_delete_blog_view(request, slug):
             data["failure"] = "Unable to delete post"
 
         return Response(data=data)
+
+
+# API Create
+@api_view(['POST'])
+def api_create_blog_view(request):
+    account = User(pk=1)
+    blog_post = Post(author=account.pk)
+
+    if request.method == "POST":
+        serializer = PostSerializer(blog_post, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response("Blog Post created successfully", status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
