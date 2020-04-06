@@ -4,6 +4,9 @@ from rest_framework.decorators import api_view
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from .serializers import *
+from rest_framework.views import APIView
+from rest_framework.generics import UpdateAPIView
+from django.contrib.auth import authenticate
 
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
@@ -43,6 +46,34 @@ class CustomAuthToken(ObtainAuthToken):
             'user_id': user.pk,
             'email': user.email
         })
+
+
+# LoginView
+class ObtainAuthTokenView(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def post(self, request):
+        context = {}
+
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        account = authenticate(username=username, password=password)
+        if account:
+            try:
+                token = Token.objects.get(user=account)
+            except Token.DoesNotExist:
+                token = Token.objects.create(user=account)
+            context['response'] = 'Successfully authenticated.'
+            context['pk'] = account.pk
+            context['email'] = account.email
+            context['username'] = username
+            context['token'] = token.key
+        else:
+            context['response'] = 'Error'
+            context['error_message'] = 'Invalid credentials'
+
+        return Response(context)
 
 
 @api_view(['GET'])

@@ -5,6 +5,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/api/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/api/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/api/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/api/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/api/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -160,7 +163,7 @@
       <workItem from="1585181377927" duration="75891000" />
       <workItem from="1585516214433" duration="42199000" />
       <workItem from="1585752393780" duration="1297000" />
-      <workItem from="1586076396854" duration="33601000" />
+      <workItem from="1586076396854" duration="41109000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed post description text overflow and added favicon">
       <created>1585347277162</created>
@@ -400,7 +403,21 @@
       <option name="project" value="LOCAL" />
       <updated>1586187963489</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Fix integrity error when creating blog using api">
+      <created>1586188480344</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1586188480345</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Upload blog cover pictures from api">
+      <created>1586188645875</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1586188645883</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -421,8 +438,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Integrated search function to search for posts" />
-    <MESSAGE value="Fixed logo issues in small screens" />
     <MESSAGE value="Redesigned create post and update post pages" />
     <MESSAGE value="Compressed large images for faster page rendering" />
     <MESSAGE value="Fixed no cover found error and added scrollbar css" />
@@ -446,7 +461,9 @@
     <MESSAGE value="Implement pagination for blog api" />
     <MESSAGE value="Implement search function for blog api" />
     <MESSAGE value="Implement user profile view and user update view for api" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement user profile view and user update view for api" />
+    <MESSAGE value="Fix integrity error when creating blog using api" />
+    <MESSAGE value="Upload blog cover pictures from api" />
+    <option name="LAST_COMMIT_MESSAGE" value="Upload blog cover pictures from api" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

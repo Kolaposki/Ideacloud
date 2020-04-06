@@ -8,7 +8,7 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.filters import SearchFilter, OrderingFilter
 from blog.models import Post
 from users.models import User
-from .serializers import PostSerializer
+from .serializers import *
 
 
 # API Read
@@ -46,11 +46,19 @@ def api_update_blog_view(request, slug):
                         status=status.HTTP_401_UNAUTHORIZED)
 
     if request.method == "PUT":
-        serializer = PostSerializer(blog_post, data=request.data)  # serialize the post along with the new passed data
+        # serialize the post along with the new passed data. Partial means filling all fields is not required
+        serializer = BlogPostUpdateSerializer(blog_post, data=request.data, partial=True)
+
         data = {}
         if serializer.is_valid():
             serializer.save()  # save the new data if all fields are valid and update the post
-            data["success"] = 'Successfully updated the post'
+            data['response'] = "Successfully updated the post"
+            data['pk'] = blog_post.pk
+            data['title'] = blog_post.title
+            data['content'] = blog_post.content
+            data['date_posted'] = blog_post.date_posted
+            data['username'] = blog_post.author.username
+            data['slug'] = blog_post.slug
             return Response(data=data, status=status.HTTP_200_OK)
 
         # return whatever errors got from the server along with a 400
@@ -90,15 +98,26 @@ def api_delete_blog_view(request, slug):
 @api_view(['POST', ])
 @permission_classes((IsAuthenticated,))  # only user that's authenticated (has token key) can create a post
 def api_create_blog_view(request):
-    account = request.user  # grab the user that's trying to create a post (will be gotten from the token key)
-    blog_post = Post(author=account)
+    if request.method == 'POST':
 
-    if request.method == "POST":
-        serializer = PostSerializer(blog_post, data=request.data)
+        data = request.data
+        data['author'] = request.user.pk
+        serializer = BlogPostCreateSerializer(data=data)
+
+        data = {}
         if serializer.is_valid():
-            serializer.save()
-            return Response("Blog Post created successfully", status=status.HTTP_201_CREATED)
+            blog_post = serializer.save()
+            data['response'] = "Success"
+            data['pk'] = blog_post.pk
+            data['title'] = blog_post.title
+            data['content'] = blog_post.content
+            data['cover'] = blog_post.cover.url
+            data['category'] = blog_post.category.name
+            data['slug'] = blog_post.slug
+            data['date_posted'] = blog_post.date_posted
+            data['username'] = blog_post.author.username
 
+            return Response(data=data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
