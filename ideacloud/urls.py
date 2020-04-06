@@ -26,7 +26,9 @@ urlpatterns = [
     path('users/', include(users_urls.urlpatterns)),
     path('summernote/', include('django_summernote.urls')),
 
-    path('api/', include('blog.api.urls', namespace='blog_api'))
+    # API URLS
+    path('api/', include('blog.api.urls', namespace='blog_api')),
+    path('api/users/', include('users.api.urls', namespace="users_api")),
 ]
 
 if settings.DEBUG:
