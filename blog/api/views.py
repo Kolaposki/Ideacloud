@@ -1,6 +1,7 @@
 from rest_framework import status
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 
 from blog.models import Post
 from users.models import User
@@ -9,6 +10,7 @@ from .serializers import PostSerializer
 
 # API Read
 @api_view(['GET'])
+@permission_classes((IsAuthenticatedOrReadOnly,))  # Any user can read a blog (with or without having a token key)
 def api_detail_blog_view(request, slug):
     try:
         # get the blog post based on the slug that was passed
@@ -24,6 +26,7 @@ def api_detail_blog_view(request, slug):
 
 # API Update
 @api_view(['PUT'])
+@permission_classes((IsAuthenticated,))  # only user that's authenticated (has token key) can update a post
 def api_update_blog_view(request, slug):
     try:
         # get the blog post based on the slug that was passed
@@ -31,6 +34,13 @@ def api_update_blog_view(request, slug):
     except Post.DoesNotExist:
         # Return a 404 if the blog post is not found
         return Response("This blog you seek for does not seem to exist!", status=status.HTTP_404_NOT_FOUND)
+
+    user = request.user  # grab the user that's trying to update the post (will be gotten from the token key)
+
+    if blog_post.author != user:
+        # check if the authorized user is the author of the post
+        return Response({'response': "You don't have permission to update this post, perhaps you're not the author"},
+                        status=status.HTTP_401_UNAUTHORIZED)
 
     if request.method == "PUT":
         serializer = PostSerializer(blog_post, data=request.data)  # serialize the post along with the new passed data
@@ -46,6 +56,7 @@ def api_update_blog_view(request, slug):
 
 # API Delete
 @api_view(['DELETE'])
+@permission_classes((IsAuthenticated,))  # only user that's authenticated (has token key) can delete a post
 def api_delete_blog_view(request, slug):
     try:
         # get the blog post based on the slug that was passed
@@ -53,6 +64,13 @@ def api_delete_blog_view(request, slug):
     except Post.DoesNotExist:
         # Return a 404 if the blog post is not found
         return Response("This blog you seek for does not seem to exist!", status=status.HTTP_404_NOT_FOUND)
+
+    user = request.user  # grab the user that's trying to delete the post (will be gotten from the token key)
+
+    if blog_post.author != user:
+        # check if the authorized user is the author of the post
+        return Response({'response': "You don't have permission to delete this post, perhaps you're not the author"},
+                        status=status.HTTP_401_UNAUTHORIZED)
 
     if request.method == "DELETE":
         operation = blog_post.delete()
@@ -67,8 +85,10 @@ def api_delete_blog_view(request, slug):
 
 # API Create
 @api_view(['POST'])
+@permission_classes((IsAuthenticated,))  # only user that's authenticated (has token key) can create a post
 def api_create_blog_view(request):
-    account = User(pk=1)
+    account = request.user  # grab the user that's trying to create a post (will be gotten from the token key)
+    print(account, "here is the accny")
     blog_post = Post(author=account.pk)
 
     if request.method == "POST":

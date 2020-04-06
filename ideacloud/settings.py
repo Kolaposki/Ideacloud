@@ -162,5 +162,7 @@ TAGGIT_CASE_INSENSITIVE = True  # make sure all the tags are not case sensitive
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
+    ], 'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
     ],
 }
