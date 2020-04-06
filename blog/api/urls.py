@@ -8,5 +8,5 @@ urlpatterns = [
     path('blog/list-blog/', ApiBlogListView.as_view(), name='api_list_detail'),
     path('update/<slug>', api_update_blog_view, name='api_update'),
     path('delete/<slug>', api_delete_blog_view, name='api_delete'),
-    path('create/', api_create_blog_view, name='api_create'),
+    path('blog/create/', api_create_blog_view, name='api_create'),
 ]

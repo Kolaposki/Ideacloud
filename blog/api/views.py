@@ -92,7 +92,7 @@ def api_delete_blog_view(request, slug):
 def api_create_blog_view(request):
     account = request.user  # grab the user that's trying to create a post (will be gotten from the token key)
     print(account, "here is the accny")
-    blog_post = Post(author=account.pk)
+    blog_post = Post(author=account)
 
     if request.method == "POST":
         serializer = PostSerializer(blog_post, data=request.data)

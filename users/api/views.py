@@ -3,7 +3,11 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
-from .serializers import RegistrationSerializer
+from .serializers import *
+
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
+from users.models import User
 
 
 @api_view(['POST'])
@@ -39,3 +43,37 @@ class CustomAuthToken(ObtainAuthToken):
             'user_id': user.pk,
             'email': user.email
         })
+
+
+@api_view(['GET'])
+@permission_classes((IsAuthenticated,))
+def user_detail_view(request):
+    try:
+        account = request.user
+    except User.DoesNotExist:
+        return Response({"response": "This user doesn't seem to exist in the database"},
+                        status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == "GET":
+        serializer = AccountDetailsSerializer(account)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+@api_view(['PUT'])
+@permission_classes((IsAuthenticated,))
+def update_user_view(request):
+    try:
+        account = request.user
+    except User.DoesNotExist:
+        return Response({"response": "This user doesn't seem to exist in the database"},
+                        status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == "PUT":
+        serializer = AccountDetailsSerializer(account, data=request.data)
+        data = {}
+        if serializer.is_valid():
+            serializer.save()
+            data['response'] = "Account updated successfully"
+            return Response(data=data, status=status.HTTP_200_OK)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
