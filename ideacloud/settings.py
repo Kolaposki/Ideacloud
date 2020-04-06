@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'taggit',
     'import_export',
     'rest_framework',
+    'rest_framework.authtoken',  # for authentication purpose
 ]
 
 MIDDLEWARE = [
@@ -157,3 +158,9 @@ SUMMERNOTE_CONFIG = {
 }
 
 TAGGIT_CASE_INSENSITIVE = True  # make sure all the tags are not case sensitive
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+}
