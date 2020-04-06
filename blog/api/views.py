@@ -2,6 +2,9 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
+from rest_framework.pagination import PageNumberPagination
+from rest_framework.generics import ListAPIView
+from rest_framework.authentication import TokenAuthentication
 
 from blog.models import Post
 from users.models import User
@@ -84,7 +87,7 @@ def api_delete_blog_view(request, slug):
 
 
 # API Create
-@api_view(['POST'])
+@api_view(['POST', ])
 @permission_classes((IsAuthenticated,))  # only user that's authenticated (has token key) can create a post
 def api_create_blog_view(request):
     account = request.user  # grab the user that's trying to create a post (will be gotten from the token key)
@@ -98,3 +101,12 @@ def api_create_blog_view(request):
             return Response("Blog Post created successfully", status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+# View to list all posts in d db, supports pagination
+class ApiBlogListView(ListAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+    pagination_class = PageNumberPagination
