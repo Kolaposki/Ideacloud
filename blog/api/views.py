@@ -91,7 +91,6 @@ def api_delete_blog_view(request, slug):
 @permission_classes((IsAuthenticated,))  # only user that's authenticated (has token key) can create a post
 def api_create_blog_view(request):
     account = request.user  # grab the user that's trying to create a post (will be gotten from the token key)
-    print(account, "here is the accny")
     blog_post = Post(author=account)
 
     if request.method == "POST":
