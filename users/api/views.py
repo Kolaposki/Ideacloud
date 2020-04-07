@@ -207,3 +207,19 @@ class ChangePasswordView(UpdateAPIView):
             return Response({"response": "successfully changed password"}, status=status.HTTP_200_OK)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+# check if an account exist in the db
+@api_view(['GET', ])
+@permission_classes([])
+@authentication_classes([])
+def does_account_exist_view(request):
+    if request.method == 'GET':
+        email = request.GET['email'].lower()
+        data = {}
+        try:
+            account = User.objects.get(email=email)
+            data['response'] = email
+        except Account.DoesNotExist:
+            data['response'] = "Account does not exist"
+        return Response(data)
