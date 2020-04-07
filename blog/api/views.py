@@ -65,6 +65,24 @@ def api_update_blog_view(request, slug):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+# Function to check if the user is the author of the post
+@api_view(['GET', ])
+@permission_classes((IsAuthenticated,))
+def api_is_author_of_post(request, slug):
+    try:
+        blog_post = Post.objects.get(slug=slug)
+    except Post.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    data = {}
+    user = request.user
+    if blog_post.author != user:
+        data['response'] = "You don't have permission to edit that."
+        return Response(data=data)
+    data['response'] = "You have permission to edit that."
+    return Response(data=data, status=status.HTTP_200_OK)
+
+
 # API Delete
 @api_view(['DELETE'])
 @permission_classes((IsAuthenticated,))  # only user that's authenticated (has token key) can delete a post

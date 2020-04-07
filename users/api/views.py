@@ -220,6 +220,6 @@ def does_account_exist_view(request):
         try:
             account = User.objects.get(email=email)
             data['response'] = email
-        except Account.DoesNotExist:
+        except User.DoesNotExist:
             data['response'] = "Account does not exist"
         return Response(data)
