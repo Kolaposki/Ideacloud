@@ -1,18 +1,17 @@
 from rest_framework import status
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
-from .serializers import *
 from rest_framework.views import APIView
 from rest_framework.generics import UpdateAPIView
 from django.contrib.auth import authenticate
-
-from rest_framework.decorators import api_view, permission_classes
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
+
+from .serializers import *
 from users.models import User
 
-
+"""
 @api_view(['POST'])
 def api_registration_view(request):
     if request.method == "POST":
@@ -31,6 +30,7 @@ def api_registration_view(request):
 
         return Response(data=data)
 
+"""
 
 # This helps in displaying the user token along with details when username and password are provided in headers
 class CustomAuthToken(ObtainAuthToken):
@@ -108,3 +108,56 @@ def update_user_view(request):
             return Response(data=data, status=status.HTTP_200_OK)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST', ])
+@permission_classes([])
+@authentication_classes([])
+def api_registration_view(request):
+    if request.method == 'POST':
+        data = {}
+        email = request.data.get('email', '0').lower()
+        if validate_email(email) is not None:
+            data['error_message'] = 'That email is already in use.'
+            data['response'] = 'Error'
+            return Response(data)
+
+        username = request.data.get('username', '0')
+        if validate_username(username) is not None:
+            data['error_message'] = 'That username is already in use.'
+            data['response'] = 'Error'
+            return Response(data)
+
+        serializer = RegistrationSerializer(data=request.data)
+
+        if serializer.is_valid():
+            account = serializer.save()
+            data['response'] = 'successfully registered new user.'
+            data['email'] = account.email
+            data['username'] = account.username
+            data['pk'] = account.pk
+            token = Token.objects.get(user=account).key
+            data['token'] = token
+        else:
+            data = serializer.errors
+        return Response(data)
+
+
+def validate_email(email):
+    account = None
+    try:
+        account = User.objects.get(email=email)
+    except User.DoesNotExist:
+        return None
+    if account is not None:
+        return email
+
+
+def validate_username(username):
+    account = None
+    try:
+        account = User.objects.get(username=username)
+    except User.DoesNotExist:
+        return None
+    if account is not None:
+        return username
