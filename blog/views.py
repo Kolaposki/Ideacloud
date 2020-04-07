@@ -8,6 +8,9 @@ from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from .forms import CommentForm, PostForm
 
+from hitcount.views import HitCountMixin
+from hitcount.models import HitCount
+
 
 # Create your views here.
 def all_category(request):
@@ -72,11 +75,13 @@ class PostDetailView(DetailView):
 
 def post_detail(request, slug, pk):
     post = get_object_or_404(Post, pk=pk, slug=slug)
-    total_post_view = int(post.view_count)  # get the initial value of view_count from the db for this post
-    total_post_view += 1  # increment the view_count by 1
+    # total_post_view = int(post.view_count)  # get the initial value of view_count from the db for this post
+    # total_post_view += 1  # increment the view_count by 1
+    # Post.objects.all().filter(pk=pk).update(view_count=total_post_view)
 
-    # get this exact post from the db through filtering and then update view_count field with the new total_post_view
-    Post.objects.all().filter(pk=pk).update(view_count=total_post_view)
+    hit_count = HitCount.objects.get_for_object(post)
+    hit_count_response = HitCountMixin.hit_count(request, hit_count)
+    print(hit_count_response, "HIT-COUNT HERE")
 
     # queryset to retrieve all the approved comments from the database.
     comments = post.comments.filter(active=True).order_by("-created_on")[0:5]
@@ -99,10 +104,10 @@ def post_detail(request, slug, pk):
         comment_form = CommentForm()
 
     return render(request, 'blog/post_detail.html', {'post': post,
-                                                       'comments': comments,
-                                                       'new_comment': new_comment,
-                                                       'comment_form': comment_form,
-                                                       'recommended_post': recommended_post,
+                                                     'comments': comments,
+                                                     'new_comment': new_comment,
+                                                     'comment_form': comment_form,
+                                                     'recommended_post': recommended_post,
                                                      })
 
 
@@ -188,7 +193,8 @@ class PostCategoryListView(ListView):
     paginate_by = 5
 
     def get_queryset(self):
-        categories = get_object_or_404(Category, name=self.kwargs.get('categories'))  # get the category from the url
+        categories = get_object_or_404(Category,
+                                       name=self.kwargs.get('categories'))  # get the category from the url
         return Post.objects.filter(category=categories).order_by('-date_posted')
 
     def get_context_data(self, **kwargs):

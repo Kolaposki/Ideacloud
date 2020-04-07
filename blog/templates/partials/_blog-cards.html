@@ -1,4 +1,5 @@
 {% load my_extras %}
+{% load hitcount_tags %}
 {% for post in posts %}
     {% if post.cover %}
         <div class="{{ boot_class }}">
@@ -21,7 +22,7 @@
 
                         <ul class="post-footer">
                             <li><i class="ion-android-bulb"></i>57</li>
-                            <li><i class="ion-eye"></i>{{ post.view_count }}</li>
+                            <li><i class="ion-eye"></i>{% get_hit_count for post %}</li>
                             <li><i class="ion-ios-book-outline"></i>{{ post.content |striptags | calculate_time_read }}
                                 min
                                 read
@@ -71,7 +72,7 @@
 
                         <ul class="post-footer">
                             <li><i class="ion-heart"></i>57</li>
-                            <li><i class="ion-eye"></i>{{ post.view_count }}</li>
+                            <li><i class="ion-eye"></i>{% get_hit_count for post %}</li>
                             <li><i class="ion-ios-book-outline"></i>{{ post.content | striptags | calculate_time_read }}
                                 min read
                             </li>

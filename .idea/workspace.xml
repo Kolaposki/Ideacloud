@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="387293ac-6c61-4aa3-92dc-f0d068650f15" name="Default Changelist" comment="" />
+    <list default="true" id="387293ac-6c61-4aa3-92dc-f0d068650f15" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/templates/blog/post_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/blog/post_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/templates/partials/_blog-cards.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/partials/_blog-cards.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/templates/partials/_recommend-cards.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/partials/_recommend-cards.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ideacloud/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ideacloud/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/api/urls.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +167,7 @@
       <workItem from="1585181377927" duration="75891000" />
       <workItem from="1585516214433" duration="42199000" />
       <workItem from="1585752393780" duration="1297000" />
-      <workItem from="1586076396854" duration="50975000" />
+      <workItem from="1586076396854" duration="64124000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed post description text overflow and added favicon">
       <created>1585347277162</created>

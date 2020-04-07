@@ -5,6 +5,9 @@ from django.urls import reverse
 from taggit.managers import TaggableManager
 from django.template.defaultfilters import slugify
 
+from hitcount.models import HitCount
+from django.contrib.contenttypes.fields import GenericRelation
+
 
 # Create your models here.
 
@@ -46,6 +49,8 @@ class Post(models.Model):
     short_description = models.CharField(max_length=170, null=True, blank=True)
     slug = models.SlugField(unique=True, null=False, max_length=200)
     view_count = models.IntegerField(default=0)
+    hit_count_generic = GenericRelation(HitCount, object_id_field='object_pk',
+                                        related_query_name='hit_count_generic_relation')
 
     class Meta:
         ordering = ('-id',)

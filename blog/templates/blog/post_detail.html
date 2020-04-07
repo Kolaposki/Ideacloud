@@ -3,6 +3,7 @@
 {% load humanize %}
 {% load my_extras %}
 {% load crispy_forms_tags %}
+{% load hitcount_tags %}
 {% block title %}{{ post.title }} {% endblock title %}
 {% block head_desc %}{{ post.title }}{% endblock head_desc %}
 {% block head_title %}{{ post.title }}{% endblock head_title %}
@@ -72,7 +73,7 @@
                             <ul class="post-icons">
                                 <li><a href="#"><i class="ion-android-bulb"></i>57</a></li>
                                 <li><a><i class="ion-chatbubble"></i>{{ comments.count }}</a></li>
-                                <li><a><i class="ion-eye"></i>{{ post.view_count }}</a></li>
+                                <li><a><i class="ion-eye"></i>{% get_hit_count for post %}</a></li>
                             </ul>
 
                             <ul class="icons">

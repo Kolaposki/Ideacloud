@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django_summernote',
     'taggit',
     'import_export',
+    'hitcount',
     'rest_framework',
     'rest_framework.authtoken',  # for authentication purpose
 ]
@@ -170,4 +171,5 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 4
 }
 
-# AUTH_USER_MODEL = 'users.User'
+# new count will be recorded for user after 2 days
+HITCOUNT_KEEP_HIT_ACTIVE = {'days': 2}

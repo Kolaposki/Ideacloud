@@ -5,6 +5,7 @@ from django.urls import path
 
 app_name = 'users'
 # url : ideacloud/api/users/
+
 urlpatterns = [
     path('register/', api_registration_view, name='api_register'),
     path('account-update/', update_user_view, name='api_user_update'),
