@@ -10,6 +10,20 @@ Created using the Django framework. Find it live on [Heroku](https://ideacloud9.
 * Create and share posts
 * Read other people's posts
 * Interact and comment on posts and many more
+* REST API included
+
+## Tools & Libraries
+* Django web framework
+* Django rest framework
+* Bootstrap
+* Pillow
+* Whitenoise
+* Gunicorn
+* Django-crispy-forms
+* Django-summernote
+* Django-import-export
+* Django-hitcount
+* Django-taggit
 
 ## Authors
 
