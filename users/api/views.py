@@ -7,6 +7,7 @@ from rest_framework.generics import UpdateAPIView
 from django.contrib.auth import authenticate
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
+from rest_framework.authentication import TokenAuthentication
 
 from .serializers import *
 from users.models import User
@@ -31,6 +32,7 @@ def api_registration_view(request):
         return Response(data=data)
 
 """
+
 
 # This helps in displaying the user token along with details when username and password are provided in headers
 class CustomAuthToken(ObtainAuthToken):
@@ -143,6 +145,7 @@ def api_registration_view(request):
         return Response(data)
 
 
+# just a function to check if the email is not in the db. Will be called by api_registration_view
 def validate_email(email):
     account = None
     try:
@@ -153,6 +156,7 @@ def validate_email(email):
         return email
 
 
+# just a function to check if the username is not in the db. Will be called by api_registration_view
 def validate_username(username):
     account = None
     try:
@@ -161,3 +165,45 @@ def validate_username(username):
         return None
     if account is not None:
         return username
+
+
+class ChangePasswordView(UpdateAPIView):
+    serializer_class = ChangePasswordSerializer
+    model = User
+    permission_classes = (IsAuthenticated,)
+    authentication_classes = (TokenAuthentication,)
+
+    # Returns the object the view is displaying
+    def get_object(self, queryset=None):
+        obj = self.request.user
+        return obj
+
+    def update(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        serializer = self.get_serializer(data=request.data)
+
+        if serializer.is_valid():
+
+            new_password = serializer.data.get("new_password")
+            old_password = serializer.data.get("old_password")
+            confirm_new_password = serializer.data.get("confirm_new_password")
+
+            # Check old password
+            if not self.object.check_password(old_password):
+                return Response({"old_password": ["Wrong password."]}, status=status.HTTP_400_BAD_REQUEST)
+
+            # confirm the new passwords match
+            if new_password != confirm_new_password:
+                return Response({"new_password": ["New passwords must match"]}, status=status.HTTP_400_BAD_REQUEST)
+
+            # check if new password is the same as old one
+            if new_password == old_password:
+                return Response({"new_password": ["Old password and new password can not be the same"]},
+                                status=status.HTTP_400_BAD_REQUEST)
+
+            # set_password also hashes the password that the user will get
+            self.object.set_password(new_password)
+            self.object.save()
+            return Response({"response": "successfully changed password"}, status=status.HTTP_200_OK)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

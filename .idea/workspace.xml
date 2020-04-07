@@ -4,6 +4,8 @@
     <list default="true" id="387293ac-6c61-4aa3-92dc-f0d068650f15" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/api/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/api/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/api/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/api/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -160,7 +162,7 @@
       <workItem from="1585181377927" duration="75891000" />
       <workItem from="1585516214433" duration="42199000" />
       <workItem from="1585752393780" duration="1297000" />
-      <workItem from="1586076396854" duration="45657000" />
+      <workItem from="1586076396854" duration="47936000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed post description text overflow and added favicon">
       <created>1585347277162</created>
@@ -421,7 +423,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586196393087</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Rewrite registration function for api">
+      <created>1586258086112</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1586258086132</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -442,7 +451,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Compressed large images for faster page rendering" />
     <MESSAGE value="Fixed no cover found error and added scrollbar css" />
     <MESSAGE value="Move javascript script tag to main.js file" />
     <MESSAGE value="Removed unnecessary html files for blog" />
@@ -467,7 +475,8 @@
     <MESSAGE value="Fix integrity error when creating blog using api" />
     <MESSAGE value="Upload blog cover pictures from api" />
     <MESSAGE value="Rewrite all crud functions for blog api" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rewrite all crud functions for blog api" />
+    <MESSAGE value="Rewrite registration function for api" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rewrite registration function for api" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
