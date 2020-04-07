@@ -8,4 +8,4 @@ whitenoise==5.0.1
 django-import-export==2.0.2
 djangorestframework==3.11.0
 
-git+git://github.com/Kolaposki/django-hitcount.git#egg=hitcount&subdirectory=hitcount
+git+git://github.com/Kolaposki/django-hitcount.git
